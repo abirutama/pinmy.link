@@ -18,9 +18,9 @@ class Auth extends CI_Controller {
 
 		if($this->form_validation->run() == false){
 			$data['title'] = 'Login to existing account | Bioku.link';
-			$this->load->view('templates/auth_header', $data);
+			$this->load->view('auth/auth_header', $data);
 			$this->load->view('auth/login');
-			$this->load->view('templates/auth_footer');
+			$this->load->view('auth/auth_footer');
 		}else{
 			$this->_login();
 		}
@@ -79,9 +79,9 @@ class Auth extends CI_Controller {
 
 		if($this->form_validation->run() == false){
 			$data['title'] = 'Register a new account | Bioku.link';
-			$this->load->view('templates/auth_header', $data);
+			$this->load->view('auth/auth_header', $data);
 			$this->load->view('auth/register');
-			$this->load->view('templates/auth_footer');
+			$this->load->view('auth/auth_footer');
 		}else{
 			$data = [
 				'user_name' => htmlspecialchars($this->input->post('username-regis', true)),

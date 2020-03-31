@@ -1,15 +1,15 @@
 <section class="section" style="max-width: 600px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">Add New Link</h1>
+        <h1 class="title is-size-4">Edit Link</h1>
         <hr>
-        <form action="<?= base_url('user/addcard'); ?>" method="post">
+        <form action="<?= base_url('user/editcard/').$card['card_id']; ?>" method="post">
             <div class="field">
                 <label class="label">Title</label>
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" maxlength="25" name="link-title" type="text"
-                            placeholder="Link's Title Here" value="<?= set_value('link-title'); ?>" required>
+                            placeholder="Link's Title Here" value="<?= scoup($card['card_title']); ?>" required>
                     </p>
                 </div>
                 <?= form_error('link-title', '<p class="help is-danger">', '</p>'); ?>
@@ -20,7 +20,7 @@
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" maxlength="25" name="link-destination" type="text"
-                            placeholder="http://your-destinantion.com" value="<?= set_value('link-destination'); ?>" required>
+                            placeholder="http://your-destinantion.com" value="<?= scoup($card['card_url']); ?>" required>
                     </p>
                 </div>
                 <?= form_error('link-destination', '<p class="help is-danger">', '</p>'); ?>
@@ -31,7 +31,7 @@
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" name="link-thumbnail" maxlength="25" type="text"
-                            placeholder="http://source-image.com/thumbnail.jpg" value="<?= set_value('link-thumbnail'); ?>">
+                            placeholder="http://source-image.com/thumbnail.jpg" value="<?= scoup($card['card_thumbnail']); ?>">
                     </p>
                 </div>
                 <?= form_error('link-thumbnail', '<p class="help is-danger">', '</p>'); ?>

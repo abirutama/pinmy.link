@@ -149,6 +149,7 @@ $(document).ready(function() {
         items: 2,
         stagePadding: 20,
         responsiveClass: true,
+        dots:false,
         nav: false,
         loop: false,
         center: false,
@@ -169,7 +170,7 @@ $(document).ready(function() {
     var owl2 = $('#carousel2');
     owl2.owlCarousel({
         items: 2,
-        stagePadding: 30,
+        stagePadding: 20,
         responsiveClass: true,
         nav: false,
         loop: false,
@@ -191,7 +192,7 @@ $(document).ready(function() {
     var owl3 = $('#carousel3');
     owl3.owlCarousel({
         items: 2,
-        stagePadding: 30,
+        stagePadding: 20,
         responsiveClass: true,
         nav: false,
         loop: false,

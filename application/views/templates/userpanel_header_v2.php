@@ -70,7 +70,7 @@
             </div>
         </div>
     </nav>
-    <div class="notification is-warning">
-            Embed this link to your social media's bio: <a style=""
-                href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
-        </div>
+    <div class="notification is-warning" style="margin:0">
+        Embed this link to your social media's bio: <a style=""
+            href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
+    </div>

@@ -9,7 +9,7 @@ class User extends CI_Controller {
 		if(!$this->session->userdata('ses_email')){
 			redirect('auth');
 		}
-	}
+	} 
 
 	public function index(){
 		$data['page'] = 'link';
@@ -117,75 +117,65 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function addcard_v2(){
+	public function addcard(){
 		$data['page'] = 'link';
 		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
 
-		$this->load->view('templates/userpanel_header_v2', $data);
-		$this->load->view('user/add_card_v2', $data);
-		$this->load->view('templates/userpanel_footer_v2', $data);
-	}
+		$this->form_validation->set_rules('link-title', 'Title', 'trim|required|min_length[6]');
+		$this->form_validation->set_rules('link-destination', 'URL Destination', 'trim|required|valid_url');
+		$this->form_validation->set_rules('link-thumbnail', 'URL Thumbnail', 'trim|valid_url');
 
-	public function addcard(){
-		$data['title'] = 'Add New Card';
-		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
-
-		$this->form_validation->set_rules('card-title', 'Title', 'trim|required|min_length[6]');
-		$this->form_validation->set_rules('card-url', 'URL', 'trim|required|valid_url');
-		$this->form_validation->set_rules('card-thumbnail', 'Thumbnail', 'trim|valid_url');
 		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header', $data);
-			$this->load->view('templates/userpanel_topbar', $data);
-			$this->load->view('user/add_card', $data);
-			$this->load->view('templates/userpanel_footer');
+			$this->load->view('templates/userpanel_header_v2', $data);
+			$this->load->view('user/add_card_v2', $data);
+			$this->load->view('templates/userpanel_footer_v2', $data);
 		}else{
 			//_addcards();
 			$data_card = [
-				'card_title' => $this->input->post('card-title'),
-				'card_url' => $this->input->post('card-url'),
-				'card_thumbnail' => $this->input->post('card-thumbnail'),
+				'card_title' => $this->input->post('link-title'),
+				'card_url' => $this->input->post('link-destination'),
+				'card_thumbnail' => $this->input->post('link-thumbnail'),
 				'user_id' => $this->session->userdata('ses_id'),
 				'date_created' => time()
 			];
 
 			if($this->db->insert('card', $data_card)){
-				$this->session->set_flashdata('message', '<div class="notification is-success">Card Added Successfully!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-success">New Link Added Successfully!</div>');
 				redirect('user');
 			}else{
 				$error = $this->db->error();
-				$this->session->set_flashdata('message', '<div class="notification is-danger">Adding Car Failed!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-danger">Add New Link Failed!</div>');
 				redirect('user');
 			}
 		}
 	}
 
 	public function editcard($card_id){
-		$data['title'] = 'Edit Card';
+		$data['page'] = 'link';
 		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
 		$data['card'] = $this->db->get_where('card', ['card_id' => $card_id, 'user_id' => $this->session->userdata('ses_id')])->row_array();
 
-		$this->form_validation->set_rules('card-title', 'Title', 'trim|required|min_length[6]');
-		$this->form_validation->set_rules('card-url', 'URL', 'trim|required|valid_url');
-		$this->form_validation->set_rules('card-thumbnail', 'Thumbnail', 'trim|valid_url');
+		$this->form_validation->set_rules('link-title', 'Title', 'trim|required|min_length[6]');
+		$this->form_validation->set_rules('link-destination', 'URL Destination', 'trim|required|valid_url');
+		$this->form_validation->set_rules('link-thumbnail', 'URL Thumbnail', 'trim|valid_url');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header', $data);
-			$this->load->view('templates/userpanel_topbar', $data);
-			$this->load->view('user/edit_card', $data);
-			$this->load->view('templates/userpanel_footer');
+			$this->load->view('templates/userpanel_header_v2', $data);
+			$this->load->view('user/edit_card_v2', $data);
+			$this->load->view('templates/userpanel_footer_v2', $data);
 		}else{
 			$data_card = [
-				'card_title' => $this->input->post('card-title'),
-				'card_url' => $this->input->post('card-url'),
-				'card_thumbnail' => $this->input->post('card-thumbnail')
+				'card_title' => $this->input->post('link-title'),
+				'card_url' => $this->input->post('link-destination'),
+				'card_thumbnail' => $this->input->post('link-thumbnail'),
 			];
 
 			if($this->db->update('card', $data_card, array('card_id' => $card_id, 'user_id' =>  $this->session->userdata('ses_id')))){
-				$this->session->set_flashdata('message', '<div class="notification is-success">Card Edited Successfully!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-success">Link Edited Successfully!</div>');
 				redirect('user');
 			}else{
 				$error = $this->db->error();
-				$this->session->set_flashdata('message', '<div class="notification is-danger">Editing Card Failed!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-danger">Edit Link Failed!</div>');
 				redirect('user');
 			}
 			
