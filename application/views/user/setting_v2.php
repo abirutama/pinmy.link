@@ -25,25 +25,9 @@
 <section class="section" style="max-width: 600px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">Settings</h1>
+        <h1 class="title is-size-4">Settings > Theme</h1>
         <hr>
         <form action="<?= base_url('user/setting'); ?>" method="post">
-        <div class="field">
-                <label class="label">Google Analytics</label>
-                <div class="field has-addons">
-                    <p class="control">
-                        <a class="button is-static" style="justify-content:left;">
-                            Tracking ID
-                        </a>
-                    </p>
-                    <p class="control is-expanded">
-                        <input class="input" maxlength="16" name="ga-tracking-id" type="text"
-                            placeholder="UA-xxxxxxxx-x" value="<?= $user['user_gtag'] ?>">
-                    </p>
-                </div>
-                <!--<p class="help is-danger">This username is invalid</p>-->
-            </div>
-        <hr>
             <h1 class="label">Cover Image</h1>
             <!-- Set up your HTML -->
             <div id="carousel1" class="owl-carousel container">

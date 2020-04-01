@@ -64,55 +64,72 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function setting(){
-		$data['page'] = 'setting';
-		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
-		
-		$data['cover'] = $this->db->get('cover')->result_array();
-		$data['layout'] = $this->db->get_where('layout', ['layout_status' => 1])->result_array();
-		$data['theme'] = $this->db->get('theme')->result_array();
-		//var_dump($data['cover']);
-		//die();
+	public function setting($subpage){
 
-		$this->form_validation->set_rules('setting-cover', 'Cover Image', 'trim|required');
-		$this->form_validation->set_rules('setting-layout', 'Layout', 'trim|required');
+		if($subpage == 'theme'){
+			$data['page'] = 'setting';
+			$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
+			
+			$data['cover'] = $this->db->get('cover')->result_array();
+			$data['layout'] = $this->db->get_where('layout', ['layout_status' => 1])->result_array();
+			$data['theme'] = $this->db->get('theme')->result_array();
+			//var_dump($data['cover']);
+			//die();
 
-		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header_v2', $data);
-			$this->load->view('user/setting_v2', $data);
-			$this->load->view('templates/userpanel_footer_v2', $data);
-		}else{
-			$chosen_gaid = $this->input->post('ga-tracking-id');
-			$chosen_cover = $this->input->post('setting-cover');
-			$chosen_layout = $this->input->post('setting-layout');
+			$this->form_validation->set_rules('setting-cover', 'Cover Image', 'trim|required');
+			$this->form_validation->set_rules('setting-layout', 'Layout', 'trim|required');
 
-			foreach($data['cover'] as $value_cover){
-				$avail_cover[] = $value_cover['cover_id'];
-			}
-			if (!in_array($chosen_cover, $avail_cover)){
-				$chosen_cover = 2;
-			}
-			foreach($data['layout'] as $value_layout){
-				$avail_layout[] = $value_layout['layout_id'];
-			}
-			if (!in_array($chosen_layout, $avail_layout)){
-				$chosen_layout = 1;
-			}
-
-			$data_profile = [
-				'user_cover' => $chosen_cover,
-				'user_layout' => $chosen_layout,
-				'user_gtag' => $chosen_gaid
-			];
-
-			if($this->db->update('user', $data_profile, array('user_id' => $this->session->userdata('ses_id')))){
-				$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
-				$error = $this->db->error();
-				redirect('user/setting');
+			if($this->form_validation->run() == false){
+				$this->load->view('templates/userpanel_header_v2', $data);
+				$this->load->view('user/setting_v2', $data);
+				$this->load->view('templates/userpanel_footer_v2', $data);
 			}else{
-				$error = $this->db->error();
-				$this->session->set_flashdata('message', '<div class="notification is-danger">Settings Update Failed!</div>');
-				redirect('user/setting');
+				$chosen_cover = $this->input->post('setting-cover');
+				$chosen_layout = $this->input->post('setting-layout');
+
+				foreach($data['cover'] as $value_cover){
+					$avail_cover[] = $value_cover['cover_id'];
+				}
+				if (!in_array($chosen_cover, $avail_cover)){
+					$chosen_cover = 2;
+				}
+				foreach($data['layout'] as $value_layout){
+					$avail_layout[] = $value_layout['layout_id'];
+				}
+				if (!in_array($chosen_layout, $avail_layout)){
+					$chosen_layout = 1;
+				}
+
+				$data_profile = [
+					'user_cover' => $chosen_cover,
+					'user_layout' => $chosen_layout,
+				];
+
+				if($this->db->update('user', $data_profile, array('user_id' => $this->session->userdata('ses_id')))){
+					$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
+					$error = $this->db->error();
+					redirect('user/setting');
+				}else{
+					$error = $this->db->error();
+					$this->session->set_flashdata('message', '<div class="notification is-danger">Settings Update Failed!</div>');
+					redirect('user/setting');
+				}
+			}
+		}else if($subpage == 'seo'){
+			$data['page'] = 'setting';
+			$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
+
+			//var_dump($data['cover']);
+			//die();
+
+			$this->form_validation->set_rules('ga-tracking-id', 'GA Tracking ID', 'trim|required');
+
+			if($this->form_validation->run() == false){
+				$this->load->view('templates/userpanel_header_v2', $data);
+				$this->load->view('user/settingb_v2', $data);
+				$this->load->view('templates/userpanel_footer_v2', $data);
+			}else{
+				$chosen_gaid = $this->input->post('ga-tracking-id');
 			}
 		}
 	}

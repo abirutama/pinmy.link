@@ -49,9 +49,20 @@
                 <a href="<?= base_url('user/profile'); ?>" class="navbar-item <?php if($page=='profile'){ echo 'has-text-link'; } ?>">
                     Profile
                 </a>
-                <a href="<?= base_url('user/setting'); ?>" class="navbar-item <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
-                    Settings
-                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
+                        Settings
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a href="<?= base_url('user/setting/theme'); ?>" class="navbar-item">
+                            Theme
+                        </a>
+                        <hr class="navbar-divider">
+                        <a href="<?= base_url('user/setting/seo'); ?>" class="navbar-item">
+                            SEO
+                        </a>
+                    </div>
+                </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Help
