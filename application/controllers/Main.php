@@ -25,7 +25,10 @@ class Main extends CI_Controller {
 			echo 'Layout not found!';
 		}
 	}
-
+	public function goto2()
+	{
+		$this->load->view('webpage/goto_v2');
+	}
 	public function goto($user_name=null, $card_id=null)
 	{
 		//echo $user_name;
@@ -43,7 +46,7 @@ class Main extends CI_Controller {
 			if(!$data['queryCard']){
 				redirect('@'.$user_name);
 			}
-			$this->load->view('webpage/goto', $data);
+			$this->load->view('webpage/goto_v2', $data);
 		}
 	}
 }
