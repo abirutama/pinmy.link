@@ -13,6 +13,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
     <title>User Panel | Pinmy.link</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -91,6 +92,6 @@
         </div>
     </nav>
     <div class="notification is-warning" style="margin:0">
-        Embed this link to your social media's bio: <a style=""
+        Don't forget to embed this link to your social media's bio: <a style=""
             href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
     </div>

@@ -1,4 +1,11 @@
 <section class="section" style="max-width: 600px; margin:auto">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
+            <li><a href="<?= base_url('user') ?>">My Link</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Add New Link</a></li>
+        </ul>
+    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
         <h1 class="title is-size-4">Add New Link</h1>
@@ -8,7 +15,7 @@
                 <label class="label">Title</label>
                 <div class="field">
                     <p class="control is-expanded">
-                        <input class="input" maxlength="25" name="link-title" type="text"
+                        <input class="input" maxlength="120" name="link-title" type="text"
                             placeholder="Link's Title Here" value="<?= set_value('link-title'); ?>" required>
                     </p>
                 </div>
@@ -19,7 +26,7 @@
                 <label class="label">URL Destination</label>
                 <div class="field">
                     <p class="control is-expanded">
-                        <input class="input" maxlength="25" name="link-destination" type="text"
+                        <input class="input" name="link-destination" type="text"
                             placeholder="http://your-destinantion.com" value="<?= set_value('link-destination'); ?>" required>
                     </p>
                 </div>
@@ -30,7 +37,7 @@
                 <label class="label">URL Thumbnail (Optional)</label>
                 <div class="field">
                     <p class="control is-expanded">
-                        <input class="input" name="link-thumbnail" maxlength="25" type="text"
+                        <input class="input" name="link-thumbnail" type="text"
                             placeholder="http://source-image.com/thumbnail.jpg" value="<?= set_value('link-thumbnail'); ?>">
                     </p>
                 </div>
@@ -38,29 +45,11 @@
             </div>
             <hr>
             <div class="field is-grouped">
-                <div class="">
-                    <button id="save-profile-button" class="button is-link">Submit</button>
-                    <a href="<?= base_url('user') ?>" id="save-profile-button" class="button is-outlined">Cancel</a>
+                <div class="buttons">
+                    <button id="save-profile-button" class="button is-success">Submit</button>
+                    <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
                 </div>
             </div>
         </form>
     </div>
 </section>
-
-<script>
-//Modal Save Profile
-var html_tag = document.documentElement;
-var save_button = document.querySelector('#save-profile-button');
-var save_modal = document.querySelector('#save-profile-modal');
-var save_cancel = document.querySelector('.save-profile-cancel');
-
-save_button.onclick = function() {
-    save_modal.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-
-save_cancel.onclick = function() {
-    save_modal.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-</script>

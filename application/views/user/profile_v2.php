@@ -2,6 +2,12 @@
     $user_id = $this->session->userdata('ses_id');
 ?>
 <section class="section" style="max-width: 600px; margin:auto">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Profile</a></li>
+        </ul>
+    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
         <h1 class="title is-size-4">My Profile</h1>
@@ -69,9 +75,10 @@
             </div>
             <hr>
             <div class="field is-grouped">
-                <div class="">
-                    <div id="save-profile-button" class="button is-link">Save
+                <div class="buttons">
+                    <div id="save-profile-button" class="button is-success">Save
                         Changes</div>
+                    <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
                 </div>
             </div>
             <div id="save-profile-modal" class="modal">
@@ -81,8 +88,8 @@
                         <p class="modal-card-title">Save any changes?</p>
                     </header>
                     <footer class="modal-card-foot">
-                        <button class="button is-success">Save</button>
-                        <div class="button save-profile-cancel is-outlined has-background-light">Cancel</div>
+                        <button class="button is-danger is-outlined">Save</button>
+                        <div class="button save-profile-cancel is-light is-light">Cancel</div>
                     </footer>
                 </div>
             </div>

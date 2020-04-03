@@ -23,11 +23,18 @@
 }
 </style>
 <section class="section" style="max-width: 600px; margin:auto">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
+            <li class="is-active"><a href="#">Setting</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Theme</a></li>
+        </ul>
+    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
         <h1 class="title is-size-4">Settings > Theme</h1>
         <hr>
-        <form action="<?= base_url('user/setting'); ?>" method="post">
+        <form action="<?= base_url('user/setting/theme'); ?>" method="post">
             <h1 class="label">Cover Image</h1>
             <!-- Set up your HTML -->
             <div id="carousel1" class="owl-carousel container">
@@ -85,12 +92,13 @@
             </div>
             <hr>
             <div class="field is-grouped">
-                <div class="">
-                    <div id="save-profile-button" class="button is-link">Save
+                <div class="buttons">
+                    <div id="save-setting-button" class="button is-success">Save
                         Changes</div>
+                    <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
                 </div>
             </div>
-            <div id="save-profile-modal" class="modal">
+            <div id="save-setting-modal" class="modal">
                 <div class="modal-background"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
@@ -98,7 +106,7 @@
                     </header>
                     <footer class="modal-card-foot">
                         <button class="button is-success">Save</button>
-                        <div class="button save-profile-cancel is-outlined has-background-light">Cancel</div>
+                        <div class="button save-setting-cancel is-outlined has-background-light">Cancel</div>
                     </footer>
                 </div>
             </div>
@@ -107,11 +115,11 @@
 </section>
 
 <script>
-//Modal Save Profile
+//Modal Save Setting
 var html_tag = document.documentElement;
-var save_button = document.querySelector('#save-profile-button');
-var save_modal = document.querySelector('#save-profile-modal');
-var save_cancel = document.querySelector('.save-profile-cancel');
+var save_button = document.querySelector('#save-setting-button');
+var save_modal = document.querySelector('#save-setting-modal');
+var save_cancel = document.querySelector('.save-setting-cancel');
 
 save_button.onclick = function() {
     save_modal.classList.toggle('is-active');

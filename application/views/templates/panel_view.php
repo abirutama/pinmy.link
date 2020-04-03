@@ -4,7 +4,7 @@ $queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['u
 $this->db->order_by('card_id', 'DESC');
 $queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 $querySocial = $this->db->get_where('social', array('user_id' => $queryProfile['user_id']))->row_array();
-
+$querySeo = $this->db->get_where('seo', array('user_id' => $queryProfile['user_id']))->row_array();
 if(!$queryProfile){
   redirect('main');
 }
@@ -12,20 +12,31 @@ if(!$queryProfile){
 <!DOCTYPE html>
 <html class="has-background-light">
   <head>
-    <?php if($queryProfile['user_gtag']){ ?>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= $queryProfile['user_gtag'] ?>"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', '<?= $queryProfile['user_gtag'] ?>');
-    </script>
+    <?php if($querySeo['gtag_id']){ ?>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=<?= scoup($querySeo['gtag_id']); ?>"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', '<?= scoup($querySeo['gtag_id']); ?>');
+      </script>
     <?php } ?>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@<?= scoup($queryProfile['user_name']) ?> | Pinmy.link</title>
+    <title><?= scoup($querySeo['meta_title']) ?> | Pinmy.link</title>
+    <meta name="description" content="<?= scoup($querySeo['meta_description']); ?>">
+    <meta name="keyword" content="<?= scoup($querySeo['meta_keyword']); ?>">
+    <?php if($querySeo['meta_robot']==0){ ?>
+      <meta name="robots" content="noindex, nofollow">
+    <?php } ?>
+    <?php if($querySeo['meta_rating']==1){ ?>
+      <meta name="rating" content="adult">
+    <?php } ?>
+    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <style>
@@ -97,7 +108,7 @@ if(!$queryProfile){
             </div>
           </div>
         <?php }else{ foreach ($queryCard as $listCard): ?>
-        <a href="<?= scoup($listCard['card_url']); ?>" target="_blank" class="panel-block cupad">
+        <a href="<?= base_url('/@').$queryProfile['user_name'].'/'.$listCard['card_slug']; ?>" target="_blank" class="panel-block cupad">
           <span class="has-text-info" style="width:100%"><?= scoup($listCard['card_title']); ?></span>
           <span class="panel-icon" style="margin-right:0px">
           <i class="fas fa-chevron-right has-text-info"></i>

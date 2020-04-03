@@ -4,6 +4,12 @@
     $queryCard = $this->db->get_where('card', array('user_id' => $user_id))->result_array();
 ?>
 <section class="section" style="max-width: 600px; margin:auto">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
+            <li class="is-active"><a href="#" aria-current="page">My Link</a></li>
+        </ul>
+    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div>
         <nav class="panel has-background-white">
