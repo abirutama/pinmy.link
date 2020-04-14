@@ -17,7 +17,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title><?= scoup($queryCard['card_title']); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-    <meta http-equiv="refresh" content="2;url=<?= scoup($queryCard['card_url']); ?>" />
+    <meta http-equiv="refresh" content="3;url=<?= scoup($queryCard['card_url']); ?>" />
   </head>
   <body>
   <section class="section" style="max-width:480px; margin:auto;">
