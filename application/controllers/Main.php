@@ -25,18 +25,15 @@ class Main extends CI_Controller {
 			echo 'Layout not found!';
 		}
 	}
-	public function goto2()
-	{
-		$this->load->view('webpage/goto_v2');
+	public function template2(){
+		$this->load->view('templates/template_2');
 	}
 	public function goto($user_name=null, $card_id=null)
 	{
-		//echo $user_name;
-		//echo $card_id;
 		$data['queryProfile'] = $this->db->get_where('user', array('user_name' => $user_name))->row_array();
 		if(!$data['queryProfile']){
-			//redirect('main');
-			echo 'Content not found!';
+			redirect('main');
+			//echo 'Content not found!';
 			die();
 		}else{
 			$data['queryCard'] = $this->db->get_where('card', array('user_id' => $data['queryProfile']['user_id'], 'card_slug' => $card_id))->row_array();
@@ -45,6 +42,7 @@ class Main extends CI_Controller {
 			//die();
 			if(!$data['queryCard']){
 				redirect('@'.$user_name);
+				die();
 			}
 			$this->load->view('webpage/goto_v2', $data);
 		}
