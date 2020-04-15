@@ -14,6 +14,27 @@
     <div>
         <nav class="panel has-background-white">
             <p class="panel-heading has-background-info has-text-white">
+                Pinned Links
+            </p>
+            <div class="panel-block cupad">
+                <a href="<?= base_url('user/addcard'); ?>" class="button is-link is-outlined is-fullwidth">
+                    Edit Pinned Link
+                </a>
+            </div>
+            <?php if(count($queryCard) > 0){
+            foreach ($queryCard as $listCard){
+            ?>
+            <div class="panel-block cupad">
+                <span style="width:100%">
+                    <?= scoup($listCard['card_title']); ?>
+                </span>
+            </div>
+            <?php
+            }}
+            ?>
+        </nav>
+        <nav class="panel has-background-white">
+            <p class="panel-heading has-background-info has-text-white">
                 My Links
             </p>
             <div class="panel-block cupad">

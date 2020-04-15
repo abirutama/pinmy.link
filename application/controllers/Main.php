@@ -21,6 +21,11 @@ class Main extends CI_Controller {
 			die();
 		}
 
+		$test = $this->db->like('card_id', 50);
+		//$test = $this->db->or_like('card_id', 49);
+		$test = $this->db->get('card')->result_array();
+		//print_r($test);
+
 		
 		
 		//$queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['user_cover']))->row_array();

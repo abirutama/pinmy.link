@@ -12,16 +12,20 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
     <style>
-    .bs{box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02)}
+    .bs {
+        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
+    }
     </style>
 </head>
 
 <body>
     <div class="" style="max-width:600px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" class="">
-            <div class="has-text-centered" style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
+            <div class="has-text-centered"
+                style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
                 <figure class="image is-128x128" style="margin:auto;">
-                    <img class="bs is-rounded" src="https://via.placeholder.com/128/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>">
+                    <img class="bs is-rounded"
+                        src="https://via.placeholder.com/128/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>">
                 </figure>
                 <h2 class="title is-size-5 has-text-white" style="margin-top:8px"><?= $profile['user_name']; ?></h2>
             </div>
@@ -29,11 +33,17 @@
         <section class="" style="margin-top:16px;">
             <div class="socmed">
                 <?php if($social['social_twitter']){ ?>
-                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank"
+                    href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i
+                        class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_facebook']){ ?>
-                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank"
+                    href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i
+                        class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_instagram']){ ?>
-                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank"href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank"
+                    href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i
+                        class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i></a>
                 <?php } ?>
             </div>
         </section>
@@ -45,12 +55,16 @@
             </div>
             <div class="columns is-vcentered pinned">
                 <?php foreach($card as $cardItem){ ?>
-                <div class="column is-full is-vcentered is-centered" style="padding:20px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>" class="media box has-background-white" style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
+                <div class="column is-full is-vcentered is-centered" style="padding:8px 20px 20px 12px">
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>"
+                        class="media box has-background-white"
+                        style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
                             <?php if($cardItem['card_thumbnail']!== null){ ?>
                             <p class="image is-64x64">
-                                <img class="is-rounded" src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>" data-src="<?= $cardItem['card_thumbnail']; ?>">
+                                <img class="is-rounded"
+                                    src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
+                                    data-src="<?= $cardItem['card_thumbnail']; ?>">
                             </p>
                             <?php } ?>
                         </figure>
@@ -72,20 +86,25 @@
                 <?php } ?>
             </div>
         </section>
-        <section class="has-background-white" style="margin-top:16px;padding:2em 2em; border-radius:16px !important;">
+        <section class="has-background-white"
+            style="margin-top:16px;padding:2em 2em 3em 2em; border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
                     My Links
                 </h2>
             </div>
             <div class="columns is-vcentered is-multiline">
-                <?php foreach($card as $cardItem){ ?>
+                <?php foreach($card as $key=>$cardItem){ ?>
                 <div class="column is-half-tablet is-vcentered is-centered" style="padding:6px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>" class="media box has-background-white" style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>"
+                        class="media box has-background-white"
+                        style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
                             <?php if($cardItem['card_thumbnail']!== null){ ?>
                             <p class="image is-64x64">
-                                <img class="is-rounded" src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>" data-src="<?= $cardItem['card_thumbnail']; ?>">
+                                <img class="is-rounded"
+                                    src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
+                                    data-src="<?= $cardItem['card_thumbnail']; ?>">
                             </p>
                             <?php } ?>
                         </figure>
@@ -107,7 +126,7 @@
                 <?php } ?>
             </div>
         </section>
-        
+
     </div>
     <figure class="" style="text-align:center; padding:32px">
         <img width="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="">
@@ -149,7 +168,7 @@ $(document).ready(function() {
         infinite: false,
         autoplay: true,
         autoplaySpeed: 2000,
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         dots: true,
