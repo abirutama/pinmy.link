@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div class="" style="max-width:600px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important; padding-bottom:8px;">
+    <div class="" style="max-width:600px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" class="">
             <div class="has-text-centered" style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
                 <figure class="image is-128x128" style="margin:auto;">
@@ -37,7 +37,7 @@
                 <?php } ?>
             </div>
         </section>
-        <section class="has-background-white" style="padding:2em 1em;margin-top:16px;border-radius:8px 8px 8px 48px !important;">
+        <section class="has-background-white" style="padding:2em 1em;margin-top:16px;border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
                     Pinned Links
@@ -72,7 +72,7 @@
                 <?php } ?>
             </div>
         </section>
-        <section class="has-background-white" style="margin-top:16px;padding:2em 1em; border-radius:8px 8px 8px 48px !important;">
+        <section class="has-background-white" style="margin-top:16px;padding:2em 1em; border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
                     My Links
