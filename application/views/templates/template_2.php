@@ -27,15 +27,13 @@
             </div>
         </section>
         <section class="" style="margin-top:16px;">
-            <div class="multiple-items">
+            <div class="socmed">
                 <?php if($social['social_twitter']){ ?>
                 <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_facebook']){ ?>
                 <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_instagram']){ ?>
                 <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank"href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i></a>
-                <?php } if($social['social_snapchat']){ ?>
-                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://snapchat.com/add/<?= scoup($social['social_snapchat']) ?>"><i class="fab fa-fw fa-snapchat-ghost is-size-4 has-text-grey-dark"></i></a>
                 <?php } ?>
             </div>
         </section>
@@ -45,7 +43,7 @@
                     Pinned Links
                 </h2>
             </div>
-            <div class="columns is-vcentered multiple-items2">
+            <div class="columns is-vcentered pinned">
                 <?php foreach($card as $cardItem){ ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:20px 12px">
                     <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>" class="media box has-background-white" style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
@@ -117,7 +115,7 @@
 </body>
 <script>
 $(document).ready(function() {
-    $('.multiple-items').slick({
+    $('.socmed').slick({
         infinite: false,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -136,7 +134,7 @@ $(document).ready(function() {
                 breakpoint: 480,
                 settings: {
                     infinite: true,
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     centerMode: true,
                     centerPadding: '80px'
@@ -147,7 +145,7 @@ $(document).ready(function() {
             // instead of a settings object
         ]
     });
-    $('.multiple-items2').slick({
+    $('.pinned').slick({
         infinite: false,
         autoplay: true,
         autoplaySpeed: 2000,
