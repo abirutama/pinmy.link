@@ -109,7 +109,7 @@
         </section>
         
     </div>
-    <figure class="" style="text-align:center; padding:16px">
+    <figure class="" style="text-align:center; padding:32px">
         <img width="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="">
     </figure>
 </body>
