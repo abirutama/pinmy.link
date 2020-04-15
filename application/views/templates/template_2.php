@@ -19,7 +19,7 @@
 <body>
     <div class="" style="max-width:600px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important; padding-bottom:8px;">
         <section id="cover" class="">
-            <div class="has-text-centered" style="padding:18px 32px;border-radius:0px 0px 128px 128px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
+            <div class="has-text-centered" style="padding:18px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
                 <figure class="image is-128x128" style="margin:auto;">
                     <img class="bs is-rounded" src="https://via.placeholder.com/128/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>">
                 </figure>
