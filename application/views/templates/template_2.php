@@ -37,7 +37,7 @@
                 <?php } ?>
             </div>
         </section>
-        <section class="has-background-white" style="padding:2em 1em;margin-top:16px;border-radius:16px !important;">
+        <section class="has-background-white" style="padding:2em 2em;margin-top:16px;border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
                     Pinned Links
@@ -58,8 +58,8 @@
                             <div class="content">
                                 <p>
                                     <?php
-                                    if( strlen($cardItem['card_title']) > 50 ){
-                                        echo scoup(substr($cardItem['card_title'],0,50)).'...'; 
+                                    if( strlen($cardItem['card_title']) > 45 ){
+                                        echo scoup(substr($cardItem['card_title'],0,45)).'...'; 
                                     }else{
                                         echo scoup($cardItem['card_title']);
                                     }
@@ -72,7 +72,7 @@
                 <?php } ?>
             </div>
         </section>
-        <section class="has-background-white" style="margin-top:16px;padding:2em 1em; border-radius:16px !important;">
+        <section class="has-background-white" style="margin-top:16px;padding:2em 2em; border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
                     My Links
@@ -93,8 +93,8 @@
                             <div class="content">
                                 <p>
                                     <?php
-                                    if( strlen($cardItem['card_title']) > 50 ){
-                                        echo scoup(substr($cardItem['card_title'],0,50)).'...'; 
+                                    if( strlen($cardItem['card_title']) > 45 ){
+                                        echo scoup(substr($cardItem['card_title'],0,45)).'...'; 
                                     }else{
                                         echo scoup($cardItem['card_title']);
                                     }
