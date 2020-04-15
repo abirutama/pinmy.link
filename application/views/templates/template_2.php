@@ -29,13 +29,13 @@
         <section class="" style="margin-top:16px;">
             <div class="multiple-items">
                 <?php if($social['social_twitter']){ ?>
-                <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><img class="image bs" width="110px" style="border-radius:32px" src="<?= base_url('assets/img/social-btn/') ?>btn-twitter.png" alt=""></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_facebook']){ ?>
-                <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><img class="image bs" width="110px" style="border-radius:32px" src="<?= base_url('assets/img/social-btn/') ?>btn-fb.png" alt=""></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_instagram']){ ?>
-                <a  target="_blank"href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><img class="image bs" width="110px" style="border-radius:32px" src="<?= base_url('assets/img/social-btn/') ?>btn-ig.png" alt=""></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank"href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i></a>
                 <?php } if($social['social_snapchat']){ ?>
-                <a target="_blank" href="https://snapchat.com/add/<?= scoup($social['social_snapchat']) ?>"><img class="image bs" width="110px" style="border-radius:32px" src="<?= base_url('assets/img/social-btn/') ?>btn-sc.png" alt=""></a>
+                <a class="button is-rounded" style="padding:0.5em; margin:0px 4px" target="_blank" href="https://snapchat.com/add/<?= scoup($social['social_snapchat']) ?>"><i class="fab fa-fw fa-snapchat-ghost is-size-4 has-text-grey-dark"></i></a>
                 <?php } ?>
             </div>
         </section>
@@ -156,7 +156,7 @@ $(document).ready(function() {
         arrows: false,
         dots: true,
         responsive: [{
-                breakpoint: 600,
+                breakpoint: 767,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1
