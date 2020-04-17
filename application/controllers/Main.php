@@ -39,8 +39,25 @@ class Main extends CI_Controller {
 		$querySeo = $this->db->get_where('seo', array('user_id' => $queryProfile['user_id']))->row_array();
 		$data['seo'] = $querySeo;
 
+		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
+		if($pinned){
+			$queryPinned = $this->db->select('card_id, card_title, card_slug, card_thumbnail');
+			$temp_array = explode(',',$pinned['pin_item']);
+			if($temp_array[0]==null){
+				$temp_array[0]=-9;
+			}
+			$queryPinned = $this->db->like('card_id', $temp_array[0]);
+			if($temp_array>1){
+				foreach($temp_array as $key => $tempItem){
+					$next = $key+1;
+					$queryPinned = $this->db->or_like('card_id', $temp_array[$key]);
+				}
+			}
+			$queryPinned = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
+			$data['pinned'] = $queryPinned;
+		}
 		
-			$this->load->view('templates/template_2', $data);
+		$this->load->view('templates/template_2', $data);
 		
 	}
 	public function template2(){

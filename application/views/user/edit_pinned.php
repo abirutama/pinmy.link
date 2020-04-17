@@ -10,7 +10,7 @@
     <div class="container box has-background-white">
         <h1 class="title is-size-4">Edit Pinned Link</h1>
         <hr>
-        <form action="<?= base_url('user/addcard'); ?>" method="post">
+        <form action="<?= base_url('user/pinned'); ?>" method="post">
             <div class="field">
                 <label class="label">Link 1</label>
                 <div class="select is-fullwidth">

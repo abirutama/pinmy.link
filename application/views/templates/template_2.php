@@ -47,6 +47,7 @@
                 <?php } ?>
             </div>
         </section>
+        <?php if(count($pinned)>0){ ?>
         <section class="has-background-white" style="padding:2em 2em;margin-top:16px;border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
@@ -54,17 +55,20 @@
                 </h2>
             </div>
             <div class="columns is-vcentered pinned">
-                <?php foreach($card as $cardItem){ ?>
+                <?php 
+                
+                foreach($pinned as $pinnedItem){ 
+                ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:8px 20px 20px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>"
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $pinnedItem['card_slug']; ?>"
                         class="media box has-background-white"
                         style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
-                            <?php if($cardItem['card_thumbnail']!== null){ ?>
+                            <?php if($pinnedItem['card_thumbnail']!== null){ ?>
                             <p class="image is-64x64">
                                 <img class="is-rounded"
-                                    src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
-                                    data-src="<?= $cardItem['card_thumbnail']; ?>">
+                                    src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($pinnedItem['card_slug'],0,1)); ?>"
+                                    data-src="<?= $pinnedItem['card_thumbnail']; ?>">
                             </p>
                             <?php } ?>
                         </figure>
@@ -72,10 +76,10 @@
                             <div class="content">
                                 <p>
                                     <?php
-                                    if( strlen($cardItem['card_title']) > 45 ){
-                                        echo scoup(substr($cardItem['card_title'],0,45)).'...'; 
+                                    if( strlen($pinnedItem['card_title']) > 45 ){
+                                        echo scoup(substr($pinnedItem['card_title'],0,45)).'...'; 
                                     }else{
-                                        echo scoup($cardItem['card_title']);
+                                        echo scoup($pinnedItem['card_title']);
                                     }
                                     ?>
                                 </p>
@@ -86,6 +90,7 @@
                 <?php } ?>
             </div>
         </section>
+                                <?php } ?>
         <section class="has-background-white"
             style="margin-top:16px;padding:2em 2em 3em 2em; border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">

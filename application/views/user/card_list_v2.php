@@ -1,8 +1,3 @@
-<?php
-    $user_id = $this->session->userdata('ses_id');
-    $this->db->order_by('card_id', 'DESC');
-    $queryCard = $this->db->get_where('card', array('user_id' => $user_id))->result_array();
-?>
 <section class="section" style="max-width: 600px; margin:auto">
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
@@ -14,23 +9,33 @@
     <div>
         <nav class="panel has-background-white">
             <p class="panel-heading has-background-info has-text-white">
-                Pinned Links
+                Pinned Links 
             </p>
             <div class="panel-block cupad">
-                <a href="<?= base_url('user/addcard'); ?>" class="button is-link is-outlined is-fullwidth">
+                <a href="<?= base_url('user/pinned'); ?>" class="button is-link is-outlined is-fullwidth">
                     Edit Pinned Link
                 </a>
             </div>
-            <?php if(count($queryCard) > 0){
-            foreach ($queryCard as $listCard){
+            <?php 
+            if(count($pinned) > 0){
+                foreach ($pinned as $pinnedItem){
             ?>
             <div class="panel-block cupad">
                 <span style="width:100%">
-                    <?= scoup($listCard['card_title']); ?>
+                    <?= scoup($pinnedItem['card_title']); ?>
                 </span>
             </div>
             <?php
-            }}
+                }
+            }else{
+            ?>
+                <div class="panel-block cupad">
+                    <span class="has-text-centered" style="width:100%">
+                        No Pinned Links
+                    </span>
+                </div>
+            <?php
+            }
             ?>
         </nav>
         <nav class="panel has-background-white">
@@ -42,12 +47,12 @@
                     Add New Link
                 </a>
             </div>
-            <?php if(count($queryCard) > 0){
-            foreach ($queryCard as $listCard){
+            <?php if(count($card) > 0){
+            foreach ($card as $cardItem){
             ?>
-            <a href="<?= scoup(base_url('user/editcard/').$listCard['card_id']); ?>" class="panel-block cupad">
+            <a href="<?= scoup(base_url('user/editcard/').$cardItem['card_id']); ?>" class="panel-block cupad">
                 <span style="width:100%">
-                    <?= scoup($listCard['card_title']); ?>
+                    <?= scoup($cardItem['card_title']); ?>
                 </span>
                 <span class="panel-icon" style="margin-right:0px">
                     <i class="fas fa-pencil-alt has-text-info"></i>

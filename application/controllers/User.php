@@ -16,8 +16,31 @@ class User extends CI_Controller {
 		//set current page value
 		$data['page'] = 'link';
 		//getting user data by session
-		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
+		$data['user'] = $this->db->get_where('user', array('user_email' => $this->session->userdata('ses_email')))->row_array();
+		
+		$queryCard = $this->db->select('card_id, card_title');
+		$queryCard = $this->db->order_by('card_id', 'DESC');
+		$queryCard = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
+		$data['card'] = $queryCard;
 
+		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
+		if($pinned){
+			$queryPinned = $this->db->select('card_id, card_title');
+			$temp_array = explode(',',$pinned['pin_item']);
+			if($temp_array[0]==null){
+				$temp_array[0]=-9;
+			}
+			$queryPinned = $this->db->like('card_id', $temp_array[0]);
+			if($temp_array>1){
+				foreach($temp_array as $key => $tempItem){
+					$next = $key+1;
+					$queryPinned = $this->db->or_like('card_id', $temp_array[$key]);
+				}
+			}
+			$queryPinned = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
+			$data['pinned'] = $queryPinned;
+		}
+		
 		$this->load->view('templates/userpanel_header_v2', $data);
 		$this->load->view('user/card_list_v2', $data);
 		$this->load->view('templates/userpanel_footer_v2', $data);
@@ -318,28 +341,18 @@ class User extends CI_Controller {
 		}
 		$data['pinItem'] = $pinItem;
 
-		$this->form_validation->set_rules('social-twitter', 'Twitter Username', 'trim|max_length[25]');
-		$this->form_validation->set_rules('social-facebook', 'Facebook Username', 'trim|max_length[25]');
-		$this->form_validation->set_rules('social-instagram', 'Instagram Username', 'trim|max_length[25]');
+		$this->form_validation->set_rules('pinned[]', 'Twitter Username', 'trim|max_length[25]');
 
 		if($this->form_validation->run() == false){
 			$this->load->view('templates/userpanel_header_v2', $data);
 			$this->load->view('user/edit_pinned', $data);
 			$this->load->view('templates/userpanel_footer_v2', $data);
 		}else{
-			$form_twitter = strtolower($this->input->post('social-twitter'));
-			$form_facebook = strtolower($this->input->post('social-facebook'));
-			$form_instagram = strtolower($this->input->post('social-instagram'));
-			$form_snapchat = strtolower($this->input->post('social-snapchat'));
-			$form_youtube = strtolower($this->input->post('social-youtube'));
-			$form_user_id = $this->session->userdata('ses_id');
-
-			$data_social = [
-				'social_twitter' => $form_twitter,
-				'social_facebook' => $form_facebook,
-				'social_instagram' => $form_instagram,
-				'social_snapchat' => $form_snapchat,
-				'social_youtube' => $form_youtube,
+			$form_pin = $this->input->post('pinned[]');
+			print_r($form_pin);
+			die();
+			$data_pinned = [
+				'pin_item' => $form_pin,
 				'user_id' => $form_user_id
 			];
 
