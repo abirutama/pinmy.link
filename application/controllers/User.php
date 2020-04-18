@@ -30,6 +30,15 @@ class User extends CI_Controller {
 			if($temp_array[0]==null){
 				$temp_array[0]=-9;
 			}
+			if($temp_array[1]==null){
+				$temp_array[1]=-9;
+			}
+			if($temp_array[2]==null){
+				$temp_array[2]=-9;
+			}
+			if($temp_array[3]==null){
+				$temp_array[3]=-9;
+			}
 			$queryPinned = $this->db->like('card_id', $temp_array[0]);
 			if($temp_array>1){
 				foreach($temp_array as $key => $tempItem){
@@ -300,11 +309,11 @@ class User extends CI_Controller {
 	}
 
 	public function deletecard($card_id=null){
-		//getting user data by session
-		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
+		//setting search card query by card_id and session user_id
+		$this->db->select('card_id');
 		$data['card'] = $this->db->get_where('card', ['card_id' => $card_id, 'user_id' => $this->session->userdata('ses_id')])->row_array();
 
-		//if card content not found in db, then redirect
+		//if card content not match in db, then redirect
 		if(!$data['card']){
 			redirect('user');
 			die();
@@ -320,28 +329,36 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function pinned(){
+	public function highlight(){
 		//set current page value
 		$data['page'] = 'link';
 		//getting user data by session
+		$this->db->select('user_name');
 		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
-		$data['card'] = $this->db->select('card_id, card_title');
-		$data['card'] = $this->db->order_by('card_title','ASC');
+		$this->db->select('card_id, card_title');
+		$this->db->order_by('card_title','ASC');
 		$data['card'] = $this->db->get_where('card', array('user_id'=>$this->session->userdata('ses_id')))->result_array();
 
+		$this->db->select('pin_item');
 		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
 		$pinItem[0] = null;
 		$pinItem[1] = null;
 		$pinItem[2] = null;
+		$pinItem[3] = null;
 		if($pinned){
 			$temp_array = explode(',',$pinned['pin_item']);
 			foreach($temp_array as $key => $tempItem){
-				$pinItem[$key] = $temp_array[$key];
+				if($temp_array[$key] > 0){
+					$pinItem[$key] = $temp_array[$key];
+				}
 			}
 		}
 		$data['pinItem'] = $pinItem;
 
-		$this->form_validation->set_rules('pinned[]', 'Twitter Username', 'trim|max_length[25]');
+		$this->form_validation->set_rules('pinned[0]', 'Link 1', 'trim|differs[pinned[1]]|differs[pinned[2]]|differs[pinned[3]]');
+		$this->form_validation->set_rules('pinned[1]', 'Link 2', 'trim|differs[pinned[0]]|differs[pinned[2]]|differs[pinned[3]]');
+		$this->form_validation->set_rules('pinned[2]', 'Link 3', 'trim|differs[pinned[0]]|differs[pinned[1]]|differs[pinned[3]]');
+		$this->form_validation->set_rules('pinned[3]', 'Link 4', 'trim|differs[pinned[0]]|differs[pinned[1]]|differs[pinned[2]]');
 
 		if($this->form_validation->run() == false){
 			$this->load->view('templates/userpanel_header_v2', $data);
@@ -349,21 +366,21 @@ class User extends CI_Controller {
 			$this->load->view('templates/userpanel_footer_v2', $data);
 		}else{
 			$form_pin = $this->input->post('pinned[]');
-			print_r($form_pin);
-			die();
+			$temp_array = implode(',',$form_pin);
+			//print_r($temp_array);
+			//die();
 			$data_pinned = [
-				'pin_item' => $form_pin,
-				'user_id' => $form_user_id
+				'pin_item' => $temp_array
 			];
 
-			if($this->db->update('social', $data_social, array('user_id' => $this->session->userdata('ses_id')))){
+			if($this->db->update('card_pinned', $data_pinned, array('user_id' => $this->session->userdata('ses_id')))){
 				$this->session->set_flashdata('message', '<div class="notification is-success">Profile Update Successfully!</div>');
 				$error = $this->db->error();
-				redirect('user/profile');
+				redirect('user');
 			}else{
 				$this->session->set_flashdata('message', '<div class="notification is-danger">Profile Update Failed!</div>');
 				$error = $this->db->error();
-				redirect('user/profile');
+				redirect('user/highlight');
 			}
 		}
 	}

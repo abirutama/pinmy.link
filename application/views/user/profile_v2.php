@@ -59,20 +59,6 @@
                 </div>
             </div>
 
-            <div class="field">
-                <label class="label">Snapchat</label>
-                <div class="field has-addons">
-                    <p class="control">
-                        <a class="button is-static" style="justify-content:left;">
-                            snapchat.com/add/
-                        </a>
-                    </p>
-                    <p class="control is-expanded">
-                        <input class="input" name="social-snapchat" maxlength="25" type="text"
-                            placeholder="Your snapchat's username" value="<?= scoup($social['social_snapchat']); ?>">
-                    </p>
-                </div>
-            </div>
             <hr>
             <div class="field is-grouped">
                 <div class="buttons">

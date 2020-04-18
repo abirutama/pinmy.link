@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="" style="max-width:600px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
+    <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" class="">
             <div class="has-text-centered"
                 style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
@@ -51,7 +51,7 @@
         <section class="has-background-white" style="padding:2em 2em;margin-top:16px;border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
                 <h2 class="title is-size-5">
-                    Pinned Links
+                    Highlighted
                 </h2>
             </div>
             <div class="columns is-vcentered pinned">

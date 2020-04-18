@@ -7,16 +7,17 @@
     </nav>
     <?= $this->session->flashdata('message'); ?>
     <div>
+        <?php if(count($card) >= 8){ ?>
         <nav class="panel has-background-white">
             <p class="panel-heading has-background-info has-text-white">
-                Pinned Links 
+                Highlighted Links 
             </p>
             <div class="panel-block cupad">
-                <a href="<?= base_url('user/pinned'); ?>" class="button is-link is-outlined is-fullwidth">
-                    Edit Pinned Link
+                <a href="<?= base_url('user/highlight'); ?>" class="button is-link is-outlined is-fullwidth">
+                    Edit Highlight
                 </a>
             </div>
-            <?php 
+            <?php
             if(count($pinned) > 0){
                 foreach ($pinned as $pinnedItem){
             ?>
@@ -31,13 +32,14 @@
             ?>
                 <div class="panel-block cupad">
                     <span class="has-text-centered" style="width:100%">
-                        No Pinned Links
+                        No Highlighted Links
                     </span>
                 </div>
             <?php
             }
             ?>
         </nav>
+        <?php } ?>
         <nav class="panel has-background-white">
             <p class="panel-heading has-background-info has-text-white">
                 My Links
@@ -59,7 +61,15 @@
                 </span>
             </a>
             <?php
-            }}
+            }}else{
+            ?>
+            <div class="panel-block cupad">
+                    <span class="has-text-centered" style="width:100%">
+                        No Links
+                    </span>
+                </div>
+            <?php
+            }
             ?>
         </nav>
     </div>
