@@ -25,8 +25,6 @@ class Main extends CI_Controller {
 		//$test = $this->db->or_like('card_id', 49);
 		$test = $this->db->get('card')->result_array();
 		//print_r($test);
-
-		
 		
 		//$queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['user_cover']))->row_array();
 		$queryCard = $this->db->order_by('card_id', 'DESC');
@@ -39,7 +37,7 @@ class Main extends CI_Controller {
 		$querySeo = $this->db->get_where('seo', array('user_id' => $queryProfile['user_id']))->row_array();
 		$data['seo'] = $querySeo;
 
-		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
+		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$queryProfile['user_id']))->row_array();
 		if($pinned){
 			$queryPinned = $this->db->select('card_id, card_title, card_slug, card_thumbnail');
 			$temp_array = explode(',',$pinned['pin_item']);
@@ -62,7 +60,7 @@ class Main extends CI_Controller {
 					$queryPinned = $this->db->or_like('card_id', $temp_array[$key]);
 				}
 			}
-			$queryPinned = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
+			$queryPinned = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 			$data['pinned'] = $queryPinned;
 		}
 		
