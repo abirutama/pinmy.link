@@ -1,112 +1,118 @@
-<link rel="stylesheet" href="<?=base_url('assets/vendor/owl-carousel/')?>owl.carousel.min.css">
-<link rel="stylesheet" href="<?=base_url('assets/vendor/owl-carousel/')?>owl.theme.default.min.css">
-
-<style>
-[type='radio'].thumbnail-select {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    border-radius: 8px;
-}
-
-/* IMAGE STYLES */
-[type='radio'].thumbnail-select+img {
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-/* CHECKED STYLES */
-[type='radio'].thumbnail-select:checked+img {
-    border: 2px solid #f00;
-    border-radius: 8px;
-}
-</style>
 <section class="section" style="max-width: 600px; margin:auto">
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="<?= base_url('user') ?>">Homepage</a></li>
             <li class="is-active"><a href="#">Setting</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Theme</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Appearance</a></li>
         </ul>
     </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">Settings > Theme</h1>
+        <h1 class="title is-size-4">Settings > Appearance</h1>
         <hr>
-        <form action="<?= base_url('user/setting/theme'); ?>" method="post">
-            <h1 class="label">Cover Image</h1>
-            <!-- Set up your HTML -->
-            <div id="carousel1" class="owl-carousel container">
-                <?php 
-                    if($cover){
-                        foreach($cover as $coverList){
-                ?>
-                <div>
-                    <label data-hash="<?= $coverList['cover_id'] ?>">
-                        <input type="radio" class="thumbnail-select" name="setting-cover"
-                            value="<?= $coverList['cover_id'] ?>"
-                            <?php if($user['user_cover']==$coverList['cover_id']){ echo 'checked'; } ?>>
-                        <img class="image round-8"
-                            style="width:360; height:202px; background-size:cover; <?= "background-image:url('".base_url('assets/img/cover/').$coverList['cover_thumbnail']."');" ?>">
-                    </label>
-                    Credit: <a href="<?= $coverList['cover_credit_url'] ?>"
-                        target="_blank"><?= $coverList['cover_credit']; ?></a>
-                </div>
-                <?php
+        <?php echo form_open_multipart('user/setting/appearance');?>
+            <div class="field">
+                <label class="label">Profile Avatar</label>
+                <figure class="image is-128x128" style="margin:auto;">
+                    <?php
+                        if($appearance['appearance_ava']==null){ 
+                            $ava_src = 'https://via.placeholder.com/128/f7b780/fffffff/?text='.strtoupper(substr($user['user_name'],0,1));
+                        }else{
+                            $ava_src = base_url('assets/img/avatar/').$appearance['appearance_ava'];
                         }
-                    }
-                ?>
-            </div>
-            <hr>
-            <h1 class="label">Layout Template</h1>
-            <div id="carousel2" class="owl-carousel container">
-                <?php 
-                    if($layout){
-                        foreach($layout as $layoutList){
-                ?>
-                <div>
-                    <label data-hash="<?= $layoutList['layout_id'] ?>">
-                        <input type="radio" class="thumbnail-select" name="setting-layout" value="<?= $layoutList['layout_id'] ?>" <?php if($user['user_layout']==$layoutList['layout_id']){ echo 'checked'; } ?>>
-                        <img class="image round-8" src="<?= base_url('assets/img/layout/').$layoutList['layout_thumbnail'] ?>"
-                            alt="<?= $layoutList['layout_name'] ?>" style="height:200px; width:auto">
+                    ?>
+                    <img id="avatar-img" style="width:128px; height:128px;" class="is-rounded" src="<?= $ava_src; ?>">
+                </figure>
+                <div class="file" style="margin:auto; margin-top:8px; max-width:120px">
+                    <label class="file-label">
+                        <input id="avatar-input" class="file-input" type="file" name="avatar-input">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <spanclass="file-label">
+                                Browse...
+                            </span>
+                        </span>
                     </label>
-                    <p><?= $layoutList['layout_name'] ?> View</p>
                 </div>
-                <?php 
-                    }
-                }
-                ?>
             </div>
+            <p class="help is-danger">*Maximum file size: 300 kb</p>
+            <p class="help is-danger">*Allowed image extension: jpg & jpeg</p>
+            <p class="help is-danger">*Image resolution will be shrinked to 128x128 pixels (1:1 ratio)</p>
             <hr>
-            <h1 class="label">Theme</h1>
-            <div id="carousel3" class="owl-carousel container">
-                <div>
-                    <label data-hash="1">
-                        <input type="radio" class="thumbnail-select" name="setting-theme" value="small">
-                        <img class="image round-8" src="https://bulma.io/images/placeholders/320x480.png"
-                            alt="Placeholder image" style="height:200px; width:auto">
+            <div class="field">
+                <label class="label">Cover Image</label>
+                <figure class="image is-16by9" style="margin:auto;">
+                    <?php
+                        if($appearance['appearance_cover']==null){ 
+                            $cover_src = base_url('assets/img/layout/').'bg1.jpg';
+                        }else{
+                            $cover_src = base_url('assets/img/cover/user/').$appearance['appearance_cover'];
+                        }
+                    ?>
+                    <img id="cover-img" class="image" src="<?= $cover_src; ?>">
+                </figure>
+                <div class="file" style="margin-top:8px; max-width:160.63px">
+                    <label class="file-label">
+                        <input id="cover-input" class="file-input" type="file" name="cover-input">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Browse...
+                            </span>
+                        </span>
                     </label>
-                    <p>Light Theme</p>
+                </div>
+            </div>
+            <p class="help is-danger">*Maximum file size: 500 kb</p>
+            <p class="help is-danger">*Allowed image extension: jpg & jpeg</p>
+            <p class="help is-danger">*Image resolution will be stretched to 16:9 ratio</p>
+            <hr>
+            <div class="field">
+                <label class="label">Text Color</label>
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            #
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="160" name="text-color-input" type="text" placeholder="000000"
+                            value="">
+                    </p>
+                </div>
+                <label class="label">Accent Color</label>
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            #
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="160" name="accent-color-input" type="text" placeholder="f7b780"
+                            value="">
+                    </p>
                 </div>
             </div>
             <hr>
             <div class="field is-grouped">
                 <div class="buttons">
-                    <div id="save-setting-button" class="button is-success">Save
-                        Changes</div>
-                    <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
+                    <button id="save-confirm-button" class="button is-success">Save Changes</button>
+                        <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
                 </div>
             </div>
-            <div id="save-setting-modal" class="modal">
+            <div id="save-confirm-modal" class="modal">
                 <div class="modal-background"></div>
                 <div class="modal-card">
                     <header class="modal-card-head">
                         <p class="modal-card-title">Save any changes?</p>
                     </header>
                     <footer class="modal-card-foot">
-                        <button class="button is-success">Save</button>
-                        <div class="button save-setting-cancel is-outlined has-background-light">Cancel</div>
+                        <button class="button is-danger is-outlined">Save</button>
+                        <div class="button save-profile-cancel is-light is-light">Cancel</div>
                     </footer>
                 </div>
             </div>
@@ -130,102 +136,4 @@ save_cancel.onclick = function() {
     save_modal.classList.toggle('is-active');
     html_tag.classList.toggle('is-clipped');
 }
-</script>
-<script src="<?=base_url('assets/vendor/owl-carousel/')?>jquery.min.js"></script>
-<script src="<?=base_url('assets/vendor/owl-carousel/')?>owl.carousel.min.js"></script>
-<script src="<?=base_url('assets/vendor/owl-carousel/')?>jquery.mousewheel.min.js"></script>
-<script>
-$(document).ready(function() {
-    var owl = $('#carousel1');
-    owl.owlCarousel({
-        items: 2,
-        stagePadding: 20,
-        responsiveClass: true,
-        dots:false,
-        nav: false,
-        loop: false,
-        center: false,
-        margin: 8,
-        URLhashListener: true,
-        startPosition: 'URLHash',
-        responsive: {
-            // breakpoint from 0 up
-            0: {
-                items: 1
-            },
-            // breakpoint from 480 up
-            480: {
-                items: 2
-            }
-        }
-    });
-    var owl2 = $('#carousel2');
-    owl2.owlCarousel({
-        items: 2,
-        stagePadding: 20,
-        responsiveClass: true,
-        nav: false,
-        loop: false,
-        center: false,
-        margin: 8,
-        URLhashListener: true,
-        startPosition: 'URLHash',
-        responsive: {
-            // breakpoint from 0 up
-            0: {
-                items: 2
-            },
-            // breakpoint from 480 up
-            480: {
-                items: 3
-            }
-        }
-    });
-    var owl3 = $('#carousel3');
-    owl3.owlCarousel({
-        items: 2,
-        stagePadding: 20,
-        responsiveClass: true,
-        nav: false,
-        loop: false,
-        center: false,
-        margin: 8,
-        URLhashListener: true,
-        startPosition: 'URLHash',
-        responsive: {
-            // breakpoint from 0 up
-            0: {
-                items: 2
-            },
-            // breakpoint from 480 up
-            480: {
-                items: 3
-            }
-        }
-    });
-    owl.on('mousewheel', '.owl-stage', function(e) {
-        if (e.deltaY > 0) {
-            owl.trigger('next.owl');
-        } else {
-            owl.trigger('prev.owl');
-        }
-        e.preventDefault();
-    });
-    owl2.on('mousewheel', '.owl-stage', function(e) {
-        if (e.deltaY > 0) {
-            owl2.trigger('next.owl');
-        } else {
-            owl2.trigger('prev.owl');
-        }
-        e.preventDefault();
-    });
-    owl3.on('mousewheel', '.owl-stage', function(e) {
-        if (e.deltaY > 0) {
-            owl3.trigger('next.owl');
-        } else {
-            owl3.trigger('prev.owl');
-        }
-        e.preventDefault();
-    });
-});
 </script>

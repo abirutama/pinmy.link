@@ -5,12 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= scoup(strtolower($profile['user_name']).'\'s Page'); ?></title>
+    <meta name="description" content="<?= scoup($seo['meta_description']); ?>">
+    <meta name="keyword" content="<?= scoup($seo['meta_keyword']); ?>">
+    <?php if($seo['meta_robot']==0){ ?>
+    <meta name="robots" content="noindex, nofollow">
+    <?php } ?>
+    <?php if($seo['meta_rating']==1){ ?>
+    <meta name="rating" content="adult">
+    <?php } ?>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="<?= base_url('assets/slick/') ?>slick.css" />
     <link rel="stylesheet" href="<?= base_url('assets/slick/') ?>slick-theme.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
     <style>
     .bs {
         box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
@@ -24,8 +31,8 @@
             <div class="has-text-centered"
                 style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
                 <figure class="image is-128x128" style="margin:auto;">
-                    <img class="bs is-rounded"
-                        src="https://via.placeholder.com/128/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>">
+                    <img class="bs is-rounded lazyload" style="border: 5px solid white"
+                        src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>" data-src="<?= base_url('assets/img/avatar/').$appearance['appearance_ava']; ?>">
                 </figure>
                 <h2 class="title is-size-5 has-text-white" style="margin-top:8px"><?= $profile['user_name']; ?></h2>
             </div>
@@ -56,7 +63,6 @@
             </div>
             <div class="columns is-vcentered pinned">
                 <?php 
-                
                 foreach($pinned as $pinnedItem){ 
                 ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:8px 20px 20px 12px">
@@ -64,13 +70,11 @@
                         class="media box has-background-white"
                         style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
-                            <?php if($pinnedItem['card_thumbnail']!== null){ ?>
                             <p class="image is-64x64">
-                                <img class="is-rounded"
-                                    src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($pinnedItem['card_slug'],0,1)); ?>"
-                                    data-src="<?= $pinnedItem['card_thumbnail']; ?>">
+                                <img class="is-rounded lazyload"
+                                    src="https://via.placeholder.com/64/f7b780/fffffff?text=<?= strtoupper(substr($pinnedItem['card_slug'],0,1)); ?>"
+                                    data-src="<?= $pinnedItem['card_thumbnail']; ?>" style="width: 64px; height:64px">
                             </p>
-                            <?php } ?>
                         </figure>
                         <div class="media-content">
                             <div class="content">
@@ -90,7 +94,7 @@
                 <?php } ?>
             </div>
         </section>
-                                <?php } ?>
+        <?php } ?>
         <section class="has-background-white"
             style="margin-top:16px;padding:2em 2em 3em 2em; border-radius:16px !important;">
             <div class="container" style="margin-bottom:24px">
@@ -99,19 +103,20 @@
                 </h2>
             </div>
             <div class="columns is-vcentered is-multiline">
-                <?php foreach($card as $key=>$cardItem){ ?>
+                <?php 
+                if(count($card) > 0){
+                    foreach($card as $key=>$cardItem){
+                ?>
                 <div class="column is-half-tablet is-vcentered is-centered" style="padding:6px 12px">
                     <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>"
                         class="media box has-background-white"
                         style="border-radius:64px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
-                            <?php if($cardItem['card_thumbnail']!== null){ ?>
                             <p class="image is-64x64">
-                                <img class="is-rounded"
-                                    src="https://via.placeholder.com/80/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
-                                    data-src="<?= $cardItem['card_thumbnail']; ?>">
+                                <img class="is-rounded lazyload"
+                                    src="https://via.placeholder.com/64/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
+                                    data-src="<?= $cardItem['card_thumbnail']; ?>" style="width: 64px; height:64px">
                             </p>
-                            <?php } ?>
                         </figure>
                         <div class="media-content">
                             <div class="content">
@@ -128,7 +133,16 @@
                         </div>
                     </a>
                 </div>
-                <?php } ?>
+                <?php 
+                    }
+                }else{
+                ?>
+                <div class="column is-full is-vcentered is-centered has-text-centered" style="padding:6px 12px">
+                    This user has no links yet.
+                </div>
+                <?php
+                }
+                ?>
             </div>
         </section>
 
@@ -136,6 +150,11 @@
     <figure class="" style="text-align:center; padding:32px">
         <img width="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="">
     </figure>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+    <script>lazyload();</script>
 </body>
 <script>
 $(document).ready(function() {

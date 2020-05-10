@@ -103,54 +103,61 @@ class User extends CI_Controller {
 
 	public function setting($subpage=null){
 
-		if($subpage == 'theme'){
+		if($subpage == 'appearance'){
 			//set current page value
 			$data['page'] = 'setting';
 			//getting user data by session
 			$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
 			$data['cover'] = $this->db->get('cover')->result_array();
-			$data['layout'] = $this->db->get_where('layout', ['layout_status' => 1])->result_array();
-			$data['theme'] = $this->db->get('theme')->result_array();
+			$data['appearance'] = $this->db->get_where('appearance', ['user_id' => $this->session->userdata('ses_id')])->row_array();
 
-			$this->form_validation->set_rules('setting-cover', 'Cover Image', 'trim|required');
-			$this->form_validation->set_rules('setting-layout', 'Layout', 'trim|required');
+			$this->form_validation->set_rules('text-color-input', 'Text Color', 'trim');
+			$this->form_validation->set_rules('accent-color-input', 'Accent Color', 'trim');
 
 			if($this->form_validation->run() == false){
 				$this->load->view('templates/userpanel_header_v2', $data);
 				$this->load->view('user/setting_v2', $data);
 				$this->load->view('templates/userpanel_footer_v2', $data);
 			}else{
-				$chosen_cover = $this->input->post('setting-cover');
-				$chosen_layout = $this->input->post('setting-layout');
+				$text_color_input = $this->input->post('text-color-input');
+				$accent_color_input = $this->input->post('accent-color-input');
 
-				//Create whitelisting array items, so users can't input randomly
-				foreach($data['cover'] as $value_cover){
-					$avail_cover[] = $value_cover['cover_id'];
-				}
-				if (!in_array($chosen_cover, $avail_cover)){
-					$chosen_cover = 2;
-				}
-				foreach($data['layout'] as $value_layout){
-					$avail_layout[] = $value_layout['layout_id'];
-				}
-				if (!in_array($chosen_layout, $avail_layout)){
-					$chosen_layout = 1;
-				}
-				//Create whitelisting array items, so users can't input randomly
+				$ava_image = $_FILES['avatar-input']['name'];
+				
+				if($ava_image){
+					$config['upload_path'] = './assets/img/avatar/';
+					$config['allowed_types'] = 'jpg|jpeg';
+					$config['max_size']     = '300';
 
-				$data_theme = [
-					'user_cover' => $chosen_cover,
-					'user_layout' => $chosen_layout,
+					$this->load->library('upload', $config);
+
+					if($this->upload->do_upload('avatar-input')){
+						$is_upload_ava = true;
+						$old_ava = $data['appearance']['appearance_ava'];
+						if($old_ava !== null){
+							unlink(FCPATH.'assets/img/avatar/'.$old_ava);
+						}
+						$new_ava = $this->upload->data('file_name');
+						$this->db->set('appearance_ava', $new_ava);
+					}else{
+						$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
+						redirect('user/setting/appearance');
+					}
+				}
+
+				$data_appearance = [
+					//'appearance_text' => $text_color_input,
+					//'appearance_accent' => $accent_color_input,
 				];
 
-				if($this->db->update('user', $data_theme, array('user_id' => $this->session->userdata('ses_id')))){
+				if($this->db->update('appearance', $data_appearance, array('user_id' => $this->session->userdata('ses_id')))){
 					$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
 					$error = $this->db->error();
-					redirect('user/setting/theme');
+					redirect('user/setting/appearance');
 				}else{
 					$error = $this->db->error();
 					$this->session->set_flashdata('message', '<div class="notification is-danger">Settings Update Failed!</div>');
-					redirect('user/setting/theme');
+					redirect('user/setting/appearance');
 				}
 			}
 		}else if($subpage == 'seo'){

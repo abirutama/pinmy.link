@@ -2,16 +2,40 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Are you sure want to logout?</p>
+      <p class="modal-card-title">Are you sure want to sign out?</p>
     </header>
     <footer class="modal-card-foot">
-      <a href="<?= base_url('auth/logout') ?>" class="button is-danger is-outlined">Log out</a>
+      <a href="<?= base_url('auth/logout') ?>" class="button is-danger is-outlined">Sign out</a>
       <button class="button logout-cancel has-background-light is-outlined">Cancel</button>
     </footer>
   </div>
 </div>
-
+<script
+  src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"></script>
 <script>
+  //File Name
+  function readURL(input, id) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    var id = '#'+id+'-img';
+      
+    reader.onload = function(e) {
+      $(id).attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#avatar-input").change(function() {
+  readURL(this,'avatar');
+});
+$("#cover-input").change(function() {
+  readURL(this,'cover');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
 // Get all "navbar-burger" elements
@@ -37,6 +61,9 @@ if ($navbarBurgers.length > 0) {
 }
 
 });
+
+
+
 
 //Modal Logout
 var html_tag = document.documentElement;

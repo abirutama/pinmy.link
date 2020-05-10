@@ -18,9 +18,9 @@ class Auth extends CI_Controller {
 
 		if($this->form_validation->run() == false){
 			$data['title'] = 'Login to existing account | Bioku.link';
-			$this->load->view('auth/auth_header', $data);
-			$this->load->view('auth/login');
-			$this->load->view('auth/auth_footer');
+			$this->load->view('auth/header_v2', $data);
+			$this->load->view('auth/login_v2', $data);
+			$this->load->view('auth/footer_v2');
 		}else{
 			$this->_login();
 		}
@@ -47,17 +47,23 @@ class Auth extends CI_Controller {
 					$this->session->set_userdata($data);
 					redirect('user');
 				}else{
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Passwords is not correct!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
 					redirect('auth');
 				}
 			}else{
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User has not been activated!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-warning">User has not been activated!</div>');
 				redirect('auth');
 			}
 		}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+			$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
 			redirect('auth');
 		}
+	}
+
+	public function register_v2(){
+		$this->load->view('auth/header_v2');
+		$this->load->view('auth/register_v2');
+		$this->load->view('auth/footer_v2');
 	}
 
 	public function register()
@@ -79,10 +85,11 @@ class Auth extends CI_Controller {
 
 		if($this->form_validation->run() == false){
 			$data['title'] = 'Register a new account | Bioku.link';
-			$this->load->view('auth/auth_header', $data);
-			$this->load->view('auth/register');
-			$this->load->view('auth/auth_footer');
+			$this->load->view('auth/header_v2');
+			$this->load->view('auth/register_v2');
+			$this->load->view('auth/footer_v2');
 		}else{
+			die();
 			$data_user = [
 				'user_name' => htmlspecialchars($this->input->post('username-regis', true)),
 				'user_email' => htmlspecialchars($this->input->post('email-regis', true)),
@@ -120,7 +127,7 @@ class Auth extends CI_Controller {
 			$this->db->insert('seo', $data_seo);
 
 
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Registrations is success! Please login!</div>');
+			$this->session->set_flashdata('message', '<div class="notification is-success">Registration is success, please sign in!</div>');
 			redirect('auth');
 		}
 	}
@@ -129,7 +136,7 @@ class Auth extends CI_Controller {
 		$this->session->unset_userdata('ses_id');
 		$this->session->unset_userdata('ses_email');
 		$this->session->unset_userdata('ses_role');
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out!</div>');
+		$this->session->set_flashdata('message', '<div class="notification is-warning">You have been sign out!</div>');
 		redirect('auth');
 	}
 }

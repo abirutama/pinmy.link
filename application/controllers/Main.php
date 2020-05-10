@@ -5,8 +5,8 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-		echo 'under development';
-		//$this->load->view('webpage/index');
+		//echo 'under development';
+		$this->load->view('webpage/index');
 	}
  
 	public function preview2($user_name)
@@ -36,6 +36,9 @@ class Main extends CI_Controller {
 		
 		$querySeo = $this->db->get_where('seo', array('user_id' => $queryProfile['user_id']))->row_array();
 		$data['seo'] = $querySeo;
+
+		$queryAppearance = $this->db->get_where('appearance', array('user_id' => $queryProfile['user_id']))->row_array();
+		$data['appearance'] = $queryAppearance;
 
 		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$queryProfile['user_id']))->row_array();
 		if($pinned){
@@ -67,9 +70,7 @@ class Main extends CI_Controller {
 		$this->load->view('templates/template_2', $data);
 		
 	}
-	public function template2(){
-		$this->load->view('templates/template_2');
-	}
+
 	public function goto($user_name=null, $card_id=null)
 	{
 		$data['queryProfile'] = $this->db->get_where('user', array('user_name' => $user_name))->row_array();

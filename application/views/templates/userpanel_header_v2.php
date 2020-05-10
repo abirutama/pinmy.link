@@ -55,8 +55,8 @@
                         Settings
                     </a>
                     <div class="navbar-dropdown">
-                        <a href="<?= base_url('user/setting/theme'); ?>" class="navbar-item">
-                            Theme
+                        <a href="<?= base_url('user/setting/appearance'); ?>" class="navbar-item">
+                            Appearance
                         </a>
                         <hr class="navbar-divider">
                         <a href="<?= base_url('user/setting/seo'); ?>" class="navbar-item">
@@ -84,7 +84,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         <button id="logout-button" class="button is-danger is-outlined">
-                            Log out
+                            Sign out
                         </button>
                     </div>
                 </div>
@@ -92,6 +92,6 @@
         </div>
     </nav>
     <div class="notification is-warning" style="margin:0">
-        Don't forget to embed this link to your social media's bio: <a style=""
+        Don't forget to embed this link to your social media's bio: <a target="_blank"
             href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
     </div>
