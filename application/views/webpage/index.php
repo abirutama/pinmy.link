@@ -85,7 +85,7 @@
                 <h2 class="subtitle">
                 It's like a map, one link to go to anywhere!
                 </h2>
-                <a href="#" class="button is-large">Free Register Here</a>
+                <a href="<?= base_url('auth/register'); ?>" class="button is-large">Free Register Here</a>
             </div>
         </div>
     </section>
