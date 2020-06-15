@@ -48,7 +48,7 @@
                         if($appearance['appearance_cover']==null){ 
                             $cover_src = base_url('assets/img/layout/').'bg1.jpg';
                         }else{
-                            $cover_src = base_url('assets/img/cover/user/').$appearance['appearance_cover'];
+                            $cover_src = base_url('assets/img/cover/').$appearance['appearance_cover'];
                         }
                     ?>
                     <img id="cover-img" class="image" src="<?= $cover_src; ?>">
@@ -71,6 +71,7 @@
             <p class="help is-danger">*Allowed image extension: jpg & jpeg</p>
             <p class="help is-danger">*Image resolution will be stretched to 16:9 ratio</p>
             <hr>
+            <!-- THIS FEATURE UNDER DEVELOPMENT
             <div class="field">
                 <label class="label">Text Color</label>
                 <div class="field has-addons">
@@ -98,6 +99,7 @@
                 </div>
             </div>
             <hr>
+            -->
             <div class="field is-grouped">
                 <div class="buttons">
                     <button id="save-confirm-button" class="button is-success">Save Changes</button>

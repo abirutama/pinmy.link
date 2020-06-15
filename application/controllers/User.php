@@ -27,17 +27,17 @@ class User extends CI_Controller {
 		if($pinned){
 			$queryPinned = $this->db->select('card_id, card_title');
 			$temp_array = explode(',',$pinned['pin_item']);
-			if($temp_array[0]==null){
-				$temp_array[0]=-9;
+			if($temp_array[0]=="no_pin1"){
+				$temp_array[0]=null;
 			}
-			if($temp_array[1]==null){
-				$temp_array[1]=-9;
+			if($temp_array[1]=="no_pin2"){
+				$temp_array[1]=null;
 			}
-			if($temp_array[2]==null){
-				$temp_array[2]=-9;
+			if($temp_array[2]=="no_pin3"){
+				$temp_array[2]=null;
 			}
-			if($temp_array[3]==null){
-				$temp_array[3]=-9;
+			if($temp_array[3]=="no_pin4"){
+				$temp_array[3]=null;
 			}
 			$queryPinned = $this->db->like('card_id', $temp_array[0]);
 			if($temp_array>1){
@@ -65,8 +65,6 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('social-twitter', 'Twitter Username', 'trim|max_length[25]');
 		$this->form_validation->set_rules('social-facebook', 'Facebook Username', 'trim|max_length[25]');
 		$this->form_validation->set_rules('social-instagram', 'Instagram Username', 'trim|max_length[25]');
-		$this->form_validation->set_rules('social-snapchat', 'Snapschat Username', 'trim|max_length[25]');
-		$this->form_validation->set_rules('social-youtube', 'Youtube Channel', 'trim|max_length[25]');
 
 		if($this->form_validation->run() == false){
 			$this->load->view('templates/userpanel_header_v2', $data);
@@ -76,16 +74,12 @@ class User extends CI_Controller {
 			$form_twitter = strtolower($this->input->post('social-twitter'));
 			$form_facebook = strtolower($this->input->post('social-facebook'));
 			$form_instagram = strtolower($this->input->post('social-instagram'));
-			$form_snapchat = strtolower($this->input->post('social-snapchat'));
-			$form_youtube = strtolower($this->input->post('social-youtube'));
 			$form_user_id = $this->session->userdata('ses_id');
 
 			$data_social = [
 				'social_twitter' => $form_twitter,
 				'social_facebook' => $form_facebook,
 				'social_instagram' => $form_instagram,
-				'social_snapchat' => $form_snapchat,
-				'social_youtube' => $form_youtube,
 				'user_id' => $form_user_id
 			];
 
@@ -108,7 +102,6 @@ class User extends CI_Controller {
 			$data['page'] = 'setting';
 			//getting user data by session
 			$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
-			$data['cover'] = $this->db->get('cover')->result_array();
 			$data['appearance'] = $this->db->get_where('appearance', ['user_id' => $this->session->userdata('ses_id')])->row_array();
 
 			$this->form_validation->set_rules('text-color-input', 'Text Color', 'trim');
@@ -123,12 +116,17 @@ class User extends CI_Controller {
 				$accent_color_input = $this->input->post('accent-color-input');
 
 				$ava_image = $_FILES['avatar-input']['name'];
-				
+				$cover_image = $_FILES['cover-input']['name'];
+
 				if($ava_image){
 					$config['upload_path'] = './assets/img/avatar/';
 					$config['allowed_types'] = 'jpg|jpeg';
-					$config['max_size']     = '300';
-
+					$config['max_size'] = '300';
+					$config['file_ext_tolower'] = true;
+					//$config['file_name'] =  'av_'. $this->session->userdata('ses_id');
+					//print_r($config);
+					//echo $ava_image;
+					//die;
 					$this->load->library('upload', $config);
 
 					if($this->upload->do_upload('avatar-input')){
@@ -138,7 +136,59 @@ class User extends CI_Controller {
 							unlink(FCPATH.'assets/img/avatar/'.$old_ava);
 						}
 						$new_ava = $this->upload->data('file_name');
-						$this->db->set('appearance_ava', $new_ava);
+						
+						$paths = pathinfo(FCPATH.'assets/img/avatar/'.$new_ava);
+						//echo $paths['extension'];
+						//die;
+						
+						//if ( ! $this->image_lib->resize()){
+							//$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to compress avatar image. Try another image.</div>');
+							$this->db->set('appearance_ava', $new_ava);
+							$this->db->where('user_id', $this->session->userdata('ses_id'));
+							$this->db->update('appearance');
+							$error = $this->db->error();
+							if(!$cover_image){
+								$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
+								redirect('user/setting/appearance');
+							}
+							
+						//}else{
+						//}
+					}else{
+						$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
+						redirect('user/setting/appearance');
+					}
+				}
+
+				if($cover_image){
+					$config['upload_path'] = './assets/img/cover/';
+					$config['allowed_types'] = 'jpg|jpeg';
+					$config['max_size'] = '500';
+					$config['file_ext_tolower'] = true;
+					$this->load->library('upload', $config);
+
+					if($this->upload->do_upload('cover-input')){
+						$is_upload_cover = true;
+						$old_cover = $data['appearance']['appearance_cover'];
+						if($old_cover !== null){
+							unlink(FCPATH.'assets/img/cover/'.$old_cover);
+						}
+						$new_cover = $this->upload->data('file_name');
+						
+						$paths = pathinfo(FCPATH.'assets/img/cover/'.$new_cover);
+						//echo $paths['extension'];
+						//die;
+						
+						//if ( ! $this->image_lib->resize()){
+							//$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to compress avatar image. Try another image.</div>');
+							$this->db->set('appearance_cover', $new_cover);
+							$this->db->where('user_id', $this->session->userdata('ses_id'));
+							$this->db->update('appearance');
+							$error = $this->db->error();
+							$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
+							redirect('user/setting/appearance');
+						//}else{
+						//}
 					}else{
 						$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
 						redirect('user/setting/appearance');
@@ -373,7 +423,27 @@ class User extends CI_Controller {
 			$this->load->view('templates/userpanel_footer_v2', $data);
 		}else{
 			$form_pin = $this->input->post('pinned[]');
-			$temp_array = implode(',',$form_pin);
+			if($this->input->post('pinned[0]')=='no_pin1'){
+				$new_pin[0] = 'null';
+			}else{
+				$new_pin[0] = $this->input->post('pinned[0]');
+			}
+			if($this->input->post('pinned[1]')=='no_pin2'){
+				$new_pin[1] = 'null';
+			}else{
+				$new_pin[1] = $this->input->post('pinned[1]');
+			}
+			if($this->input->post('pinned[2]')=='no_pin3'){
+				$new_pin[2] = 'null';
+			}else{
+				$new_pin[2] = $this->input->post('pinned[2]');
+			}
+			if($this->input->post('pinned[3]')=='no_pin4'){
+				$new_pin[3] = 'null';
+			}else{
+				$new_pin[3] = $this->input->post('pinned[3]');
+			}
+			$temp_array = implode(',',$new_pin);
 			//print_r($temp_array);
 			//die();
 			$data_pinned = [

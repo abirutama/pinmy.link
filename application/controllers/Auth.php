@@ -89,7 +89,7 @@ class Auth extends CI_Controller {
 			$this->load->view('auth/register_v2');
 			$this->load->view('auth/footer_v2');
 		}else{
-			die();
+			//die();
 			$data_user = [
 				'user_name' => htmlspecialchars($this->input->post('username-regis', true)),
 				'user_email' => htmlspecialchars($this->input->post('email-regis', true)),
@@ -101,27 +101,23 @@ class Auth extends CI_Controller {
 			$this->db->insert('user', $data_user);
 			$new_user_id = $this->db->insert_id();
 
+			$data_appearance = [
+				'user_id' => $new_user_id
+			];
+			$this->db->insert('appearance', $data_appearance);
+
 			$data_pinned = [
-				'pin_item' => ',,,',
 				'user_id' => $new_user_id
 			];
 			$this->db->insert('card_pinned', $data_pinned);
 
 			$data_social = [
-				'social_twitter' => null,
-				'social_facebook' => null,
-				'social_instagram' => null,
 				'user_id' => $new_user_id
 			];
 			$this->db->insert('social', $data_social);
 
 			$data_seo = [
 				'meta_title' => 'Welcome to My Page',
-				'meta_description' => null,
-				'meta_keyword' => null,
-				'meta_robot' => 1,
-				'meta_rating' => 0,
-				'gtag_id' => null,
 				'user_id' => $new_user_id
 			];
 			$this->db->insert('seo', $data_seo);

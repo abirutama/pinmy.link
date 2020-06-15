@@ -29,10 +29,10 @@
     <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" class="">
             <div class="has-text-centered"
-                style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?= 'background-image:url(\''.base_url().'/assets/img/layout/bg1.jpg\')';  ?>">
+                style="padding:36px 32px;border-radius:0px 0px 256px 256px !important; background-size:cover;<?php if($appearance['appearance_cover']){ echo 'background-image:url(\''.base_url().'assets/img/cover/'.$appearance['appearance_cover'].'\')';}else{ echo 'background-image:url(\''.base_url().'assets/img/layout/bg1.jpg\')'; }  ?>">
                 <figure class="image is-128x128" style="margin:auto;">
-                    <img class="bs is-rounded lazyload" style="border: 5px solid white"
-                        src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>" data-src="<?= base_url('assets/img/avatar/').$appearance['appearance_ava']; ?>">
+                    <img class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
+                        src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>" data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
                 </figure>
                 <h2 class="title is-size-5 has-text-white" style="margin-top:8px"><?= $profile['user_name']; ?></h2>
             </div>

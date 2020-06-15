@@ -56,7 +56,7 @@ class Main extends CI_Controller {
 			if($temp_array[3]==null){
 				$temp_array[2]=-9;
 			}
-			$queryPinned = $this->db->like('card_id', $temp_array[0]);
+			//$queryPinned = $this->db->like('card_id', $temp_array[0]);
 			if($temp_array>1){
 				foreach($temp_array as $key => $tempItem){
 					$next = $key+1;

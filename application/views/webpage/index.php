@@ -53,12 +53,24 @@
         <div class="navbar-end">
         <div class="navbar-item">
             <div class="buttons">
+            <?php
+                if($this->session->userdata('ses_email')){
+            ?>
+                <a href="<?= base_url('auth'); ?>" class="button is-danger is-outlined">
+                Go to User Panel
+            </a>
+            <?php
+                }else{
+            ?>
             <a href="<?= base_url('auth/register'); ?>" class="button is-link">
                 <strong>Sign up</strong>
             </a>
             <a href="<?= base_url('auth'); ?>" class="button is-link is-outlined">
                 Log in
             </a>
+            <?php
+                }
+            ?>
             </div>
         </div>
         </div>
