@@ -32,7 +32,7 @@
                 </div>
                 <?= form_error('link-destination', '<p class="help is-danger">', '</p>'); ?>
             </div>
-
+            <!--
             <div class="field">
                 <label class="label">URL Thumbnail (Optional)</label>
                 <div class="field">
@@ -43,6 +43,7 @@
                 </div>
                 <?= form_error('link-thumbnail', '<p class="help is-danger">', '</p>'); ?>
             </div>
+            -->
             <hr>
             <div class="field is-grouped">
                 <div class="buttons">

@@ -50,9 +50,9 @@ class User extends CI_Controller {
 			$data['pinned'] = $queryPinned;
 		}
 		
-		$this->load->view('templates/userpanel_header_v2', $data);
+		$this->load->view('user/userpanel_header_v2', $data);
 		$this->load->view('user/card_list_v2', $data);
-		$this->load->view('templates/userpanel_footer_v2', $data);
+		$this->load->view('user/userpanel_footer_v2', $data);
 	}
 
 	public function profile(){
@@ -67,9 +67,9 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('social-instagram', 'Instagram Username', 'trim|max_length[25]');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header_v2', $data);
+			$this->load->view('user/userpanel_header_v2', $data);
 			$this->load->view('user/profile_v2', $data);
-			$this->load->view('templates/userpanel_footer_v2', $data);
+			$this->load->view('user/userpanel_footer_v2', $data);
 		}else{
 			$form_twitter = strtolower($this->input->post('social-twitter'));
 			$form_facebook = strtolower($this->input->post('social-facebook'));
@@ -108,9 +108,9 @@ class User extends CI_Controller {
 			$this->form_validation->set_rules('accent-color-input', 'Accent Color', 'trim');
 
 			if($this->form_validation->run() == false){
-				$this->load->view('templates/userpanel_header_v2', $data);
+				$this->load->view('user/userpanel_header_v2', $data);
 				$this->load->view('user/setting_v2', $data);
-				$this->load->view('templates/userpanel_footer_v2', $data);
+				$this->load->view('user/userpanel_footer_v2', $data);
 			}else{
 				$text_color_input = $this->input->post('text-color-input');
 				$accent_color_input = $this->input->post('accent-color-input');
@@ -225,9 +225,9 @@ class User extends CI_Controller {
 			$this->form_validation->set_rules('ga-tracking-id', 'GA Tracking ID', 'trim');
 
 			if($this->form_validation->run() == false){
-				$this->load->view('templates/userpanel_header_v2', $data);
+				$this->load->view('user/userpanel_header_v2', $data);
 				$this->load->view('user/settingb_v2', $data);
-				$this->load->view('templates/userpanel_footer_v2', $data);
+				$this->load->view('user/userpanel_footer_v2', $data);
 			}else{
 				$chosen_title = $this->input->post('meta-title');
 				$chosen_desc = $this->input->post('meta-description');
@@ -279,9 +279,9 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('link-thumbnail', 'URL Thumbnail', 'trim|valid_url');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header_v2', $data);
+			$this->load->view('user/userpanel_header_v2', $data);
 			$this->load->view('user/add_card_v2', $data);
-			$this->load->view('templates/userpanel_footer_v2', $data);
+			$this->load->view('user/userpanel_footer_v2', $data);
 		}else{
 			//Creating Card SLUG START
 			$next_id = $this->db->query("SHOW TABLE STATUS LIKE 'card'")->row(0)->Auto_increment;
@@ -330,9 +330,9 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('link-thumbnail', 'URL Thumbnail', 'trim|valid_url');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header_v2', $data);
+			$this->load->view('user/userpanel_header_v2', $data);
 			$this->load->view('user/edit_card_v2', $data);
-			$this->load->view('templates/userpanel_footer_v2', $data);
+			$this->load->view('user/userpanel_footer_v2', $data);
 		}else{
 			//Creating Card SLUG START
 			$clean_title = preg_replace('/[^\p{L}\p{N}\s]/u', '', strtolower($this->input->post('link-title')));
@@ -418,9 +418,9 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('pinned[3]', 'Link 4', 'trim|differs[pinned[0]]|differs[pinned[1]]|differs[pinned[2]]');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('templates/userpanel_header_v2', $data);
+			$this->load->view('user/userpanel_header_v2', $data);
 			$this->load->view('user/edit_pinned', $data);
-			$this->load->view('templates/userpanel_footer_v2', $data);
+			$this->load->view('user/userpanel_footer_v2', $data);
 		}else{
 			$form_pin = $this->input->post('pinned[]');
 			if($this->input->post('pinned[0]')=='no_pin1'){

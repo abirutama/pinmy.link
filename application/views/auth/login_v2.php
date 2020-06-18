@@ -10,7 +10,7 @@
                 <div class="field">
                     <label class="label">Email</label>
                     <div class="control">
-                        <input name="email-login" class="input" type="email" placeholder="" value="<?= set_value('email-login'); ?>">
+                        <input name="email-login" class="input" type="email" placeholder="youremail@domain.com" value="<?= set_value('email-login'); ?>">
                     </div>
                     <?= form_error('email-login', '<p class="help is-danger">', '</p>'); ?>
                 </div>

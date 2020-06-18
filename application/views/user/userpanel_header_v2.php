@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="border-top:6px #3298dc solid">
         <div class="navbar-brand">
             <span class="navbar-item has-text-weight-bold">
                 User Panel

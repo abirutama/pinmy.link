@@ -17,53 +17,38 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('pass-login', 'Password', 'trim|required');
 
 		if($this->form_validation->run() == false){
-			$data['title'] = 'Login to existing account | Bioku.link';
 			$this->load->view('auth/header_v2', $data);
 			$this->load->view('auth/login_v2', $data);
 			$this->load->view('auth/footer_v2');
 		}else{
-			$this->_login();
-		}
+			$email = $this->input->post('email-login');
+			$pass = $this->input->post('pass-login');
 
-	}
+			$user = $this->db->get_where('user', ['user_email' => $email])->row_array();
 
-	private function _login(){
-		if($this->session->userdata('ses_email')){
-			redirect('user');
-		}
-		$email = $this->input->post('email-login');
-		$pass = $this->input->post('pass-login');
-
-		$user = $this->db->get_where('user', ['user_email' => $email])->row_array();
-
-		if($user){
-			if($user['is_active'] == 1){
-				if(password_verify($pass, $user['user_pass'])){
-					$data = [
-						'ses_id' => $user['user_id'],
-						'ses_email' => $user['user_email'],
-						'ses_role' => $user['role_id']
-					];
-					$this->session->set_userdata($data);
-					redirect('user');
+			if($user){
+				if($user['is_active'] == 1){
+					if(password_verify($pass, $user['user_pass'])){
+						$data = [
+							'ses_id' => $user['user_id'],
+							'ses_email' => $user['user_email'],
+							'ses_role' => $user['role_id']
+						];
+						$this->session->set_userdata($data);
+						redirect('user');
+					}else{
+						$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
+						redirect('auth');
+					}
 				}else{
-					$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-warning">User has not been activated!</div>');
 					redirect('auth');
 				}
 			}else{
-				$this->session->set_flashdata('message', '<div class="notification is-warning">User has not been activated!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
 				redirect('auth');
 			}
-		}else{
-			$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
-			redirect('auth');
 		}
-	}
-
-	public function register_v2(){
-		$this->load->view('auth/header_v2');
-		$this->load->view('auth/register_v2');
-		$this->load->view('auth/footer_v2');
 	}
 
 	public function register()
