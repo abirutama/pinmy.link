@@ -8,16 +8,20 @@
     <div class="section">
     <div class="columns is-multiline">
   <div class="column is-half-desktop">
-        <h3 class="title is-3">Register Activity</h3>
+        <h3 class="title is-4">Register Activity</h3>
         <canvas id="user-registered" width="auto" height="auto"></canvas>
   </div>
   <div class="column is-half-desktop">
-        <h3 class="title is-3">User Activation</h3>
+        <h3 class="title is-4">User Activation</h3>
         <canvas id="user-activated" width="auto" height="auto"></canvas>
   </div>
-  <div class="column is-two-thirds-desktop">
-        <h3 class="title is-3">User By Categories</h3>
+  <div class="column is-half-desktop">
+        <h3 class="title is-4">User By Categories</h3>
         <canvas id="user-by-cat" width="auto" height="auto"></canvas>
+  </div>
+  <div class="column is-half-desktop">
+        <h3 class="title is-4">Post Activity</h3>
+        <canvas id="post-activity" width="auto" height="auto"></canvas>
   </div>
 </div>
 </div>
@@ -113,6 +117,42 @@ var myChart3 = new Chart(ctx3, {
     },
     options: {
         responsive: true
+    }
+});
+var ctx4 = document.getElementById('post-activity').getContext('2d');
+var myChart4 = new Chart(ctx4, {
+    type: 'line',
+    data: {
+        labels: [ <?= $mix_post_date; ?> ],
+        datasets: [{
+            label: '# of Post Created',
+            data: [ <?= $mix_post_count; ?> ],
+            backgroundColor: [
+                'rgba(155, 199, 132, 0)'
+            ],
+            borderColor: [
+                '#2ecc71'
+            ],
+            borderWidth: 2,
+            pointRadius:6,
+            spanGaps:false,
+            tension:0
+        }],
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'month'
+                }
+            }]
+        }
     }
 });
 </script>
