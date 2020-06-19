@@ -47,23 +47,48 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a href="<?= base_url('user/'); ?>" class="navbar-item <?php if($page=='link'){ echo 'has-text-link'; } ?>">
-                    My Links
-                </a>
-                <a href="<?= base_url('user/profile'); ?>" class="navbar-item <?php if($page=='profile'){ echo 'has-text-link'; } ?>">
-                    Profile
+                <a href="<?= base_url('admin/'); ?>" class="navbar-item <?php if($page=='dashboard'){ echo 'has-text-link'; } ?>">
+                    Dashboard
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
-                        Settings
+                    <a class="navbar-link <?php if($page=='user'){ echo 'has-text-link'; } ?>">
+                        User
                     </a>
                     <div class="navbar-dropdown">
-                        <a href="<?= base_url('user/setting/appearance'); ?>" class="navbar-item">
-                            Appearance
+                        <a href="<?= base_url('admin/user/'); ?>" class="navbar-item">
+                            List User
                         </a>
                         <hr class="navbar-divider">
-                        <a href="<?= base_url('user/setting/seo'); ?>" class="navbar-item">
-                            SEO
+                        <a href="<?= base_url('admin/user/add'); ?>" class="navbar-item">
+                            Add New User
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
+                        Category
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a href="<?= base_url('admin/user/'); ?>" class="navbar-item">
+                            List Category
+                        </a>
+                        <hr class="navbar-divider">
+                        <a href="<?= base_url('admin/user/add'); ?>" class="navbar-item">
+                            Add New Category
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link <?php if($page=='user'){ echo 'has-text-link'; } ?>">
+                        Sponsor
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a href="<?= base_url('admin/user/'); ?>" class="navbar-item">
+                            List Sponsor
+                        </a>
+                        <hr class="navbar-divider">
+                        <a href="<?= base_url('admin/user/add'); ?>" class="navbar-item">
+                            Add New Sponsor
                         </a>
                     </div>
                 </div>
@@ -94,7 +119,3 @@
             </div>
         </div>
     </nav>
-    <div class="notification is-warning" style="margin:0">
-        Don't forget to embed this link to your social media's bio: <a target="_blank"
-            href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
-    </div>

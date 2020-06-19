@@ -17,8 +17,8 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('pass-login', 'Password', 'trim|required');
 
 		if($this->form_validation->run() == false){
-			$this->load->view('auth/header_v2', $data);
-			$this->load->view('auth/login_v2', $data);
+			$this->load->view('auth/header_v2');
+			$this->load->view('auth/login_v2');
 			$this->load->view('auth/footer_v2');
 		}else{
 			$email = $this->input->post('email-login');
