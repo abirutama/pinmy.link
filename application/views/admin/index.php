@@ -7,22 +7,27 @@
 <div class="container">
     <div class="section">
     <div class="columns is-multiline">
-  <div class="column is-half-desktop">
+  <div class="column is-one-thirds-desktop">
         <h3 class="title is-4">Register Activity</h3>
         <canvas id="user-registered" width="auto" height="auto"></canvas>
   </div>
-  <div class="column is-half-desktop">
+  <div class="column is-one-thirds-desktop">
         <h3 class="title is-4">User Activation</h3>
         <canvas id="user-activated" width="auto" height="auto"></canvas>
+  </div>
+  <div class="column is-one-thirds-desktop">
+        <h3 class="title is-4">Post Activity</h3>
+        <canvas id="post-activity" width="auto" height="auto"></canvas>
   </div>
   <div class="column is-half-desktop">
         <h3 class="title is-4">User By Categories</h3>
         <canvas id="user-by-cat" width="auto" height="auto"></canvas>
   </div>
   <div class="column is-half-desktop">
-        <h3 class="title is-4">Post Activity</h3>
-        <canvas id="post-activity" width="auto" height="auto"></canvas>
+        <h3 class="title is-4">Post By Categories</h3>
+        <canvas id="post-by-cat" width="auto" height="auto"></canvas>
   </div>
+  
 </div>
 </div>
 
@@ -51,6 +56,7 @@ var myChart1 = new Chart(ctx1, {
         scales: {
             yAxes: [{
                 ticks: {
+                    stepSize:1,
                     beginAtZero: true
                 }
             }],
@@ -75,7 +81,7 @@ var myChart2 = new Chart(ctx2, {
                 'rgba(155, 199, 132, 0)'
             ],
             borderColor: [
-                '#2ecc71'
+                '#2980b9'
             ],
             borderWidth: 2,
             pointRadius:6,
@@ -87,7 +93,9 @@ var myChart2 = new Chart(ctx2, {
         scales: {
             yAxes: [{
                 ticks: {
+                    stepSize:1,
                     beginAtZero: true
+                    
                 }
             }],
             xAxes: [{
@@ -143,6 +151,7 @@ var myChart4 = new Chart(ctx4, {
         scales: {
             yAxes: [{
                 ticks: {
+                    stepSize:1,
                     beginAtZero: true
                 }
             }],
@@ -153,6 +162,26 @@ var myChart4 = new Chart(ctx4, {
                 }
             }]
         }
+    }
+});
+var ctx5 = document.getElementById('post-by-cat').getContext('2d');
+var myChart5 = new Chart(ctx5, {
+    type: 'pie',
+    data: {
+        datasets: [{
+            data: [<?= $total_post_by_cat_list; ?>],
+            backgroundColor: [
+                '#2980b9',
+                '#2ecc71',
+                '#e74c3c',
+                '#8e44ad'
+            ],
+            label: 'Dataset 1'
+        }],
+        labels: [<?= $cat_name_list; ?>]
+    },
+    options: {
+        responsive: true
     }
 });
 </script>

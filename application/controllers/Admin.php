@@ -7,35 +7,42 @@ class Admin extends CI_Controller {
 		$data['title'] = 'Admin Panel';
 		$data['page'] = 'dashboard';
 		$data['user'] = $this->db->get_where('user', array('user_email' => $this->session->userdata('ses_email')))->row_array();
-
+	
 		// 1 Get User by Categories Data
-		$category = $this->db->query('select * from category')->result_array();
-
-		foreach($category as $cat){
-			echo 'Cat No.'.$cat['category_id'].': ';
-			$user_by_cat = $this->db->query('select user_id from user where category_id='.$cat['category_id'])->result_array();
-			$sum_card = 0;
-			foreach($user_by_cat as $user_cat){
-				$count_post_by_cat = $this->db->query('select count(card_id) as card_count from card where user_id='.$user_cat['user_id'])->result_array();
-				print_r($count_post_by_cat);
-				foreach($count_post_by_cat as $count_card){
-					//echo $count_card['card_count'];
-					$sum_card =  $sum_card + $count_card['card_count'];
-				}
-				//echo $sum_card;
-			}
-			
-			//echo '(count end)';
-			echo '<br>';
+		$get_category_data = $this->db->query('select * from category')->result_array();
+		
+		foreach($get_category_data as $cat_list){
+			$get_user_by_cat[] = $this->db->query('select user_id from user where category_id='.$cat_list['category_id'])->result_array();
 		}
-
-		die();
-		foreach($category as $cat){
+		foreach($get_user_by_cat as $key1=>$user_by_cat){
+			foreach($user_by_cat as $key2=>$child_group){
+				$i = 0;
+				$user_id_temp[$key1][] = $user_by_cat[$key2]['user_id'];
+			}
+			$i++;
+		}
+		//print_r($user_id_temp);
+		foreach($user_id_temp as $key3=>$user_id_pop){
+			//echo 'group '.$key3.' = <br>';
+			$get_sum_post = 0;
+			foreach($user_id_pop as $key4=>$pop){
+				//echo '----index('.$key4.')---user_id('.$user_id_temp[$key3][$key4].') = ';
+				//$user_id_by_cat[] = $user_id_temp[$key3][$key4];
+				$card_count = $this->db->query('select count(card_id) as card_count from card where user_id='.$user_id_temp[$key3][$key4])->row_array();
+				//echo $card_count['card_count'].'<br>';
+				$get_sum_post = $get_sum_post + $card_count['card_count'];
+			}
+			$mix_sum[] = $get_sum_post;
+		}
+		$data['total_post_by_cat_list'] = implode(',', $mix_sum);
+		//echo $data['total_post_by_cat_list'];
+		//die();
+		foreach($get_category_data as $cat){
 			$this->db->like('category_id', $cat['category_id']);
 			$this->db->from('user');
 			$count_user_by_category[] = $this->db->count_all_results();
 		}
-		foreach($category as $cat_name){
+		foreach($get_category_data as $cat_name){
 			$cat_name_arr[] = '\''.$cat_name['category_name'].'\'';
 		}
 		foreach($count_user_by_category as $key=>$cat_user_count){
@@ -69,8 +76,8 @@ class Admin extends CI_Controller {
 		$data['mix_active_date'] = implode(',', $user_active_date);
 		$data['mix_active'] = implode(',', $user_active_count);
 
-		// 4 Get User Registration Activity Data
-		$post_created = $this->db->query('select from_unixtime(date_created, "%Y-%M") as month, COUNT(date_created) as count from card group by from_unixtime(date_created, "%Y-%M") ORDER BY date_created asc LIMIT 6')->result_array();
+		// 4 Get Post Activity Data
+		$post_created = $this->db->query('select from_unixtime(date_created, "%Y-%M") as month, COUNT(date_created) as count from card group by from_unixtime(date_created, "%Y-%M") ORDER BY date_created desc LIMIT 6')->result_array();
 		foreach($post_created as $post_date){
 			$post_date_created[] = '\''.$post_date['month'].'\'';
 		}
