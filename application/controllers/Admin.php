@@ -3,8 +3,80 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller { 
 
+	public function __construct(){
+		parent::__construct();
+		$this->load->library('form_validation');
+		if($this->session->userdata('ses_role')!=1){
+			redirect('auth');
+			die();
+		}
+	} 
+
+	public function list($table=null){
+		$list = $table;
+		if($list=='category'){
+			$data['page'] = 'category';
+            $data['title'] = 'List Category';
+            $data['active'] = 'category';
+            $data['list'] = $this->db->select('category_name as Category Name, is_active as Status, category_id as ID');
+            $data['list'] = $this->db->order_by('category_name', 'asc');
+            $data['list'] = $this->db->get('category');
+        }elseif($list=='user'){
+			$data['page'] = 'user';
+            $data['title'] = 'List User';
+            $data['active'] = 'user';
+            $data['list'] = $this->db->select('from_unixtime(date_created, "%Y-%m-%d") as "Register Date", user_name as Username, user_email as Email, is_active as Status, user_id as ID');
+			$data['list'] = $this->db->where('role_id', 2);
+			$data['list'] = $this->db->order_by('date_created', 'DESC');
+            $data['list'] = $this->db->get('user');
+        }else{
+            redirect('admin');
+            die();
+		}
+		
+		$this->load->view('admin/adminpanel_header_v2', $data);
+		$this->load->view('admin/list-table-data', $data);
+		$this->load->view('admin/adminpanel_footer_v2');
+	}
+
+	public function edit_category($cat_id=null)
+	{
+		$data['page'] = 'category';
+		$data['category'] = $this->db->get_where('category', ['category_id' => $cat_id])->row_array();
+
+		if(!$data['category']){
+			redirect('admin/list/category');
+			die();
+		}
+
+		$this->form_validation->set_rules('cat-name', 'Category Name', 'trim|required|min_length[10]|max_length[120]');
+
+		if($this->form_validation->run() == false){
+			$this->load->view('admin/adminpanel_header_v2', $data);
+			$this->load->view('admin/edit_category', $data);
+			$this->load->view('admin/adminpanel_footer_v2');
+		}else{
+			if($this->input->post('cat-status')){
+				$is_active = 1;
+			}else{
+				$is_active = 0;
+			}
+			$data_cat = [
+				'category_name' => $this->input->post('cat-name'),
+				'is_active' => $is_active
+			];
+			if($this->db->update('category', $data_cat, array('category_id' => $cat_id))){
+				$this->session->set_flashdata('message', '<div class="notification is-success">Category Edited Successfully!</div>');
+				redirect('admin/list/category');
+			}else{
+				$error = $this->db->error();
+				$this->session->set_flashdata('message', '<div class="notification is-danger">Edit Category Failed!</div>');
+				redirect('admin/list/category');
+			}
+		}
+	}
+
 	public function index(){
-		$data['title'] = 'Admin Panel';
 		$data['page'] = 'dashboard';
 		$data['user'] = $this->db->get_where('user', array('user_email' => $this->session->userdata('ses_email')))->row_array();
 	
@@ -88,12 +160,10 @@ class Admin extends CI_Controller {
 		$data['mix_post_date'] = implode(',', $post_date_created);
 		$data['mix_post_count'] = implode(',', $post_date_created_count);
 
-
-
 		//die;
 		$this->load->view('admin/adminpanel_header_v2', $data);
 		$this->load->view('admin/index', $data);
-		//$this->load->view('admin/adminpanel_footer_v2');
+		$this->load->view('admin/adminpanel_footer_v2');
 	}
 
 }

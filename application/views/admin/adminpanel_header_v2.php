@@ -1,11 +1,15 @@
 <!doctype html>
 <html class="has-background-light">
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90789114-4"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
     gtag('js', new Date());
 
     gtag('config', 'UA-90789114-4');
@@ -18,14 +22,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
+        integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"
+        integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM=" crossorigin="anonymous"></script>
     <style>
     .cupad {
         padding: 1em
     }
-    .round-8{
-        border-radius:8px
+
+    .round-8 {
+        border-radius: 8px
     }
     </style>
 </head>
@@ -47,7 +54,8 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a href="<?= base_url('admin/'); ?>" class="navbar-item <?php if($page=='dashboard'){ echo 'has-text-link'; } ?>">
+                <a href="<?= base_url('admin/'); ?>"
+                    class="navbar-item <?php if($page=='dashboard'){ echo 'has-text-link'; } ?>">
                     Dashboard
                 </a>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -55,54 +63,36 @@
                         User
                     </a>
                     <div class="navbar-dropdown">
-                        <a href="<?= base_url('admin/user/'); ?>" class="navbar-item">
+                        <a href="<?= base_url('admin/list/user/'); ?>" class="navbar-item">
                             List User
-                        </a>
-                        <hr class="navbar-divider">
-                        <a href="<?= base_url('admin/user/add'); ?>" class="navbar-item">
-                            Add New User
                         </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
+                    <a class="navbar-link <?php if($page=='category'){ echo 'has-text-link'; } ?>">
                         Category
                     </a>
                     <div class="navbar-dropdown">
-                        <a href="<?= base_url('admin/user/'); ?>" class="navbar-item">
+                        <a href="<?= base_url('admin/list/category/'); ?>" class="navbar-item">
                             List Category
                         </a>
                         <hr class="navbar-divider">
-                        <a href="<?= base_url('admin/user/add'); ?>" class="navbar-item">
+                        <a href="<?= base_url('admin/category_add'); ?>" class="navbar-item">
                             Add New Category
                         </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link <?php if($page=='user'){ echo 'has-text-link'; } ?>">
+                    <a class="navbar-link <?php if($page=='sponsor'){ echo 'has-text-link'; } ?>">
                         Sponsor
                     </a>
                     <div class="navbar-dropdown">
-                        <a href="<?= base_url('admin/user/'); ?>" class="navbar-item">
+                        <a href="<?= base_url('admin/list/sponsor/'); ?>" class="navbar-item">
                             List Sponsor
                         </a>
                         <hr class="navbar-divider">
-                        <a href="<?= base_url('admin/user/add'); ?>" class="navbar-item">
+                        <a href="<?= base_url('admin/sponsor_add'); ?>" class="navbar-item">
                             Add New Sponsor
-                        </a>
-                    </div>
-                </div>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        Help
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            FAQ
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Support Us
                         </a>
                     </div>
                 </div>
@@ -111,6 +101,9 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
+                        <a href="<?= base_url('user/'); ?>" class="button is-link is-outlined">
+                            Go to User Panel
+                        </a>
                         <button id="logout-button" class="button is-danger is-outlined">
                             Sign out
                         </button>

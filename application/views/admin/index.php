@@ -7,23 +7,23 @@
 <div class="container">
     <div class="section">
     <div class="columns is-multiline">
-  <div class="column is-one-thirds-desktop">
+  <div class="column is-one-third">
         <h3 class="title is-4">Register Activity</h3>
         <canvas id="user-registered" width="auto" height="auto"></canvas>
   </div>
-  <div class="column is-one-thirds-desktop">
+  <div class="column is-one-third">
         <h3 class="title is-4">User Activation</h3>
         <canvas id="user-activated" width="auto" height="auto"></canvas>
   </div>
-  <div class="column is-one-thirds-desktop">
+  <div class="column is-one-third">
         <h3 class="title is-4">Post Activity</h3>
         <canvas id="post-activity" width="auto" height="auto"></canvas>
   </div>
-  <div class="column is-half-desktop">
+  <div class="column is-half">
         <h3 class="title is-4">User By Categories</h3>
         <canvas id="user-by-cat" width="auto" height="auto"></canvas>
   </div>
-  <div class="column is-half-desktop">
+  <div class="column is-half">
         <h3 class="title is-4">Post By Categories</h3>
         <canvas id="post-by-cat" width="auto" height="auto"></canvas>
   </div>

@@ -69,7 +69,7 @@
             </div>
             <p class="help is-danger">*Maximum file size: 500 kb</p>
             <p class="help is-danger">*Allowed image extension: jpg & jpeg</p>
-            <p class="help is-danger">*Image resolution will be stretched to 16:9 ratio</p>
+            <p class="help is-danger">*Image resolution is 640x230 pixels</p>
             <hr>
             <!-- THIS FEATURE UNDER DEVELOPMENT
             <div class="field">

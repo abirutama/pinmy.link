@@ -48,10 +48,9 @@
                     <div class="control">
                         <div class="select is-fullwidth">
                             <select name="category-regis">
-                                <option value="">Technology</option>
-                                <option value="">Food & Beverage</option>
-                                <option value="">Travel</option>
-                                <option value="">Art & Design</option>
+                                <?php foreach($category as $cat){ ?>
+                                    <option value="<?= $cat['category_id']; ?>"><?= $cat['category_name']; ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>

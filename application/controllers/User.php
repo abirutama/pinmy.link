@@ -194,6 +194,9 @@ class User extends CI_Controller {
 						redirect('user/setting/appearance');
 					}
 				}
+				if(!$cover_image && !$ava_image){
+					redirect('user/setting/appearance');
+				}
 
 				$data_appearance = [
 					//'appearance_text' => $text_color_input,
@@ -351,7 +354,7 @@ class User extends CI_Controller {
 				'card_title' => $this->input->post('link-title'),
 				'card_slug' => $card_slug,
 				'card_url' => $this->input->post('link-destination'),
-				'card_thumbnail' => $this->input->post('link-thumbnail'),
+				'card_thumbnail' => $this->input->post('link-thumbnail')
 			];
 
 			if($this->db->update('card', $data_card, array('card_id' => $card_id, 'user_id' =>  $this->session->userdata('ses_id')))){
@@ -370,7 +373,7 @@ class User extends CI_Controller {
 		$this->db->select('card_id');
 		$data['card'] = $this->db->get_where('card', ['card_id' => $card_id, 'user_id' => $this->session->userdata('ses_id')])->row_array();
 
-		//if card content not match in db, then redirect
+		//if card content not match in db or not belong to them, then redirect
 		if(!$data['card']){
 			redirect('user');
 			die();

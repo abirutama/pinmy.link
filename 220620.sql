@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2020 pada 03.19
+-- Waktu pembuatan: 21 Jun 2020 pada 17.40
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appearance` (
   `appearance_id` int(11) NOT NULL,
-  `appearance_ava` varchar(25) DEFAULT NULL,
-  `appearance_cover` varchar(25) DEFAULT NULL,
+  `appearance_ava` varchar(120) DEFAULT NULL,
+  `appearance_cover` varchar(120) DEFAULT NULL,
   `appearance_accent` varchar(6) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -41,10 +41,11 @@ CREATE TABLE `appearance` (
 --
 
 INSERT INTO `appearance` (`appearance_id`, `appearance_ava`, `appearance_cover`, `appearance_accent`, `user_id`) VALUES
-(1, 'interview_demian1.jpg', 'interview_seren.jpg', NULL, 1),
+(1, 'logo_pinmylink.jpg', 'abstract-colorful-flow-shapes-background_23-21482580921.jpg', NULL, 1),
 (2, '', NULL, NULL, 2),
 (3, NULL, NULL, NULL, 7),
-(4, NULL, NULL, NULL, 8);
+(4, NULL, NULL, NULL, 8),
+(5, NULL, NULL, NULL, 9);
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE `card` (
   `card_title` varchar(160) NOT NULL,
   `card_slug` varchar(325) NOT NULL,
   `card_url` varchar(256) NOT NULL,
-  `card_thumbnail` varchar(256) NOT NULL,
+  `card_thumbnail` varchar(256) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -73,8 +74,11 @@ INSERT INTO `card` (`card_id`, `card_title`, `card_slug`, `card_url`, `card_thum
 (46, 'PSBB, Pemprov DKI Kirim 78 Ribu Paket Bansos Hari Ini', 'psbb-pemprov-dki-kirim-78-ribu-paket-bansos-hari-ini-46', 'https://www.cnnindonesia.com/nasional/20200414204037-20-493589/psbb-pemprov-dki-kirim-78-ribu-paket-bansos-hari-ini', '', 1, 1586892874),
 (47, 'DPR Persilakan Pemerintah Tarik Draf Omnibus Law Ciptaker', 'dpr-persilakan-pemerintah-tarik-draf-omnibus-law-ciptaker-47', 'https://www.cnnindonesia.com/nasional/20200414203113-32-493584/dpr-persilakan-pemerintah-tarik-draf-omnibus-law-ciptaker', '', 1, 1586892903),
 (48, 'Pemprov Jatim Tunggu Hasil Kajian Sebelum Ajukan PSBB', 'pemprov-jatim-tunggu-hasil-kajian-48', 'https://www.cnnindonesia.com/nasional/20200414230532-20-493611/pemprov-jatim-tunggu-hasil-kajian-sebelum-ajukan-psbb', '', 1, 1586894094),
-(49, 'KPK Minta Polemik LHKPN Deputi Penindakan Tak Diperpanjang', 'kpk-minta-polemik-lhkpn-deputi-49', 'https://www.cnnindonesia.com/nasional/20200414234103-12-493614/kpk-minta-polemik-lhkpn-deputi-penindakan-tak-diperpanjang', 'https://images.unsplash.com/photo-1587808061126-7a98c4e108df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 1, 1586894115),
-(50, 'Harga Minyak Anjlok, Harga BBM Dinilai Tak Perlu Buru-buru Turun Di Bulan Ini', 'harga-minyak-anjlok-harga-bbm-50', 'https://finance.detik.com/energi/d-4977280/harga-minyak-anjlok-harga-bbm-dinilai-tak-perlu-buru-buru-turun', 'https://images.unsplash.com/photo-1587783194913-bf9df49e1902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80', 1, 1586894172);
+(49, 'KPK Minta Polemik LHKPN Deputi Penindakan Tak Diperpanjang', 'kpk-minta-polemik-lhkpn-deputi-49', 'https://www.cnnindonesia.com/nasional/20200414234103-12-493614/kpk-minta-polemik-lhkpn-deputi-penindakan-tak-diperpanjang', '', 1, 1586894115),
+(50, 'Harga Minyak Anjlok, Harga BBM Dinilai Tak Perlu Buru-buru Turun Di Bulan Ini', 'harga-minyak-anjlok-harga-bbm-50', 'https://finance.detik.com/energi/d-4977280/harga-minyak-anjlok-harga-bbm-dinilai-tak-perlu-buru-buru-turun', '', 1, 1586894172),
+(51, 'Test Baru', 'test-baru-51', 'http://google.com', NULL, 1, 1592558845),
+(52, 'Test Lagi<script>alert(\'hello\');</script>', 'test-lagiscriptalerthelloscript-52', 'https://google.com', NULL, 1, 1592577192),
+(53, 'Test aja', 'test-aja-53', 'https://google.com', NULL, 9, 1592706721);
 
 -- --------------------------------------------------------
 
@@ -93,10 +97,11 @@ CREATE TABLE `card_pinned` (
 --
 
 INSERT INTO `card_pinned` (`pin_id`, `pin_item`, `user_id`) VALUES
-(1, '34,50,null,null', 1),
+(1, '49,47,null,null', 1),
 (2, 'null,null,null,null', 2),
 (3, 'null,null,null,null', 7),
-(4, 'null,null,null,null', 8);
+(4, 'null,null,null,null', 8),
+(5, 'null,null,null,null', 9);
 
 -- --------------------------------------------------------
 
@@ -106,18 +111,19 @@ INSERT INTO `card_pinned` (`pin_id`, `pin_item`, `user_id`) VALUES
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(30) NOT NULL
+  `category_name` varchar(30) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `category`
 --
 
-INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(1, 'IT / Tech / Computer'),
-(2, 'Traveling / Holiday'),
-(3, 'Food / Beverage / Culinary'),
-(4, 'Art / Design / Visual');
+INSERT INTO `category` (`category_id`, `category_name`, `is_active`) VALUES
+(1, 'IT / Tech / Computer', 1),
+(2, 'Traveling / Holiday', 1),
+(3, 'Food / Beverage / Culinary', 1),
+(4, 'Art / Design / Visual', 1);
 
 -- --------------------------------------------------------
 
@@ -161,10 +167,11 @@ CREATE TABLE `seo` (
 --
 
 INSERT INTO `seo` (`seo_id`, `meta_title`, `meta_description`, `meta_keyword`, `meta_robot`, `meta_rating`, `gtag_id`, `user_id`) VALUES
-(1, '@abirutama\'s Page', 'Cara jitu belajar jadi pengusaha yang sukses dari para pakar dan pengusaha senior', 'usaha, bisnis, enterpreneur, pengusaha, sukses, ahli', 1, 0, 'UA-90789114-6', 1),
+(1, '', '', '', 1, 0, '', 1),
 (2, 'Welcome to My Page', NULL, NULL, 1, 0, NULL, 3),
 (3, 'Welcome to My Page', 'Your Page\'s Description', NULL, 1, 0, NULL, 7),
-(4, 'Welcome to My Page', 'Your Page\'s Description', NULL, 1, 0, NULL, 8);
+(4, 'Welcome to My Page', 'Your Page\'s Description', NULL, 1, 0, NULL, 8),
+(5, 'Welcome to My Page', 'Your Page\'s Description', NULL, 1, 0, NULL, 9);
 
 -- --------------------------------------------------------
 
@@ -185,10 +192,11 @@ CREATE TABLE `social` (
 --
 
 INSERT INTO `social` (`social_id`, `social_twitter`, `social_facebook`, `social_instagram`, `user_id`) VALUES
-(2, 'abirutama12', 'abirutama12', 'abirutama12', 1),
+(2, 'abirutama22', 'abirutama22', 'abirutama22', 1),
 (3, NULL, NULL, NULL, 3),
 (4, NULL, NULL, NULL, 7),
-(5, NULL, NULL, NULL, 8);
+(5, NULL, NULL, NULL, 8),
+(6, NULL, NULL, NULL, 9);
 
 -- --------------------------------------------------------
 
@@ -204,7 +212,7 @@ CREATE TABLE `user` (
   `role_id` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_created` int(11) NOT NULL,
-  `is_verified` tinyint(1) NOT NULL DEFAULT '0',
+  `is_premium` tinyint(1) NOT NULL DEFAULT '0',
   `category_id` tinyint(2) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -212,15 +220,9 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_pass`, `role_id`, `is_active`, `date_created`, `is_verified`, `category_id`) VALUES
-(1, 'abirutama', 'abirutama@gmail.com', '$2y$10$8R5jzJJ903Da9EZXK6rm8OwiH0VVnyaDZXR1GEuLuWxgimSZO3acW', 2, 1, 1583193600, 1, 1),
-(2, 'abirutama12', 'abirutama12@gmail.com', '$2y$10$dF2Ax.CUSOqrDGKgkAHmA.VfGpFMbV69F7qQlPYxJVD744t4CbDwe', 2, 1, 1583193600, 0, 1),
-(3, 'abirutama13', 'abirutama13@gmail.com', '$2y$10$52apuCYsTUp1hwjLtcPqm.q0h0ZDPWxoD/vT1rdKYcitM1e2ejqDi', 2, 1, 1583193600, 0, 1),
-(4, 'abirutama55', 'abirutama55@gmail.com', '$2y$10$x2nUB82Rc.FbWwUceDGVwuC.w0H0LPhz9gmuuJDZrspVMHIEcccRK', 2, 1, 1583193600, 0, 2),
-(5, 'abirutama56', 'abirutama56@gmail.com', '$2y$10$j4/qChZvtD/NXeNBsmkYG.PimB0ZyGP3HFDEdKGqqBV0APH/J6oIO', 2, 0, 1587081600, 0, 3),
-(6, 'abirutama57', 'abirutama57@gmail.com', '$2y$10$zLATWc/foMYvbdb/v3liROOU9sJxsgvnz3DmLWC7pVnanox2Pwl/m', 2, 1, 1588291200, 0, 4),
-(7, 'abirutama100', 'abirutama100@gmail.com', '$2y$10$zW3dQ9MmkLD.rVfWdyaVVunPGcNVNeTNdi8ZDqupdkOCk8LSZVjOa', 2, 1, 1588291200, 0, 3),
-(8, 'abirutama101', 'abirutama101@gmail.com', '$2y$10$lbzJ4/hn5yAPWUf3Z3takeXr/tWMsYN0R.laGZON0kkeEq3r0dPw.', 2, 1, 1591401600, 0, 1);
+INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_pass`, `role_id`, `is_active`, `date_created`, `is_premium`, `category_id`) VALUES
+(1, 'pinmy.link', 'abirutama@gmail.com', '$2y$10$8R5jzJJ903Da9EZXK6rm8OwiH0VVnyaDZXR1GEuLuWxgimSZO3acW', 1, 1, 1583193600, 1, 1),
+(9, 'abi.utama', 'abirutama12@gmail.com', '$2y$10$FLV9yimZSQPcRSY7ickhaeQ8quhqjQ2L2cwRsMthTs9pH81TNZszG', 2, 1, 1592706568, 0, 2);
 
 --
 -- Indexes for dumped tables
@@ -282,19 +284,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `appearance`
 --
 ALTER TABLE `appearance`
-  MODIFY `appearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `appearance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `card`
 --
 ALTER TABLE `card`
-  MODIFY `card_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `card_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT untuk tabel `card_pinned`
 --
 ALTER TABLE `card_pinned`
-  MODIFY `pin_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pin_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `category`
@@ -312,19 +314,19 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT untuk tabel `seo`
 --
 ALTER TABLE `seo`
-  MODIFY `seo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `seo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `social`
 --
 ALTER TABLE `social`
-  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

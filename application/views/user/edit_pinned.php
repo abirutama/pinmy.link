@@ -18,7 +18,7 @@
                         <select name="pinned[0]">
                         <option value="no_pin1">None</option>
                         <?php foreach($card as $cardItem){ ?>
-                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[0]){echo ' selected';} ?> ><?= $cardItem['card_title']; ?></option>
+                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[0]){echo ' selected';} ?> ><?= scoup($cardItem['card_title']); ?></option>
                         <?php } ?>
                         </select>
                     </p>
@@ -33,7 +33,7 @@
                         <select name="pinned[1]">
                         <option value="no_pin2">None</option>
                         <?php foreach($card as $cardItem){ ?>
-                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[1]){echo ' selected';} ?> ><?= $cardItem['card_title']; ?></option>
+                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[1]){echo ' selected';} ?> ><?= scoup($cardItem['card_title']); ?></option>
                         <?php } ?>
                         </select>
                     </p>
@@ -48,7 +48,7 @@
                         <select name="pinned[2]">
                         <option value="no_pin3">None</option>
                         <?php foreach($card as $cardItem){ ?>
-                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[2]){echo ' selected';} ?> ><?= $cardItem['card_title']; ?></option>
+                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[2]){echo ' selected';} ?> ><?= scoup($cardItem['card_title']); ?></option>
                         <?php } ?>
                         </select>
                     </p>
@@ -63,7 +63,7 @@
                         <select name="pinned[3]">
                         <option value="no_pin4">None</option>
                         <?php foreach($card as $cardItem){ ?>
-                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[3]){echo ' selected';} ?> ><?= $cardItem['card_title']; ?></option>
+                        <option value="<?= $cardItem['card_id']; ?>" <?php if($cardItem['card_id']===$pinItem[3]){echo ' selected';} ?> ><?= scoup($cardItem['card_title']); ?></option>
                         <?php } ?>
                         </select>
                     </p>

@@ -56,7 +56,7 @@ class Auth extends CI_Controller {
 		if($this->session->userdata('ses_email')){
 			redirect('user');
 		}
-		$this->form_validation->set_rules('username-regis', 'Username', 'required|trim|is_unique[user.user_name]',[
+		$this->form_validation->set_rules('username-regis', 'Username', 'required|trim|min_length[8]|alpha_numeric|is_unique[user.user_name]',[
 			'is_unique' => 'This username has already registered!'
 		]);
 		$this->form_validation->set_rules('email-regis', 'E-mail', 'required|trim|valid_email|is_unique[user.user_email]',[
@@ -68,10 +68,12 @@ class Auth extends CI_Controller {
 		]);
 		$this->form_validation->set_rules('repass-regis', 'Password', 'required|trim|matches[pass-regis]');
 
+		$this->db->select('category_id, category_name');
+		$data['category'] = $this->db->get_where('category', ['is_active' => 1])->result_array();
+
 		if($this->form_validation->run() == false){
-			$data['title'] = 'Register a new account | Bioku.link';
 			$this->load->view('auth/header_v2');
-			$this->load->view('auth/register_v2');
+			$this->load->view('auth/register_v2',$data);
 			$this->load->view('auth/footer_v2');
 		}else{
 			//die();

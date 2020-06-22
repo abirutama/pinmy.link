@@ -83,6 +83,11 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
+                        <?php if($this->session->userdata('ses_role')==1){ ?>
+                        <a href="<?= base_url('admin/'); ?>" class="button is-link is-outlined">
+                            Go to Admin Console
+                        </a>
+                        <?php } ?>
                         <button id="logout-button" class="button is-danger is-outlined">
                             Sign out
                         </button>

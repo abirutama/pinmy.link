@@ -22,13 +22,16 @@
   <body>
   <section class="section" style="max-width:480px; margin:auto;">
     <div class="container box">
-        <h1 class="title is-size-4">
-            <?= scoup($queryCard['card_title']); ?>
-        </h1>
+        
       <p class="subtitle">
-        Please wait, you'll be redirected...    
+        You'll be redirected...    
       </p>
+      <!--
+        <h1 class="title is-size-5">
+        <?= scoup($queryCard['card_title']); ?>
+        </h1>
       <progress class="progress is-small is-primary" max="100">15%</progress>
+      -->
       <figure class="image is-square">
         <img src="https://bulma.io/images/placeholders/256x256.png">
         </figure>
