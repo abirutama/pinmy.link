@@ -29,9 +29,8 @@
     <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" class="">
         <!-- http://localhost/pinmy.link/assets/img/sponsor/nike-ad.jpg -->
-        <!-- <?php //if($appearance['appearance_cover']){ echo 'background-image:url(\''.base_url().'assets/img/cover/'.$appearance['appearance_cover'].'\')';}else{ echo 'background-image:url(\''.base_url().'assets/img/layout/bg1.jpg\')'; }  ?> -->
             <div id="cover-image" class="has-text-centered"
-                style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:center; background-image:url('http://localhost/pinmy.link/assets/img/sponsor/nike-ad.jpg')">
+                style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('http://localhost/pinmy.link/assets/img/sponsor/<?= $campaign['campaign_image'] ?>')">
                 <figure class="profile-thing image is-128x128" style="margin:auto; opacity:0">
                     <img class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
                         src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>"
@@ -158,12 +157,12 @@
     <?php if($appearance['appearance_cover']){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; }  ?>
     <script>
     setTimeout(function(){
-        $('#cover-image').fadeTo( "slow", 0 );
-    },2000);  
+        $('#cover-image').fadeTo(200, 0 );
+    },3000);  
     setTimeout(function(){
-        $('#cover-image').css('background-image', 'url(" <?= $bg_image ?> ")').fadeTo( "slow", 1 );
-    },2700);
-    $('.profile-thing' ).delay(3000).fadeTo( "slow", 1 );
+        $('#cover-image').css('background-image', 'url(" <?= $bg_image ?> ")').fadeTo(200, 1 );
+    },3200);
+    $('.profile-thing' ).delay(3300).fadeTo(200, 1 );
     </script>
     <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>

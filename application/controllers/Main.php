@@ -11,6 +11,15 @@ class Main extends CI_Controller {
  
 	public function preview2($user_name)
 	{
+		$today = time();
+		$this->db->select('*');
+		$this->db->from('campaign');
+		$this->db->where('campaign_start <', $today);
+		$this->db->where('campaign_end >', $today);
+		$count_campaign = $this->db->count_all_results();
+		$rand_campaign = rand(0,$count_campaign-1);
+		$data['campaign'] = $this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()[$rand_campaign];
+
 		$strip = str_replace('@', '', $user_name);
 		$queryProfile = $this->db->get_where('user', array('user_name' => $strip))->row_array();
 		$data['profile'] = $queryProfile;
@@ -67,7 +76,8 @@ class Main extends CI_Controller {
 			$data['pinned'] = $queryPinned;
 		}
 		
-		$this->load->view('templates/template_2', $data);
+		//$this->load->view('templates/template_2', $data);
+		$this->load->view('templates/template_with_ad', $data);
 		
 	}
 

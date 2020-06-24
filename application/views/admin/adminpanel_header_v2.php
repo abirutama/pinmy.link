@@ -84,15 +84,15 @@
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link <?php if($page=='sponsor'){ echo 'has-text-link'; } ?>">
-                        Sponsor
+                        Campaign
                     </a>
                     <div class="navbar-dropdown">
                         <a href="<?= base_url('admin/list/sponsor/'); ?>" class="navbar-item">
                             List Sponsor
                         </a>
                         <hr class="navbar-divider">
-                        <a href="<?= base_url('admin/sponsor_add'); ?>" class="navbar-item">
-                            Add New Sponsor
+                        <a href="<?= base_url('admin/list/campaign/'); ?>" class="navbar-item">
+                            List Campaign
                         </a>
                     </div>
                 </div>

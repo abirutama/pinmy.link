@@ -12,6 +12,20 @@ class Admin extends CI_Controller {
 		}
 	} 
 
+	public function campaign(){
+		/*
+		$today = time();
+		$this->db->select('*');
+		$this->db->from('campaign');
+		$this->db->where('campaign_start <', $today);
+		$this->db->where('campaign_end >', $today);
+		$count_campaign = $this->db->count_all_results();
+		$rand_campaign = rand(0,$count_campaign-1);
+		$data['campaign'] = $this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()[$rand_campaign];
+
+		print_r($data['campaign']);*/
+	}
+
 	public function list($table=null){
 		$list = $table;
 		if($list=='category'){
@@ -29,6 +43,13 @@ class Admin extends CI_Controller {
 			$data['list'] = $this->db->where('role_id', 2);
 			$data['list'] = $this->db->order_by('date_created', 'DESC');
             $data['list'] = $this->db->get('user');
+        }elseif($list=='campaign'){
+			$data['page'] = 'campaign';
+            $data['title'] = 'List Campaign';
+            $data['active'] = 'campaign';
+            $data['list'] = $this->db->select('campaign_title as Campaign Title, campaign_url as URL, from_unixtime(campaign_start, "%Y-%m-%d") as "Date Start", from_unixtime(campaign_end, "%Y-%m-%d") as "Date End", , campaign_id as ID');
+            $data['list'] = $this->db->order_by('campaign_start', 'asc');
+            $data['list'] = $this->db->get('campaign');
         }else{
             redirect('admin');
             die();

@@ -1,5 +1,10 @@
 <?php
-$if_local='';
+if(stristr($_SERVER['DOCUMENT_ROOT'], 'xampp')===false){
+    $if_local='';
+}else{
+    $if_local='/pinmy.link';
+}
+
 $PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
 $user_url = 'https://pinmy.link/@'.$user['user_name'];
 //html PNG location prefix
@@ -39,7 +44,7 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
             <img class="box" width="256px" src="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" alt=""style="margin:auto;">
             <br>
             <div class="notification is-info">
-                <p class="is-size-6"><b>Note:</b> This is your QR Profile. You can use the QR Code to any of your purposes. <a href="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" target="_blank">Download here</a></p>
+                <p class="is-size-6"><b>Note:</b> This is your URL Page QR Code. You can use the QR Code to any of your purposes. <a href="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" target="_blank">Download here</a></p>
             </div>
         </div>
         <hr>

@@ -29,6 +29,12 @@
                             }else{
                                 echo '<td class="has-text-danger">Inactive</td>';
                             }
+                        }elseif($field=='URL'){
+                            if($listItem[$field]=='#'){
+                                echo '<td>n/a</d>';
+                            }else{
+                                echo '<td><a href="'.$listItem[$field].'" target="_blank"><i class="fas fa-external-link-alt"></i></a></td>';
+                            }
                         }
                         else{
                             echo '<td>'.$listItem[$field].'</td>';
