@@ -1,18 +1,19 @@
 <?php
-$PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].'/assets/qr/temp/';
+$if_local='';
+$PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
 $user_url = 'https://pinmy.link/@'.$user['user_name'];
 //html PNG location prefix
-$PNG_WEB_DIR = $_SERVER['DOCUMENT_ROOT'].'/assets/qr/temp/';
+$PNG_WEB_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
 
-include ($_SERVER['DOCUMENT_ROOT']."/assets/qr/qrlib.php");
+include ($_SERVER['DOCUMENT_ROOT'].$if_local."/assets/qr/qrlib.php");
 
 //ofcourse we need rights to create temp dir
 if (!file_exists($PNG_TEMP_DIR))
     mkdir($PNG_TEMP_DIR);
 
 $filename = $PNG_TEMP_DIR.$user['user_name'].'.png';
-$errorCorrectionLevel = 'Q';
-$matrixPointSize = 6;
+$errorCorrectionLevel = 'H';
+$matrixPointSize = 10;
     //default data
     //echo 'You can provide data in GET parameter: <a href="?data=like_that">like that</a><hr/>';    
 QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);    
@@ -34,9 +35,12 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
     <div class="container box has-background-white">
         <h1 class="title is-size-4">My Profile</h1>
         <hr>
-        <label class="label">Your QR Code</label>
-        <div class="">
-            <img class="box" src="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" alt="">
+        <div class="container">
+            <img class="box" width="256px" src="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" alt=""style="margin:auto;">
+            <br>
+            <div class="notification is-info">
+                <p class="is-size-6"><b>Note:</b> This is your QR Profile. You can use the QR Code to any of your purposes. <a href="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" target="_blank">Download here</a></p>
+            </div>
         </div>
         <hr>
         <form action="<?= base_url('user/profile'); ?>" method="post">
