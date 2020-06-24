@@ -1,10 +1,10 @@
 <?php
-$PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].'/pinmy.link/assets/qr/temp/';
+$PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].'/assets/qr/temp/';
 $user_url = 'https://pinmy.link/@'.$user['user_name'];
 //html PNG location prefix
-$PNG_WEB_DIR = $_SERVER['DOCUMENT_ROOT'].'/pinmy.link/assets/qr/temp/';
+$PNG_WEB_DIR = $_SERVER['DOCUMENT_ROOT'].'/assets/qr/temp/';
 
-include ($_SERVER['DOCUMENT_ROOT']."/pinmy.link/assets/qr/qrlib.php");
+include ($_SERVER['DOCUMENT_ROOT']."/assets/qr/qrlib.php");
 
 //ofcourse we need rights to create temp dir
 if (!file_exists($PNG_TEMP_DIR))
