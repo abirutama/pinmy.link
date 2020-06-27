@@ -110,7 +110,6 @@
     </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="qr-info button is-success">Ok</button>
     </footer>
   </div>
 </div>
