@@ -1,6 +1,14 @@
+<?php
+    if($campaign==null){
+        $default_cover = base_url().'assets/img/cover/'.$appearance['appearance_cover'];
+    }else{
+        $default_cover = base_url('assets').'/img/sponsor/'.$campaign['campaign_image'];
+
+    }
+    
+?>
 <!DOCTYPE html>
 <html class="has-background-light">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,19 +35,19 @@
 
 <body>
     <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
-        <section id="cover" class="">
+        <section id="cover" style="margin-bottom:16px">
         <!-- http://localhost/pinmy.link/assets/img/sponsor/nike-ad.jpg -->
             <div id="cover-image" class="has-text-centered"
-                style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('http://localhost/pinmy.link/assets/img/sponsor/<?= $campaign['campaign_image'] ?>')">
-                <figure class="profile-thing image is-128x128" style="margin:auto; opacity:0">
+                style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('<?= $default_cover; ?>')">
+                <figure class="profile-thing image is-128x128" style="margin:auto;">
                     <img class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
                         src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>"
                         data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
                 </figure>
-                <h2 class="profile-thing title is-size-5 has-text-white" style="margin-top:8px;; opacity:0">@<?= $profile['user_name']; ?></h2>
+                <h2 class="profile-thing title is-size-5 has-text-white" style="margin-top:8px;">@<?= $profile['user_name']; ?></h2>
             </div>
         </section>
-        <section class="" style="margin-top:16px;">
+        <section class="" style="margin-bottom:16px;">
             <div class="socmed">
                 <?php if($social['social_twitter']){ ?>
                 <a class="button is-rounded box" style="padding:0.5em; margin:0px 4px" target="_blank"
@@ -56,12 +64,9 @@
                 <?php } ?>
             </div>
         </section>
-        <?php if(count($pinned)>0){ ?>
-        <section class="has-background-white" style="padding:2em 2em;margin-top:16px;border-radius:16px !important;">
-            <div class="container" style="margin-bottom:24px">
-                <h2 class="title is-size-5">
-                    Highlighted
-                </h2>
+        <?php if(count($card) > 7){ if(count($pinned)>0){ ?>
+        <section class="" style="padding:0.5em 2em;margin-bottom:4px;border-radius:16px !important;">
+            <div class="container" style="">
             </div>
             <div class="columns is-vcentered pinned">
                 <?php 
@@ -93,16 +98,13 @@
                         </div>
                     </a>
                 </div>
-                <?php } ?>
+                <?php }} ?>
             </div>
         </section>
         <?php } ?>
-        <section class="has-background-white"
-            style="margin-top:16px;padding:2em 2em 3em 2em; border-radius:16px !important;">
-            <div class="container" style="margin-bottom:24px">
-                <h2 class="title is-size-5">
-                    My Links
-                </h2>
+        <section class=""
+            style="padding:0.5em 2em 0.5em 2em; border-radius:16px !important;">
+            <div class="container" style="margin-bottom:0px">
             </div>
             <div class="columns is-vcentered is-multiline">
                 <?php 
@@ -155,6 +157,10 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <?php if($appearance['appearance_cover']){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; }  ?>
+    <?php if($campaign != null){ ?>
+    <style>
+        .profile-thing{opacity:0}
+    </style>
     <script>
     setTimeout(function(){
         $('#cover-image').fadeTo(200, 0 );
@@ -164,6 +170,8 @@
     },3200);
     $('.profile-thing' ).delay(3300).fadeTo(200, 1 );
     </script>
+    <?php } ?>
+
     <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
     <script>
@@ -220,7 +228,7 @@ $(document).ready(function() {
             {
                 breakpoint: 480,
                 settings: {
-                    infinite: true,
+                    infinite: false,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                 }

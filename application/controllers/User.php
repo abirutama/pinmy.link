@@ -12,20 +12,35 @@ class User extends CI_Controller {
 		}
 	} 
 
+	public function qr_info($user=null, $url=null)
+	{
+		if(stristr($_SERVER['DOCUMENT_ROOT'], 'xampp')===false){
+			$if_local='';
+		}else{
+			$if_local='/pinmy.link';
+		}
+		include ($_SERVER['DOCUMENT_ROOT'].$if_local."/assets/qr/qrlib.php");
+		
+		$errorCorrectionLevel = 'L';
+		$matrixPointSize = 10;
+		$url = base_url().$user.'/'.$url;
+		QRcode::png($url, false, $errorCorrectionLevel, $matrixPointSize, 4); 
+	}
+	
 	public function index(){
 		//set current page value
 		$data['page'] = 'link';
 		//getting user data by session
 		$data['user'] = $this->db->get_where('user', array('user_email' => $this->session->userdata('ses_email')))->row_array();
 		
-		$queryCard = $this->db->select('card_id, card_title');
+		$queryCard = $this->db->select('card_id, card_title, card_slug');
 		$queryCard = $this->db->order_by('card_id', 'DESC');
 		$queryCard = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
 		$data['card'] = $queryCard;
 
 		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
 		if($pinned){
-			$queryPinned = $this->db->select('card_id, card_title');
+			$queryPinned = $this->db->select('card_id');
 			$temp_array = explode(',',$pinned['pin_item']);
 			if($temp_array[0]=="no_pin1"){
 				$temp_array[0]=null;
@@ -57,7 +72,7 @@ class User extends CI_Controller {
 
 	public function profile(){
 		//set current page value
-		$data['page'] = 'profile';
+		$data['page'] = 'setting';
 		//getting user data by session
 		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
 		$data['social'] = $this->db->get_where('social', ['user_id' => $this->session->userdata('ses_id')])->row_array();

@@ -39,7 +39,7 @@ class Admin extends CI_Controller {
 			$data['page'] = 'user';
             $data['title'] = 'List User';
             $data['active'] = 'user';
-            $data['list'] = $this->db->select('from_unixtime(date_created, "%Y-%m-%d") as "Register Date", user_name as Username, user_email as Email, is_active as Status, user_id as ID');
+            $data['list'] = $this->db->select('date_created as "Register Date", user_name as Username, user_email as Email, is_active as Status, user_id as ID');
 			$data['list'] = $this->db->where('role_id', 2);
 			$data['list'] = $this->db->order_by('date_created', 'DESC');
             $data['list'] = $this->db->get('user');
@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 			$data['page'] = 'campaign';
             $data['title'] = 'List Campaign';
             $data['active'] = 'campaign';
-            $data['list'] = $this->db->select('campaign_title as Campaign Title, campaign_url as URL, from_unixtime(campaign_start, "%Y-%m-%d") as "Date Start", from_unixtime(campaign_end, "%Y-%m-%d") as "Date End", , campaign_id as ID');
+            $data['list'] = $this->db->select('campaign_title as Campaign Title, campaign_url as URL, campaign_start as "Start Date", campaign_end as "End Date", , campaign_id as ID');
             $data['list'] = $this->db->order_by('campaign_start', 'asc');
             $data['list'] = $this->db->get('campaign');
         }else{

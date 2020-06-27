@@ -33,12 +33,13 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="<?= base_url('user') ?>">Homepage</a></li>
+            <li class="is-active"><a href="#">Settings</a></li>
             <li class="is-active"><a href="#" aria-current="page">Profile</a></li>
         </ul>
     </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">My Profile</h1>
+        <h1 class="title is-size-4">Settings > Profile</h1>
         <hr>
         <div class="container">
             <img class="box" width="256px" src="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" alt=""style="margin:auto;">

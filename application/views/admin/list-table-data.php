@@ -35,6 +35,8 @@
                             }else{
                                 echo '<td><a href="'.$listItem[$field].'" target="_blank"><i class="fas fa-external-link-alt"></i></a></td>';
                             }
+                        }elseif($field=='Register Date' || $field=='Start Date' || $field=='End Date'){
+                            echo '<td>'. date('Y-m-d | h:i:s A', $listItem[$field]).'</d>';
                         }
                         else{
                             echo '<td>'.$listItem[$field].'</td>';

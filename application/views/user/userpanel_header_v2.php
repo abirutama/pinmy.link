@@ -17,6 +17,10 @@
     <title>User Panel | Pinmy.link</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"></script>
     <style>
     .cupad {
         padding: 1em
@@ -47,9 +51,6 @@
                 <a href="<?= base_url('user/'); ?>" class="navbar-item <?php if($page=='link'){ echo 'has-text-link'; } ?>">
                     My Links
                 </a>
-                <a href="<?= base_url('user/profile'); ?>" class="navbar-item <?php if($page=='profile'){ echo 'has-text-link'; } ?>">
-                    Profile
-                </a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
                         Settings
@@ -57,6 +58,10 @@
                     <div class="navbar-dropdown">
                         <a href="<?= base_url('user/setting/appearance'); ?>" class="navbar-item">
                             Appearance
+                        </a>
+                        <hr class="navbar-divider">
+                        <a href="<?= base_url('user/profile'); ?>" class="navbar-item">
+                            Profile
                         </a>
                         <hr class="navbar-divider">
                         <a href="<?= base_url('user/setting/seo'); ?>" class="navbar-item">

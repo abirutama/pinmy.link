@@ -2,7 +2,7 @@
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="<?= base_url('user') ?>">Homepage</a></li>
-            <li class="is-active"><a href="#">Setting</a></li>
+            <li class="is-active"><a href="#">Settings</a></li>
             <li class="is-active"><a href="#" aria-current="page">SEO</a></li>
         </ul>
     </nav>

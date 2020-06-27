@@ -18,8 +18,12 @@ class Main extends CI_Controller {
 		$this->db->where('campaign_end >', $today);
 		$count_campaign = $this->db->count_all_results();
 		$rand_campaign = rand(0,$count_campaign-1);
-		$data['campaign'] = $this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()[$rand_campaign];
-
+		if($this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()){
+			$data['campaign'] = $this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()[$rand_campaign];
+		}else{
+			$data['campaign'] = null;
+		}
+		
 		$strip = str_replace('@', '', $user_name);
 		$queryProfile = $this->db->get_where('user', array('user_name' => $strip))->row_array();
 		$data['profile'] = $queryProfile;
