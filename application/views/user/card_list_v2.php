@@ -104,7 +104,10 @@
     </header>
     <section id="qr-results" class="modal-card-body">
       <!-- Content ... -->
-      <img id="qr-result" width="100%" src="https://api.jquery.com/jquery-wp-content/themes/jquery/content/donate.png" alt="">
+      <img id="qr-result" width="100%" src="" alt="">
+      <div class="notification is-info">
+        <p class="is-size-6"><b>Note:</b> You can use it to any of your purposes. <a id="download-qr" href="" target="_blank">Download here</a></p>
+    </div>
     </section>
     <footer class="modal-card-foot">
       <button class="qr-info button is-success">Ok</button>
@@ -123,6 +126,7 @@ $('.qr-info').click(function() {
 $('.qr-generate').click(function() {
     var url_data = '<?= base_url("user/qr_info/")?>'+ '@<?= $user['user_name'] ?>' +'/'+$(this).data('url');
     $( "#qr-result" ).attr('src', url_data );
+    $( "#download-qr" ).attr('href', url_data );
 
 });
 </script>
