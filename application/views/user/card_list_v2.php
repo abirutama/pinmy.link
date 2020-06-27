@@ -14,7 +14,7 @@
             <p class="panel-heading has-background-info has-text-white">
                 My Links
             </p>
-            <div class="panel-block cupad" style="justify-content: flex-end">
+            <div class="panel-block cupad" style="justify-content: center">
                 <div class="field has-addons">
                     <p class="control">
                         <a href="<?= base_url('user/addcard') ?>" class="button is-link is-outlined">
@@ -36,18 +36,18 @@
                     <?php } ?>
                 </div>
             </div>
-
+            <?php if(count($card) > 0){ ?>
             <div class="panel-block cupad">
-                <table class="table">
+                <table class="table" width="100%">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th style="width:60px">#</th>
                             <th>Title</th>
-                            <th><abbr title="Action">Act</abbr></th>
+                            <th style="width:100px"><abbr title="Action">Act</abbr></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(count($card) > 0){
+            <?php           
             foreach ($card as $key=>$cardItem){
             ?>
                         <tr>
