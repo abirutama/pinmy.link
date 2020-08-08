@@ -25,8 +25,6 @@
                 <br>
                 <div class="control">
                     <button class="button is-link is-fullwidth">Sign In</button>
-                    <div class="g-signin2" data-onsuccess="onSignIn">Sign With Google</div>
-                    <a href="#" class="g-signout2" onclick="signOut();">Signout</a>
                 </div>
 
                 <hr>
