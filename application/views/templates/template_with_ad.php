@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= scoup(strtolower($profile['user_name']).'\'s Page'); ?></title>
+    <title><?= scoup($seo['meta_title']); ?></title>
     <meta name="description" content="<?= scoup($seo['meta_description']); ?>">
     <meta name="keyword" content="<?= scoup($seo['meta_keyword']); ?>">
     <?php if($seo['meta_robot']==0){ ?>
@@ -156,7 +156,7 @@
     </figure>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <?php if($appearance['appearance_cover']){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; }  ?>
+    <?php if($appearance['appearance_cover'] != null){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; }  ?>
     <?php if($campaign != null){ ?>
     <style>
         .profile-thing{opacity:0}

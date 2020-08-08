@@ -41,6 +41,7 @@
             <p class="help is-danger">*Allowed image extension: jpg & jpeg</p>
             <p class="help is-danger">*Image resolution will be shrinked to 128x128 pixels (1:1 ratio)</p>
             <hr>
+            <!-- 
             <div class="field">
                 <label class="label">Cover Image</label>
                 <figure class="image is-16by9" style="margin:auto;">
@@ -71,7 +72,7 @@
             <p class="help is-danger">*Allowed image extension: jpg & jpeg</p>
             <p class="help is-danger">*Image resolution is 640x230 pixels</p>
             <hr>
-            <!-- THIS FEATURE UNDER DEVELOPMENT
+            THIS FEATURE UNDER DEVELOPMENT
             <div class="field">
                 <label class="label">Text Color</label>
                 <div class="field has-addons">

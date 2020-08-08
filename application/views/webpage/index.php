@@ -20,24 +20,26 @@
   <nav class="navbar is-white" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item has-text-weight-bold" href="#">
-        Pinmylink
+        Pinmy.link
         <!---<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">-->
         </a>
-
+        <!---
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         </a>
+        -->
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
         <!--
+        <div class="navbar-start">
+        
         <a class="navbar-item">
             Blog
         </a>
-        -->
+        
         <a class="navbar-item">
             Features
         </a>
@@ -47,7 +49,9 @@
         <a class="navbar-item">
             Support Us
         </a>
+        
         </div>
+        -->
         </div>
 
         <div class="navbar-end">
@@ -76,16 +80,17 @@
         </div>
     </div>
     </nav>
-    <section class="hero is-light is-medium">
-        <div class="hero-body">
+    <section class="hero is-light is-medium" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/untitled.svg');background-size:cover">
+        <div class="hero-body" style="background: rgb(50,136,220);
+background: linear-gradient(115deg, rgba(50,136,220,1) 0%, rgba(9,9,121,0) 67%);">
             <div class="container">
-                <h1 class="title is-1">
-                The Only Link You Needed 
+                <h1 class="title is-1 has-text-weight-bold" style="text-shadow: 1px 1px 3px #fff;">
+                Navigate Your Content
                 </h1>
-                <h2 class="subtitle">
+                <h2 class="subtitle" style="text-shadow: 1px 1px 3px #fff;">
                 It's like a map, one link to go to anywhere!
                 </h2>
-                <a href="<?= base_url('auth/register'); ?>" class="button is-large">Free Register Here</a>
+                <a href="<?= base_url('auth/register'); ?>" class="button is-medium is-success">Free Register Here</a>
             </div>
         </div>
     </section>
@@ -94,22 +99,14 @@
             <div class="column">
                 <h4 class="title is-4">Create Your Page</h4>
                 <p>Create your own page by registering a free account and choose your username as your page address.</p><br>
-                <img class="image" src="<?= base_url('assets/img/frontpage/new/')?>undraw_portfolio_essv.svg" width="220px" alt="">
             </div>
             <div class="column">
                 <h4 class="title is-4">Update Your Content</h4>
                 <p>Update your page by adding content to it. Write a title, put an article link, and the thumbnail image from related content.</p><br>
-                <img class="image" src="<?= base_url('assets/img/frontpage/new/')?>undraw_design_objectives_fy1r.svg" width="220px" alt="">
-            </div>
-            <div class="column">
-                <h4 class="title is-4">Beautify With Themes</h4>
-                <p>Choose your favorite theme from ton of prebuilt themes. You don't like it? try the other themes</p><br>
-                <img class="image" src="<?= base_url('assets/img/frontpage/new/')?>undraw_work_in_progress_uhmv.svg" width="300px" alt="">
             </div>
             <div class="column">
                 <h4 class="title is-4">Embed Your Link</h4>
                 <p>If you are ready, embed the only your magic link to all your social account's bio.</p><br>
-                <img class="image" src="<?= base_url('assets/img/frontpage/new/')?>undraw_social_expert_07r8.svg" width="300px" alt="">
             </div>
             
         </div>
@@ -117,7 +114,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-            Copyright &copy;2020 <strong>Pin My Link</strong>. Powered by <strong>Bulma</strong> and <strong>Undraw.co</strong>. The website content
+            Copyright &copy;2020 <strong>Pinmy.link</strong>. Powered by <strong>Bulma</strong> and <strong>Undraw.co</strong>. The website content
             is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
             </p>
         </div>

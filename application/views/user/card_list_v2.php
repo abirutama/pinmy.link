@@ -85,9 +85,10 @@
     }else{
             ?>
             <div class="panel-block cupad">
-                <span class="has-text-centered" style="width:100%">
-                    No Links
-                </span>
+                <div class="has-text-centered" style="width:100%; padding:16px">
+                <img class="image" src="<?= base_url('assets/img/frontpage/new/')?>undraw_blank_canvas_3rbb.svg" width="220px" alt="" style="margin:auto; margin-bottom:24px;">
+                    You don't have any links yet.<br> Let's <a href="<?= base_url('user/addcard') ?>">add new one</a>!
+                </div>
             </div>
             <?php
             }
