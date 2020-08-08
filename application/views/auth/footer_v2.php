@@ -12,7 +12,8 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  alert(profile.getName());
+  //alert(profile.getName());
+  $(location).attr('href','https://pinmy.link/user');
 }
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
