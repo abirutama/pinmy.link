@@ -55,18 +55,24 @@ class Auth extends CI_Controller {
 		$this->load->view('auth/google_v1');
 	}
 	public function sign_google(){
+		
 		$username_auto = $this->input->post('email', true);
-		$username_auto = str_replace("@gmail.com","",$username_auto);
-		$data_user = [
-			'user_name' => $username_auto,
-			'user_email' => htmlspecialchars($this->input->post('email', true)),
-			'user_pass' => password_hash($this->input->post('email'), PASSWORD_DEFAULT),
-			'role_id' => 2,
-			'is_active' => 1,
-			'date_created' => time()
-		];
-		$this->db->insert('user', $data_user);
-		$new_user_id = $this->db->insert_id();
+		$user = $this->db->get_where('user', ['user_email' => $username_auto])->row_array();
+		if($user){
+			redirect('user');
+		}else{
+			$username_auto = str_replace("@gmail.com","",$username_auto);
+			$data_user = [
+				'user_name' => $username_auto,
+				'user_email' => htmlspecialchars($this->input->post('email', true)),
+				'user_pass' => password_hash($this->input->post('email'), PASSWORD_DEFAULT),
+				'role_id' => 2,
+				'is_active' => 1,
+				'date_created' => time()
+			];
+			$this->db->insert('user', $data_user);
+			$new_user_id = $this->db->insert_id();
+		}
 	}
 
 	public function register()
