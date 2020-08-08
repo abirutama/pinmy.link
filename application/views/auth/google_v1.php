@@ -15,9 +15,8 @@
 <script>
     function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done(function( data ) {
-        alert( "Data Loaded: " + data );
-    });
+    $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done();
+    $(location).attr('href',<?= base_url('auth') ?>);
     }
 
     function signOut() {

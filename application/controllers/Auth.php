@@ -11,7 +11,8 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata('ses_email')){
-			redirect('user');
+			//redirect('user');
+			echo 'already registered';
 		}
 		$this->form_validation->set_rules('email-login', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('pass-login', 'Password', 'trim|required');
