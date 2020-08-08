@@ -11,8 +11,7 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata('ses_email')){
-			//redirect('user');
-			echo 'already registered';
+			redirect('user');
 		}
 		$this->form_validation->set_rules('email-login', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('pass-login', 'Password', 'trim|required');
@@ -60,7 +59,7 @@ class Auth extends CI_Controller {
 		$username_auto = $this->input->post('email', true);
 		$user = $this->db->get_where('user', ['user_email' => $username_auto])->row_array();
 		if($user){
-			redirect('user');
+			
 		}else{
 			$username_auto = str_replace("@gmail.com","",$username_auto);
 			$data_user = [
