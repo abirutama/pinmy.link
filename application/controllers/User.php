@@ -470,11 +470,11 @@ class User extends CI_Controller {
 			];
 
 			if($this->db->update('card_pinned', $data_pinned, array('user_id' => $this->session->userdata('ses_id')))){
-				$this->session->set_flashdata('message', '<div class="notification is-success">Profile Update Successfully!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-success">Highlight Update Successfully!</div>');
 				$error = $this->db->error();
 				redirect('user');
 			}else{
-				$this->session->set_flashdata('message', '<div class="notification is-danger">Profile Update Failed!</div>');
+				$this->session->set_flashdata('message', '<div class="notification is-danger">Highlight Update Failed!</div>');
 				$error = $this->db->error();
 				redirect('user/highlight');
 			}

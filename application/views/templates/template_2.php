@@ -194,10 +194,10 @@ $(document).ready(function() {
     $('.pinned').slick({
         infinite: false,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
         dots: true,
         responsive: [{
                 breakpoint: 767,
@@ -209,7 +209,7 @@ $(document).ready(function() {
             {
                 breakpoint: 480,
                 settings: {
-                    infinite: true,
+                    infinite: false,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                 }

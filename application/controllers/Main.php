@@ -8,7 +8,11 @@ class Main extends CI_Controller {
 		//echo 'under development';
 		$this->load->view('webpage/index');
 	}
- 
+	
+	public function new_template(){
+		$this->load->view('templates/new_template');
+	}
+
 	public function preview2($user_name)
 	{
 		$today = time();
@@ -40,7 +44,7 @@ class Main extends CI_Controller {
 		//print_r($test);
 		
 		//$queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['user_cover']))->row_array();
-		$queryCard = $this->db->order_by('is_highlighted desc, date_created desc');
+		$queryCard = $this->db->order_by('date_created desc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 		$data['card'] = $queryCard;
 

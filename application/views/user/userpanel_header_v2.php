@@ -69,6 +69,7 @@
                         </a>
                     </div>
                 </div>
+                <!--
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Help
@@ -83,6 +84,7 @@
                         </a>
                     </div>
                 </div>
+                -->
             </div>
 
             <div class="navbar-end">
