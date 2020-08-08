@@ -16,7 +16,7 @@
     function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()});
-    $(location).attr('href',<?= base_url('auth') ?>);
+    $(location).attr('href', ''+<?= base_url('auth') ?>);
     }
 
     function signOut() {
