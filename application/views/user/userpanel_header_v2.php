@@ -37,13 +37,12 @@
 </head>
 <script>
 function signOut() {
-    gapi.auth2.getAuthInstance().signOut();
-    var urlr = "<?= base_url('auth/logout') ?>";
-    $(location).attr('href', urlr);
-    /*var auth2 = gapi.auth2.getAuthInstance();
+    var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-    console.log('User signed out.');
-    });*/
+        console.log('User signed out.');
+        var urlr = "<?= base_url('auth/logout') ?>";
+        $(location).attr('href', urlr);
+    });
 }
 </script>
 
