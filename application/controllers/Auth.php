@@ -59,7 +59,7 @@ class Auth extends CI_Controller {
 		$username_auto = $this->input->post('email', true);
 		$user = $this->db->get_where('user', ['user_email' => $username_auto])->row_array();
 		if($user){
-			$user['user_email'];
+			echo $user['user_email'];
 		}else{
 			$username_auto = str_replace("@gmail.com","",$username_auto);
 			$data_user = [
