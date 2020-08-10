@@ -14,10 +14,12 @@
 <a href="#" onclick="signOut();">Signout</a>
 <script>
     function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    var urlr = "<?= base_url('auth') ?>";
-    $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()});
-    $(location).attr('href', urlr);
+        var profile = googleUser.getBasicProfile();
+        var urlr = "<?= base_url('auth') ?>";
+        $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done(function(data){
+            //$(location).attr('href', urlr);
+            alert(data);
+        });
     }
 
     function signOut() {
