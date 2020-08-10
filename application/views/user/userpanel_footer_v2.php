@@ -23,7 +23,7 @@ $( document ).ready(function() {
           $(location).attr('href', urlr);
       });
   }
-}
+});
 </script>
 <script>
   //File Name
