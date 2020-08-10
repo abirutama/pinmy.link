@@ -60,7 +60,6 @@ class Auth extends CI_Controller {
 		$user = $this->db->get_where('user', ['user_email' => $username_auto])->row_array();
 		if($user){
 			$this->session->set_userdata('ses_email', $user['user_email']);
-			redirect('user');
 		}else{
 			$username_auto = str_replace("@gmail.com","",$username_auto);
 			$data_user = [

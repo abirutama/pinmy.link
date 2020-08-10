@@ -15,10 +15,10 @@
 <script>
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
-        var urlr = "<?= base_url('auth') ?>";
+        var urlr = "<?= base_url('user') ?>";
         $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done(function(data){
-            //$(location).attr('href', urlr);
-            alert(data);
+            $(location).attr('href', urlr);
+            //alert(data);
         });
     }
 
