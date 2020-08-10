@@ -191,8 +191,8 @@
     }, 3000);
     setTimeout(function() {
         $('#cover-image').css('background-image', 'url(" <?= $bg_image ?> ")').fadeTo(200, 1);
-    }, 3200);
-    $('.profile-thing').delay(3300).fadeTo(200, 1);
+    }, 2200);
+    $('.profile-thing').delay(2300).fadeTo(200, 1);
     </script>
     <?php } ?>
 
@@ -220,36 +220,6 @@ close_modal.onclick = function() {
 }
 
 $(document).ready(function() {
-    $('.socmed').slick({
-        infinite: false,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        slidesToShow: 5,
-        slidesToScroll: 3,
-        arrows: false,
-        dots: false,
-        responsive: [{
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    centerMode: true,
-                    centerPadding: '80px'
-                }
-            }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
-        ]
-    });
     $('.pinned').slick({
         infinite: false,
         autoplay: true,
