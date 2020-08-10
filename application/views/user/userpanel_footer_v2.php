@@ -5,7 +5,7 @@
       <p class="modal-card-title">Are you sure want to sign out?</p>
     </header>
     <footer class="modal-card-foot">
-      <a href="<?= base_url('auth/logout') ?>" class="button is-danger is-outlined" onclick="signOut();">Sign out</a>
+      <a href="#" class="button is-danger is-outlined" onclick="signOut();">Sign out</a>
       <button class="button logout-cancel has-background-light is-outlined">Cancel</button>
     </footer>
   </div>
