@@ -10,8 +10,7 @@
     <title>Test Google Login</title>
 </head>
 <body>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<a href="#" onclick="signOut();">Signout</a>
+<div class="g-signin2" onclick="onSignIn();"></div>
 <script>
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
@@ -19,13 +18,6 @@
         $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done(function(data){
             $(location).attr('href', urlr);
             //alert(data);
-        });
-    }
-
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log('User signed out.');
         });
     }
 </script>
