@@ -11,7 +11,6 @@
   </div>
 </div>
 <script>
-$( document ).ready(function() {
   gapi.load('auth2', function(){
       gapi.auth2.init();
   });
@@ -23,7 +22,6 @@ $( document ).ready(function() {
           $(location).attr('href', urlr);
       });
   }
-});
 </script>
 <script>
   //File Name
