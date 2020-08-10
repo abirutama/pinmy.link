@@ -188,7 +188,7 @@
     <script>
     setTimeout(function() {
         $('#cover-image').fadeTo(200, 0);
-    }, 3000);
+    }, 2000);
     setTimeout(function() {
         $('#cover-image').css('background-image', 'url(" <?= $bg_image ?> ")').fadeTo(200, 1);
     }, 2200);
