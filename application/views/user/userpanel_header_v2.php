@@ -35,19 +35,7 @@
     }
     </style>
 </head>
-<script>
-gapi.load('auth2', function(){
-    gapi.auth.init();
-});
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-        var urlr = "<?= base_url('auth/logout') ?>";
-        $(location).attr('href', urlr);
-    });
-}
-</script>
+
 
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation" style="border-top:6px #3298dc solid">
