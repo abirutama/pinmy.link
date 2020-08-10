@@ -147,11 +147,10 @@
         <div id="modal-social" class="modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Social & Account</p>
+                <header class="modal-card-head" style="background:#dbdbdb00; border: none">
                     <button id="modal-close" class="delete" aria-label="close"></button>
                 </header>
-                <section class="modal-card-body">
+                <section class="modal-card-body" style="background:#dbdbdb00">
                 <div class="buttons">
                 <?php if($social['social_twitter']){ ?>
                 <a class="button is-fullwidth" target="_blank"
@@ -168,8 +167,6 @@
                 <?php } ?>
             </div>
                 </section>
-                <footer class="modal-card-foot">
-                </footer>
             </div>
         </div>
     </div>
