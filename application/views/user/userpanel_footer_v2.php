@@ -5,22 +5,12 @@
       <p class="modal-card-title">Are you sure want to sign out?</p>
     </header>
     <footer class="modal-card-foot">
-      <a href="#" class="button is-danger is-outlined" onclick="signOut();">Sign out</a>
+      <a href="<?= base_url('auth/logout') ?>" class="button is-danger is-outlined">Sign out</a>
       <button class="button logout-cancel has-background-light is-outlined">Cancel</button>
     </footer>
   </div>
 </div>
-<script>
-var profile = googleUser.getBasicProfile();
-  function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-          console.log('User signed out.');
-          var urlr = "<?= base_url('auth/logout') ?>";
-          $(location).attr('href', urlr);
-      });
-  }
-</script>
+
 <script>
   //File Name
   function readURL(input, id) {

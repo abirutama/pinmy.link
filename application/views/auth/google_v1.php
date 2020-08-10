@@ -10,36 +10,20 @@
     <title>Test Google Login</title>
 </head>
 <body>
-<div id="loginbtn" class="g-signin2" data-onsuccess="onSignUp"></div>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<a href="#" onclick="signOut();">Signout</a>
 <script>
-/*
     function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        var urlr = "<?= base_url('user') ?>";
-        $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done(function(data){
-            $(location).attr('href', urlr);
-            //alert(data);
-        });
+    var profile = googleUser.getBasicProfile();
+    var urlr = "<?= base_url('auth') ?>";
+    $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()});
+    $(location).attr('href', urlr);
     }
-    */
-</script>
-<script>
-   function init() {
-        gapi.load('auth2', function() {
-            auth2 = gapi.auth2.init({
-                client_id: '63811034298-fa6j1c341e1tsr6noaigm8nj1p1n8alf.apps.googleusercontent.com',
-                cookiepolicy: 'single_host_origin',
-                scope: 'profile email'
-            });
-            element = document.getElementById('glogin');
-            auth2.attachClickHandler('#loginbtn', {}, onSignUp, onFailure);
-        });
-    }
-    function onSignUp(googleUser) {
-      var profile = googleUser.getBasicProfile();
-      $.post( "<?= base_url('auth/sign_google') ?>",{email: profile.getEmail()}).done(function(data){
-            $(location).attr('href', urlr);
-            //alert(data);
+
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        console.log('User signed out.');
         });
     }
 </script>
