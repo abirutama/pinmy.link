@@ -50,7 +50,9 @@
             <div id="cover-image" class="has-text-centered"
                 style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('<?= $default_cover; ?>')">
                 <figure class="profile-thing image is-128x128" style="margin:auto;">
+                <?php if($social['social_twitter'] || $social['social_facebook'] || $social['social_instagram']){ ?>
                 <div id="modal-open" class="button bs is-link" style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i class="fas fa-link is-size-5 blink_me"></i></div>
+                <?php } ?> 
                     <img class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
                         src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>"
                         data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
