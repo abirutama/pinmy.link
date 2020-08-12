@@ -217,6 +217,8 @@ close_modal.onclick = function() {
     modal_container.classList.toggle('is-active');
     html_tag.classList.toggle('is-clipped');
 }
+</script>
+<script>
 
 $(document).ready(function() {
     $('.pinned').slick({
