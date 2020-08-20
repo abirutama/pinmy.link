@@ -35,7 +35,7 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
     <div class="tabs is-centered">
   <ul>
     <li class="is-active"><a href="<?= base_url('user/setting/profile'); ?>">Profile</a></li>
-    <li><a href="<?= base_url('user/setting/website'); ?>">Websites</a></li>
+    <li><a href="<?= base_url('user/setting/website'); ?>">Website</a></li>
     <li><a href="<?= base_url('user/setting/appearance'); ?>">Theme</a></li>
     <li><a href="<?= base_url('user/setting/seo'); ?>">SEO</a></li>
   </ul>
