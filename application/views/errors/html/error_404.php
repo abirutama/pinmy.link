@@ -58,7 +58,7 @@ p {
 </head>
 <body>
 	<div style="max-width:400px; margin:auto">	
-		<img src="assets/img/frontpage/new/undraw_page_not_found_su7k.svg" width="100%">
+		<img src="undraw_page_not_found_su7k.svg" width="100%">
 		<h2 style="text-align:center">404 Page Not Found</h3>
 	</div>
 </body>
