@@ -2,18 +2,9 @@
     $pinitem = array_column($pinned, 'card_id');
 ?>
 <section class="section" style="max-width: 800px; margin:auto">
-    <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
-            <li class="is-active"><a href="#" aria-current="page">My Link</a></li>
-        </ul>
-    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div>
         <nav class="panel has-background-white">
-            <p class="panel-heading has-background-info has-text-white">
-                My Links
-            </p>
             <div class="panel-block cupad" style="justify-content: center">
                 <div class="field has-addons">
                     <p class="control">
@@ -21,7 +12,7 @@
                             <span class="icon is-small">
                                 <i class="fas fa-plus"></i>
                             </span>
-                            <span> New Link</span>
+                            <span> New Content</span>
                         </a>
                     </p>
                     <?php if(count($card) > 7){ ?>
@@ -107,7 +98,7 @@
       <!-- Content ... -->
       <img id="qr-result" width="100%" src="" alt="">
       <div class="notification is-info">
-        <p class="is-size-6"><b>Note:</b> You can use it to any of your purposes. <a id="download-qr" href="" target="_blank">Download here</a></p>
+        <p class="is-size-6"><b>Note:</b> This is your QR Content Address. Audience will be redirected to your content after scan it. <a id="download-qr" href="" target="_blank">Download here</a></p>
     </div>
     </section>
     <footer class="modal-card-foot">

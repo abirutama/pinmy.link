@@ -1,14 +1,7 @@
 <section class="section" style="max-width: 600px; margin:auto">
-    <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
-            <li><a href="<?= base_url('user') ?>">My Link</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Edit Link</a></li>
-        </ul>
-    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">Edit Link</h1>
+        <h1 class="title is-size-4">Edit Content</h1>
         <hr>
         <form action="<?= base_url('user/editcard/').$card['card_id']; ?>" method="post">
             <div class="field">

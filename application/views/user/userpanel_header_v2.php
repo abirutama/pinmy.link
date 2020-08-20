@@ -49,26 +49,11 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a href="<?= base_url('user/'); ?>" class="navbar-item <?php if($page=='link'){ echo 'has-text-link'; } ?>">
-                    My Links
+                    My Content
                 </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
-                        Settings
-                    </a>
-                    <div class="navbar-dropdown">
-                        <a href="<?= base_url('user/setting/appearance'); ?>" class="navbar-item">
-                            Appearance
-                        </a>
-                        <hr class="navbar-divider">
-                        <a href="<?= base_url('user/profile'); ?>" class="navbar-item">
-                            Profile
-                        </a>
-                        <hr class="navbar-divider">
-                        <a href="<?= base_url('user/setting/seo'); ?>" class="navbar-item">
-                            SEO
-                        </a>
-                    </div>
-                </div>
+                <a href="<?= base_url('user/setting/profile'); ?>" class="navbar-item <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
+                    Settings
+                </a>
                 <!--
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
@@ -103,7 +88,7 @@
             </div>
         </div>
     </nav>
-    <div class="notification is-warning" style="margin:0">
-        Don't forget to embed this link to your social media's bio: <a target="_blank"
+    <div class="notification is-info" style="margin:0">
+        Put this to your social media's bio: <a target="_blank"
             href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
     </div>

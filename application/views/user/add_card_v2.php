@@ -1,18 +1,11 @@
 <section class="section" style="max-width: 600px; margin:auto">
-    <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
-            <li><a href="<?= base_url('user') ?>">My Link</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Add New Link</a></li>
-        </ul>
-    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">Add New Link</h1>
+        <h1 class="title is-size-4">Add New Content</h1>
         <hr>
         <form action="<?= base_url('user/addcard'); ?>" method="post">
             <div class="field">
-                <label class="label">Title</label>
+                <label class="label">Content Title</label>
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" maxlength="120" name="link-title" type="text"

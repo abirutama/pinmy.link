@@ -1,18 +1,11 @@
 <section class="section" style="max-width: 600px; margin:auto">
-    <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="<?= base_url('user') ?>">Homepage</a></li>
-            <li><a href="<?= base_url('user') ?>">My Link</a></li>
-            <li class="is-active"><a href="#" aria-current="page">Edit Highlighted Links</a></li>
-        </ul>
-    </nav>
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-        <h1 class="title is-size-4">Edit Highlighted Links</h1>
+        <h1 class="title is-size-4">Edit Highlighted Contents</h1>
         <hr>
         <form action="<?= base_url('user/highlight'); ?>" method="post">
             <div class="field">
-                <label class="label">Link 1</label>
+                <label class="label">Content 1</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[0]">
@@ -27,7 +20,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Link 2</label>
+                <label class="label">Content 2</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[1]">
@@ -42,7 +35,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Link 3</label>
+                <label class="label">Content 3</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[2]">
@@ -57,7 +50,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Link 4</label>
+                <label class="label">Content 4</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[3]">
