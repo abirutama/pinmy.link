@@ -31,28 +31,40 @@
     .bs {
         box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
     }
+
     .blink_me {
-    animation: blinker 1.5s linear infinite;
+        animation: blinker 1.5s linear infinite;
     }
 
     @keyframes blinker {
-    50% {
-        opacity: 0;
-    }
+        50% {
+            opacity: 0;
+        }
     }
     </style>
 </head>
 
 <body>
+    <?php 
+        //echo count($social);
+        //print_r($social);
+        if($social['other_website'] || $social['ecom_bukalapak'] || $social['ecom_lazada'] || $social['ecom_shopee'] || $social['ecom_tokopedia'] || $social['social_facebook'] || $social['social_twitter'] || $social['social_instagram']){
+            $social_button = true;
+        }else{
+            $social_button = false;
+        }
+    ?>
     <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" style="margin-bottom:24px">
             <!-- http://localhost/pinmy.link/assets/img/sponsor/nike-ad.jpg -->
             <div id="cover-image" class="has-text-centered"
                 style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('<?= $default_cover; ?>')">
                 <figure class="profile-thing image is-128x128" style="margin:auto;">
-                <?php if($social['social_twitter'] || $social['social_facebook'] || $social['social_instagram']){ ?>
-                <div id="modal-open" class="button bs is-link" style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i class="fas fa-link is-size-5 blink_me"></i></div>
-                <?php } ?> 
+                    <?php if($social_button){ ?>
+                    <div id="modal-open" class="button bs is-link"
+                        style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i
+                            class="fas fa-link is-size-5 blink_me"></i></div>
+                    <?php } ?>
                     <img class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
                         src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>"
                         data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
@@ -150,24 +162,44 @@
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head" style="background:#dbdbdb00; border: none">
-                    <button id="modal-close" class="delete" aria-label="close"></button>
+                <i class="far fa-times-circle has-text-white is-size-3" id="modal-close" aria-label="close"></i> 
                 </header>
                 <section class="modal-card-body" style="background:#dbdbdb00">
-                <div class="buttons">
-                <?php if($social['social_twitter']){ ?>
-                <a class="button is-fullwidth" target="_blank"
-                    href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i
-                        class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i> Twitter</a>
-                <?php } if($social['social_facebook']){ ?>
-                <a class="button is-fullwidth" target="_blank"
-                    href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i
-                        class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i> Facebook</a>
-                <?php } if($social['social_instagram']){ ?>
-                <a class="button is-fullwidth" target="_blank"
-                    href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i
-                        class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i> Instagram</a>
-                <?php } ?>
-            </div>
+                    <div class="buttons">
+                        <?php if($social['other_website']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://<?= scoup($social['other_website']) ?>"><i
+                                class="fas fa-fw fa-globe is-size-4 has-text-grey-dark"></i> Website</a>
+                        <?php } if($social['ecom_bukalapak']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>"><i
+                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Bukalapak</a>
+                        <?php } if($social['ecom_lazada']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>"><i
+                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Lazada</a>
+                        <?php } if($social['ecom_shopee']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>"><i
+                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Shopee</a>
+                        <?php } if($social['ecom_tokopedia']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>"><i
+                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Tokopedia</a>
+                        <?php } if($social['social_twitter']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i
+                                class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i> Twitter</a>
+                        <?php } if($social['social_facebook']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i
+                                class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i> Facebook</a>
+                        <?php } if($social['social_instagram']){ ?>
+                        <a class="button is-fullwidth" target="_blank"
+                            href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i
+                                class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i> Instagram</a>
+                        <?php } ?>
+                    </div>
                 </section>
             </div>
         </div>
@@ -219,7 +251,6 @@ close_modal.onclick = function() {
 }
 </script>
 <script>
-
 $(document).ready(function() {
     $('.pinned').slick({
         infinite: false,

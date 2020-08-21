@@ -96,12 +96,22 @@ class User extends CI_Controller {
 				$this->load->view('user/setting_2', $data);
 				$this->load->view('user/userpanel_footer_v2', $data);
 			}else{
+				$form_website = strtolower($this->input->post('other-website'));
+				$form_bukalapak = strtolower($this->input->post('ecom-bukalapak'));
+				$form_lazada = strtolower($this->input->post('ecom-lazada'));
+				$form_shopee = strtolower($this->input->post('ecom-shopee'));
+				$form_tokopedia = strtolower($this->input->post('ecom-tokopedia'));
 				$form_twitter = strtolower($this->input->post('social-twitter'));
 				$form_facebook = strtolower($this->input->post('social-facebook'));
 				$form_instagram = strtolower($this->input->post('social-instagram'));
 				$form_user_id = $this->session->userdata('ses_id');
 
 				$data_social = [
+					'other_website' => $form_website,
+					'ecom_bukalapak' => $form_bukalapak,
+					'ecom_lazada' => $form_lazada,
+					'ecom_shopee' => $form_shopee,
+					'ecom_tokopedia' => $form_tokopedia,
 					'social_twitter' => $form_twitter,
 					'social_facebook' => $form_facebook,
 					'social_instagram' => $form_instagram,
@@ -250,7 +260,7 @@ class User extends CI_Controller {
 
 			if($this->form_validation->run() == false){
 				$this->load->view('user/userpanel_header_v2', $data);
-				$this->load->view('user/settingb_4', $data);
+				$this->load->view('user/setting_4', $data);
 				$this->load->view('user/userpanel_footer_v2', $data);
 			}else{
 				$chosen_title = $this->input->post('meta-title');

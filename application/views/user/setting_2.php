@@ -1,17 +1,86 @@
 <section class="section" style="max-width: 600px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
     <div class="container box has-background-white">
-    <div class="tabs is-centered">
-  <ul>
-    <li><a href="<?= base_url('user/setting/profile'); ?>">Profile</a></li>
-    <li class="is-active"><a href="<?= base_url('user/setting/website'); ?>">Website</a></li>
-    <li><a href="<?= base_url('user/setting/appearance'); ?>">Theme</a></li>
-    <li><a href="<?= base_url('user/setting/seo'); ?>">SEO</a></li>
-  </ul>
-</div>
+        <div class="tabs is-centered">
+            <ul>
+                <li><a href="<?= base_url('user/setting/profile'); ?>">Profile</a></li>
+                <li class="is-active"><a href="<?= base_url('user/setting/website'); ?>">Website</a></li>
+                <li><a href="<?= base_url('user/setting/appearance'); ?>">Theme</a></li>
+                <li><a href="<?= base_url('user/setting/seo'); ?>">SEO</a></li>
+            </ul>
+        </div>
         <form action="<?= base_url('user/setting/website'); ?>" method="post">
+        <div class="field">
+                <label class="label">Other Website</label>
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            http://
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="64" name="other-website" type="text"
+                            placeholder="yourdomain.com ( without http:// or https:// )" value="<?= scoup($social['other_website']); ?>">
+                    </p>
+                </div>
+            </div>
+            <hr>
             <div class="field">
-                <label class="label">Twitter</label>
+                <label class="label">E-Commerce</label>
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            bukalapak.com/u/
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="64" name="ecom-bukalapak" type="text"
+                            placeholder="username" value="<?= scoup($social['ecom_bukalapak']); ?>">
+                    </p>
+                </div>
+            </div>
+            <div class="field">
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            lazada.co.id/shop/
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="64" name="ecom-lazada" type="text"
+                            placeholder="username" value="<?= scoup($social['ecom_lazada']); ?>">
+                    </p>
+                </div>
+            </div>
+            <div class="field">
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            shopee.com/
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="64" name="ecom-shopee" type="text"
+                            placeholder="username" value="<?= scoup($social['ecom_shopee']); ?>">
+                    </p>
+                </div>
+            </div>
+            <div class="field">
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static" style="justify-content:left;">
+                            tokopedia.com/
+                        </a>
+                    </p>
+                    <p class="control is-expanded">
+                        <input class="input" maxlength="64" name="ecom-tokopedia" type="text"
+                            placeholder="username" value="<?= scoup($social['ecom_tokopedia']); ?>">
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="field">
+            <label class="label">Social Media</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
@@ -19,15 +88,13 @@
                         </a>
                     </p>
                     <p class="control is-expanded">
-                        <input class="input" maxlength="25" name="social-twitter" type="text"
-                            placeholder="Your twitter's username" value="<?= scoup($social['social_twitter']); ?>">
+                        <input class="input" maxlength="64" name="social-twitter" type="text"
+                            placeholder="username" value="<?= scoup($social['social_twitter']); ?>">
                     </p>
                 </div>
-                <!--<p class="help is-danger">This username is invalid</p>-->
             </div>
 
             <div class="field">
-                <label class="label">Facebook</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
@@ -35,14 +102,14 @@
                         </a>
                     </p>
                     <p class="control is-expanded">
-                        <input class="input" maxlength="25" name="social-facebook" type="text"
-                            placeholder="Your facebook's username" value="<?= scoup($social['social_facebook']); ?>">
+                        <input class="input" maxlength="64" name="social-facebook" type="text"
+                            placeholder="username" value="<?= scoup($social['social_facebook']); ?>">
                     </p>
                 </div>
             </div>
 
             <div class="field">
-                <label class="label">Instagram</label>
+                
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
@@ -50,8 +117,8 @@
                         </a>
                     </p>
                     <p class="control is-expanded">
-                        <input class="input" maxlength="25" name="social-instagram" type="text"
-                            placeholder="Your instagram's username" value="<?= scoup($social['social_instagram']); ?>">
+                        <input class="input" maxlength="64" name="social-instagram" type="text"
+                            placeholder="username" value="<?= scoup($social['social_instagram']); ?>">
                     </p>
                 </div>
             </div>
