@@ -17,7 +17,8 @@
     <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('assets'); ?>/favicon/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('assets'); ?>/favicon/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets'); ?>/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="<?= base_url('assets'); ?>/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="<?= base_url('assets'); ?>/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets'); ?>/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets'); ?>/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets'); ?>/favicon/favicon-16x16.png">
@@ -38,7 +39,8 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://pinmy.link">
-                <img src="<?= base_url('assets'); ?>/img/layout/footer.png"> <strong class="has-text-gray">Pinmy.link</strong>
+                <img src="<?= base_url('assets'); ?>/img/layout/footer.png"> <strong
+                    class="has-text-gray">Pinmy.link</strong>
             </a>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -51,14 +53,16 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-            <!--
-                <a class="navbar-item">
+                <a href="https://pinmy.link" class="navbar-item">
                     Home
                 </a>
-
-                <a class="navbar-item">
-                    Documentation
+                <a href="https://kb.pinmy.link" class="navbar-item">
+                    Panduan
                 </a>
+                <!--
+                
+
+                
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
@@ -91,12 +95,12 @@
                             if($this->session->userdata('ses_email')){
                         ?>
                         <a href="<?= base_url('auth'); ?>" class="button is-danger is-outlined">
-                            Go to User Panel
+                            Ke Halaman User
                         </a>
                         <?php
                             }else{
                         ?>
-                        <a href="<?= base_url('auth/register'); ?>" class="button is-warning">
+                        <a href="<?= base_url('auth/register'); ?>" class="button is-link">
                             Daftar
                         </a>
                         <a href="<?= base_url('auth'); ?>" class="button is-outlined">
@@ -113,7 +117,8 @@
 
     <section class="hero is-light is-medium"
         style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/cover_img.jpg');background-size:contain;background-position: right; background-repeat:no-repeat">
-        <div class="hero-body" style="background: rgb(255,255,255); background: linear-gradient(115deg, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.5) 100%);">
+        <div class="hero-body"
+            style="background: rgb(255,255,255); background: linear-gradient(115deg, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.5) 100%);">
             <div class="container">
                 <h1 class="title is-1 has-text-weight-bold" style="text-shadow: 1px 1px 3px #fff;">
                     Bantu Kontenmu<br>Lebih Mudah Diakses
@@ -121,24 +126,31 @@
                 <h2 class="subtitle" style="text-shadow: 1px 1px 3px #fff;">
                     Satu halaman, untuk semua kontenmu
                 </h2>
-                <a href="<?= base_url('auth/register'); ?>" class="button is-large is-warning">Daftar Gratis Yuk</a>
+                <a href="<?= base_url('auth/register'); ?>" class="button is-link">Daftar Gratis Yuk</a>
             </div>
         </div>
     </section>
     <section class="section container">
         <div class="columns is-centered is-variable is-8">
-            <div class="column" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_sit.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
+            <div class="column"
+                style="min-height:219px;background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_sit.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
                 <h4 class="title is-4">1. Bikin Halamanmu</h4>
-                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Daftar segera untuk memiliki halaman kamu sendiri dan dapatkan link unik <strong>pinmy.link/milikmu</strong>.</p>
+                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Daftar segera untuk memiliki
+                    halaman kamu sendiri dan dapatkan link unik <strong>pinmy.link/milikmu</strong>.</p>
                 <br>
             </div>
-            <div class="column" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_holdphone.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
+            <div class="column"
+                style="min-height:219px;background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_holdphone.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
                 <h4 class="title is-4">2. Masukan Kontenmu</h4>
-                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Masukan konten yang akan kamu sajikan kepada audiens ke dalam halaman kamu. Perbarui konten secara berkala dengan mudah.</p><br>
+                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Masukan konten yang akan kamu
+                    sajikan kepada audiens ke dalam halaman kamu. Perbarui konten secara berkala dengan mudah.</p><br>
             </div>
-            <div class="column" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_ok.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
+            <div class="column"
+                style="min-height:219px;background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_ok.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
                 <h4 class="title is-4">3. Pasang di Bio-mu</h4>
-                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Sematkan link unik <strong>pinmy.link/milikmu</strong> di semua bio kanalmu, dan audiens akan mudah akses konten kamu.</p><br>
+                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Sematkan link unik
+                    <strong>pinmy.link/milikmu</strong> di semua bio kanalmu, dan audiens akan mudah akses konten kamu.
+                </p><br>
             </div>
         </div>
     </section>
@@ -149,8 +161,8 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                Copyright &copy;2020 <strong>Pinmy.link</strong>. The website content
-                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                Copyright &copy;2020 <strong>Pinmy.link</strong>.<br> 
+                <span><a href="https://kb.pinmy.link/syarat-dan-ketentuan-layanan/">Syarat & Ketentuan Layanan</a></span> | <span><a href="#">Kebijakan Privasi</a></span>
             </p>
         </div>
     </footer>
