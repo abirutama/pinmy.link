@@ -81,11 +81,11 @@
                         <?php
                             }else{
                         ?>
-                        <a href="<?= base_url('auth/register'); ?>" class="button is-link is-outlined">
-                            Sign up
+                        <a href="<?= base_url('auth/register'); ?>" class="button is-warning">
+                            Daftar
                         </a>
-                        <a href="<?= base_url('auth'); ?>" class="button is-link is-outlined">
-                            Log in
+                        <a href="<?= base_url('auth'); ?>" class="button is-outlined">
+                            Masuk
                         </a>
                         <?php
                             }
@@ -97,34 +97,33 @@
     </nav>
 
     <section class="hero is-light is-medium"
-        style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/untitled.svg');background-size:cover">
+        style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/cover_img.jpg');background-size:contain;background-position: right; background-repeat:no-repeat">
         <div class="hero-body" style="background: rgb(255,255,255); background: linear-gradient(115deg, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.5) 100%);">
             <div class="container">
                 <h1 class="title is-1 has-text-weight-bold" style="text-shadow: 1px 1px 3px #fff;">
-                    Navigate Your Content
+                    Bantu Kontenmu<br>Lebih Mudah Diakses
                 </h1>
                 <h2 class="subtitle" style="text-shadow: 1px 1px 3px #fff;">
-                    It's like a map, one link to go to anywhere!
+                    Satu halaman, untuk semua kontenmu
                 </h2>
-                <a href="<?= base_url('auth/register'); ?>" class="button is-large is-link">Free Register Here</a>
+                <a href="<?= base_url('auth/register'); ?>" class="button is-large is-warning">Daftar Gratis Yuk</a>
             </div>
         </div>
     </section>
     <section class="section container">
         <div class="columns is-centered is-variable is-8">
-            <div class="column">
-                <h4 class="title is-4">Create Your Page</h4>
-                <p>Create your own page by registering a free account and choose your username as your page address.</p>
+            <div class="column" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_sit.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
+                <h4 class="title is-4">1. Bikin Halamanmu</h4>
+                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Daftar segera untuk memiliki halaman kamu sendiri dan dapatkan link unik <strong>pinmy.link/milikmu</strong>.</p>
                 <br>
             </div>
-            <div class="column">
-                <h4 class="title is-4">Update Your Content</h4>
-                <p>Update your page by adding content to it. Write a title, put an article link, and the thumbnail image
-                    from related content.</p><br>
+            <div class="column" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_holdphone.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
+                <h4 class="title is-4">2. Masukan Kontenmu</h4>
+                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Masukan konten yang akan kamu sajikan kepada audiens ke dalam halaman kamu. Perbarui konten secara berkala dengan langkah mudah.</p><br>
             </div>
-            <div class="column">
-                <h4 class="title is-4">Embed Your Link</h4>
-                <p>If you are ready, embed the only your magic link to all your social account's bio.</p><br>
+            <div class="column" style="background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_ok.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
+                <h4 class="title is-4">3. Pasang di Bio-mu</h4>
+                <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Sematkan link unik <strong>pinmy.link/milikmu</strong> di semua bio kanalmu, dan audiens akan mudah akses konten kamu.</p><br>
             </div>
 
         </div>
@@ -132,8 +131,7 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                Copyright &copy;2020 <strong>Pinmy.link</strong>. Powered by <strong>Bulma</strong> and
-                <strong>Undraw.co</strong>. The website content
+                Copyright &copy;2020 <strong>Pinmy.link</strong>. The website content
                 is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
             </p>
         </div>
