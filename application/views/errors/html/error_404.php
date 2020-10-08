@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 Page Not Found</title>
+
 <style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }
@@ -55,11 +56,12 @@ p {
 	margin: 12px 15px 12px 15px;
 }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 </head>
 <body>
-	<div style="max-width:400px; margin:auto">	
-		<img src="https://pinmy.link/assets/img/frontpage/new/undraw_page_not_found_su7k.svg" width="100%">
-		<h2 style="text-align:center">404 Page Not Found</h3>
+	<div class="container" style="max-width:400px; height:400px; padding-left:64px; padding:16px;margin:auto;background-image:url('https://pinmy.link/assets/img/frontpage/new/error_404.jpg')">
+		
+		<h2 class="box" style="text-align:left;margin-left:120px; margin-top:140px; margin-right:20px; min-width:190px; max-width:200px">Waduw? sepertinya halaman yang kamu cari tidak ada nih. <br><br><a class="button is-warning" href="https://pinmy.link">Kembali aja yuk</a></h3>
 	</div>
 </body>
 </html>
