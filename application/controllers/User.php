@@ -154,7 +154,7 @@ class User extends CI_Controller {
 					if($ava_image){
 						$config['upload_path'] = './assets/img/avatar/';
 						$config['allowed_types'] = 'jpg|jpeg';
-						$config['max_size'] = '500';
+						$config['max_size'] = '300';
 						$config['file_ext_tolower'] = true;
 						
 						$this->load->library('upload', $config);
