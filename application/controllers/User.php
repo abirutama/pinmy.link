@@ -143,106 +143,88 @@ class User extends CI_Controller {
 				$this->load->view('user/setting_3', $data);
 				$this->load->view('user/userpanel_footer_v2', $data);
 			}else{
-				$text_color_input = $this->input->post('text-color-input');
-				$accent_color_input = $this->input->post('accent-color-input');
-
-				$ava_image = $_FILES['avatar-input']['name'];
-				$cover_image = $_FILES['cover-input']['name'];
-
-				if($ava_image){
-					$config['upload_path'] = './assets/img/avatar/';
-					$config['allowed_types'] = 'jpg|jpeg';
-					$config['max_size'] = '300';
-					$config['file_ext_tolower'] = true;
-					//$config['file_name'] =  'av_'. $this->session->userdata('ses_id');
-					//print_r($config);
-					//echo $ava_image;
-					//die;
-					$this->load->library('upload', $config);
-
-					if($this->upload->do_upload('avatar-input')){
-						$is_upload_ava = true;
-						$old_ava = $data['appearance']['appearance_ava'];
-						if($old_ava !== null){
-							unlink(FCPATH.'assets/img/avatar/'.$old_ava);
-						}
-						$new_ava = $this->upload->data('file_name');
+				
+				if(isset($_POST['update-avatar'])){
+					if($_FILES['avatar-input']['name']){
+						$ava_image = $_FILES['avatar-input']['name'];
+					}else{
+						redirect('user/setting/appearance');
+						die();
+					}
+					if($ava_image){
+						$config['upload_path'] = './assets/img/avatar/';
+						$config['allowed_types'] = 'jpg|jpeg';
+						$config['max_size'] = '500';
+						$config['file_ext_tolower'] = true;
 						
-						$paths = pathinfo(FCPATH.'assets/img/avatar/'.$new_ava);
-						//echo $paths['extension'];
-						//die;
-						
-						//if ( ! $this->image_lib->resize()){
-							//$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to compress avatar image. Try another image.</div>');
-							$this->db->set('appearance_ava', $new_ava);
-							$this->db->where('user_id', $this->session->userdata('ses_id'));
-							$this->db->update('appearance');
-							$error = $this->db->error();
-							if(!$cover_image){
-								$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
-								redirect('user/setting/appearance');
+						$this->load->library('upload', $config);
+
+						if($this->upload->do_upload('avatar-input')){
+							$is_upload_ava = true;
+							$old_ava = $data['appearance']['appearance_ava'];
+							if($old_ava !== null){
+								unlink(FCPATH.'assets/img/avatar/'.$old_ava);
 							}
+							echo $this->upload->data('file_name');
+							$new_ava = $this->upload->data('file_name');
 							
-						//}else{
-						//}
-					}else{
-						$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
-						redirect('user/setting/appearance');
-					}
-				}
-
-				if($cover_image){
-					$config['upload_path'] = './assets/img/cover/';
-					$config['allowed_types'] = 'jpg|jpeg';
-					$config['max_size'] = '500';
-					$config['file_ext_tolower'] = true;
-					$this->load->library('upload', $config);
-
-					if($this->upload->do_upload('cover-input')){
-						$is_upload_cover = true;
-						$old_cover = $data['appearance']['appearance_cover'];
-						if($old_cover !== null){
-							unlink(FCPATH.'assets/img/cover/'.$old_cover);
+							$paths = pathinfo(FCPATH.'assets/img/avatar/'.$new_ava);
+								$this->db->set('appearance_ava', $new_ava);
+								$this->db->where('user_id', $this->session->userdata('ses_id'));
+								$this->db->update('appearance');
+								
+								$this->session->set_flashdata('message', '<div class="notification is-success">Avatar Updated Successfully!</div>');
+								redirect('user/setting/appearance');
+							
 						}
-						$new_cover = $this->upload->data('file_name');
-						
-						$paths = pathinfo(FCPATH.'assets/img/cover/'.$new_cover);
-						//echo $paths['extension'];
-						//die;
-						
-						//if ( ! $this->image_lib->resize()){
-							//$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to compress avatar image. Try another image.</div>');
-							$this->db->set('appearance_cover', $new_cover);
-							$this->db->where('user_id', $this->session->userdata('ses_id'));
-							$this->db->update('appearance');
-							$error = $this->db->error();
-							$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
+						else{
+							$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
 							redirect('user/setting/appearance');
-						//}else{
-						//}
-					}else{
-						$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
-						redirect('user/setting/appearance');
+						}
 					}
 				}
-				if(!$cover_image && !$ava_image){
-					redirect('user/setting/appearance');
-				}
+					
+						
+				if(isset($_POST['update-cover'])){
+					if($_FILES['cover-input']['name']){
+						$cover_image = $_FILES['cover-input']['name'];
+					}else{
+						redirect('user/setting/appearance');
+						die();
+					}
+					if($cover_image){
+						$config['upload_path'] = './assets/img/cover/';
+						$config['allowed_types'] = 'jpg|jpeg';
+						$config['max_size'] = '500';
+						$config['file_ext_tolower'] = true;
+						$this->load->library('upload', $config);
 
-				$data_appearance = [
-					//'appearance_text' => $text_color_input,
-					//'appearance_accent' => $accent_color_input,
-				];
+						if($this->upload->do_upload('cover-input')){
+							$is_upload_cover = true;
+							$old_cover = $data['appearance']['appearance_cover'];
+							if($old_cover !== null){
+								unlink(FCPATH.'assets/img/cover/'.$old_cover);
+							}
+							echo $this->upload->data('file_name');
+							$new_cover = $this->upload->data('file_name');
+							
+							$paths = pathinfo(FCPATH.'assets/img/cover/'.$new_cover);
+							
+								$this->db->set('appearance_cover', $new_cover);
+								$this->db->where('user_id', $this->session->userdata('ses_id'));
+								$this->db->update('appearance');
+								
+								$this->session->set_flashdata('message', '<div class="notification is-success">Cover Updated Successfully!</div>');
+								redirect('user/setting/appearance');
 
-				if($this->db->update('appearance', $data_appearance, array('user_id' => $this->session->userdata('ses_id')))){
-					$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
-					$error = $this->db->error();
-					redirect('user/setting/appearance');
-				}else{
-					$error = $this->db->error();
-					$this->session->set_flashdata('message', '<div class="notification is-danger">Settings Update Failed!</div>');
-					redirect('user/setting/appearance');
+						}else{
+							$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload cover image. Please read the rules.</div>');
+							redirect('user/setting/appearance');
+						}
+					}
 				}
+				//$text_color_input = $this->input->post('text-color-input');
+				//$accent_color_input = $this->input->post('accent-color-input');
 			}
 		}else if($subpage == 'seo'){
 			//set current page value
