@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Satu halaman untuk semua kontenmu! | Pinmy.link</title>
+    <title>Satu Halaman Untuk Semua Kontenmu! | Pinmy.link</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"

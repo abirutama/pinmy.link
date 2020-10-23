@@ -11,7 +11,7 @@
         </div>
         <form action="<?= base_url('user/setting/website'); ?>" method="post">
         <div class="field">
-                <label class="label">Other Website</label>
+                <label class="label">Other Website (Optional)</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
@@ -26,7 +26,7 @@
             </div>
             <hr>
             <div class="field">
-                <label class="label">E-Commerce</label>
+                <label class="label">E-Commerce (Optional)</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
@@ -80,7 +80,7 @@
             </div>
             <hr>
             <div class="field">
-            <label class="label">Social Media</label>
+            <label class="label">Social Media (Optional)</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">

@@ -11,7 +11,7 @@
 </div>
         <form action="<?= base_url('user/setting/seo'); ?>" method="post">
             <div class="field">
-                <label class="label">Google Analytics</label>
+                <label class="label">Google Analytics (Optional)</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="field">
-                <label class="label">Meta</label>
+                <label class="label">HTML Meta Tags (Optional)</label>
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">

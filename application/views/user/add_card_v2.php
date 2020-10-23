@@ -5,7 +5,7 @@
         <hr>
         <form action="<?= base_url('user/addcard'); ?>" method="post">
             <div class="field">
-                <label class="label">Content Title</label>
+                <label class="label">Content Title <span class="has-text-danger">*</span></label>
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" maxlength="120" name="link-title" type="text"
