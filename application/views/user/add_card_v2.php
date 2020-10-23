@@ -16,7 +16,7 @@
             </div>
 
             <div class="field">
-                <label class="label">URL Destination</label>
+                <label class="label">URL Destination <span class="has-text-danger">*</span></label></label>
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" name="link-destination" type="text"

@@ -26,10 +26,10 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?= base_url('assets'); ?>/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel=”canonical” href=”https://pinmy.link/” />
-    <link rel=”canonical” href=”https://www.pinmy.link/” />
-    <link rel=”canonical” href=”http://pinmy.link/” />
-    <link rel=”canonical” href=”http://www.pinmy.link/” />
+    <link rel="canonical" href="https://pinmy.link/" />
+    <link rel=canonical" href="https://www.pinmy.link/" />
+    <link rel="canonical" href="http://pinmy.link/" />
+    <link rel="canonical" href="http://www.pinmy.link/" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <!--<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>-->

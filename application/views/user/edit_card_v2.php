@@ -5,7 +5,7 @@
         <hr>
         <form action="<?= base_url('user/editcard/').$card['card_id']; ?>" method="post">
             <div class="field">
-                <label class="label">Content Title</label>
+                <label class="label">Content Title <span class="has-text-danger">*</span></label></label>
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" maxlength="120" name="link-title" type="text"
@@ -16,7 +16,7 @@
             </div>
 
             <div class="field">
-                <label class="label">URL Destination</label>
+                <label class="label">URL Destination <span class="has-text-danger">*</span></label></label>
                 <div class="field">
                     <p class="control is-expanded">
                         <input class="input" name="link-destination" type="text"

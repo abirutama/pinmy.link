@@ -5,7 +5,7 @@
         <hr>
         <form action="<?= base_url('user/highlight'); ?>" method="post">
             <div class="field">
-                <label class="label">Content 1</label>
+                <label class="label">Content 1 (Optional)</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[0]">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Content 2</label>
+                <label class="label">Content 2 (Optional)</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[1]">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Content 3</label>
+                <label class="label">Content 3 (Optional)</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[2]">
@@ -50,7 +50,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Content 4</label>
+                <label class="label">Content 4 (Optional)</label>
                 <div class="select is-fullwidth">
                     <p class="control is-expanded">
                         <select name="pinned[3]">
