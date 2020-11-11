@@ -167,37 +167,37 @@
                 <section class="modal-card-body" style="background:#dbdbdb00">
                     <div class="buttons">
                         <?php if($social['other_website']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://<?= scoup($social['other_website']) ?>"><i
-                                class="fas fa-fw fa-globe is-size-4 has-text-grey-dark"></i> Website</a>
+                        <a target="_blank" href="https://<?= scoup($social['other_website']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="">
+                        </a>
                         <?php } if($social['ecom_bukalapak']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>"><i
-                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Bukalapak</a>
+                        <a target="_blank" href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="">
+                        </a>
                         <?php } if($social['ecom_lazada']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>"><i
-                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Lazada</a>
+                        <a target="_blank" href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="">
+                        </a>
                         <?php } if($social['ecom_shopee']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>"><i
-                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Shopee</a>
+                        <a target="_blank" href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="">
+                        </a>
                         <?php } if($social['ecom_tokopedia']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>"><i
-                                class="fas fa-fw fa-shopping-bag is-size-4 has-text-grey-dark"></i> Tokopedia</a>
+                        <a target="_blank" href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="">
+                        </a>
                         <?php } if($social['social_twitter']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"><i
-                                class="fab fa-fw fa-twitter is-size-4 has-text-grey-dark"></i> Twitter</a>
+                        <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="">
+                        </a>
                         <?php } if($social['social_facebook']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"><i
-                                class="fab fa-fw fa-facebook-f is-size-4 has-text-grey-dark"></i> Facebook</a>
+                        <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="">
+                        </a>
                         <?php } if($social['social_instagram']){ ?>
-                        <a class="button is-fullwidth" target="_blank"
-                            href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"><i
-                                class="fab fa-fw fa-instagram is-size-4 has-text-grey-dark"></i> Instagram</a>
+                        <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="">
+                        </a>
                         <?php } ?>
                     </div>
                 </section>
