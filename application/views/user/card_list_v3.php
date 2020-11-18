@@ -14,8 +14,8 @@
          foreach ($card as $key=>$cardItem){
         ?>
 <div data-id="<?= scoup($cardItem['card_id']); ?>" class="media list-group-item box" style="margin-bottom:3px !important;margin-top:3px !important">
-  <figure class="media-left">
-  <i class="fas fa-grip-lines"></i> 
+  <figure id="sort-handle" class="media-left" style="cursor:move">
+  <i class="fas fa-grip-lines has-text-grey-lighter"></i> 
   </figure>
   <div class="media-content">
     <div class="content">
@@ -58,6 +58,7 @@
 var el = document.getElementById("links");
 var sortable = Sortable.create(el,{
   animation: 200,
+  handle: "#sort-handle",
   onEnd: function (/**Event*/ evt) {
     //var itemEl = evt.item; // dragged HTMLElement
     //evt.to; // target list
@@ -70,7 +71,7 @@ var sortable = Sortable.create(el,{
     //evt.pullMode; // when item is in another sortable: `"clone"` if cloning, `true` if moving
     var urutan=sortable.toArray();
     alert(urutan);
-  },
+  }
 });
 
 
