@@ -38,13 +38,13 @@ class Main extends CI_Controller {
 			die();
 		}
 
-		$test = $this->db->like('card_id', 50);
+		//$test = $this->db->like('card_id', 50);
 		//$test = $this->db->or_like('card_id', 49);
-		$test = $this->db->get('card')->result_array();
+		//$test = $this->db->get('card')->result_array();
 		//print_r($test);
 		
 		//$queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['user_cover']))->row_array();
-		$queryCard = $this->db->order_by('date_created desc');
+		$queryCard = $this->db->order_by('card_order desc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 		$data['card'] = $queryCard;
 
