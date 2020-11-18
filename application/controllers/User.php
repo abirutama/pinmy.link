@@ -14,19 +14,23 @@ class User extends CI_Controller {
 
 	public function order(){
 		//echo 'print awal: '.$arrays;
-		$arrays = $_POST['sort'];
-		$pisah = explode(',',$arrays);
-		//echo '<br> print explode: ';
-		//print_r($pisah);
-		//echo '<br> print arraykeys: ';
-		//print_r(array_keys($pisah));
-		//echo '<br> print count array: ';
-		//print_r(count($pisah));
-		//echo '<br>';
-		foreach($pisah as $index_sort => $card_id){
-			$this->db->set('card_order', $index_sort, FALSE);
-			$this->db->where('card_id', $card_id);
-			$this->db->update('card');
+		if(isset($_POST['sort'])){
+			$arrays = $_POST['sort'];
+			$pisah = explode(',',$arrays);
+			//echo '<br> print explode: ';
+			//print_r($pisah);
+			//echo '<br> print arraykeys: ';
+			//print_r(array_keys($pisah));
+			//echo '<br> print count array: ';
+			//print_r(count($pisah));
+			//echo '<br>';
+			foreach($pisah as $index_sort => $card_id){
+				$this->db->set('card_order', $index_sort, FALSE);
+				$this->db->where('card_id', $card_id);
+				$this->db->update('card');
+			}
+		}else{
+			echo 'FORBIDDEN!';
 		}
 	}
 
