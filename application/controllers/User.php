@@ -35,7 +35,7 @@ class User extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', array('user_email' => $this->session->userdata('ses_email')))->row_array();
 		
 		$queryCard = $this->db->select('card_id, card_title, card_slug');
-		$queryCard = $this->db->order_by('card_id', 'DESC');
+		$queryCard = $this->db->order_by('card_order', 'asc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
 		$data['card'] = $queryCard;
 
@@ -67,7 +67,7 @@ class User extends CI_Controller {
 		}
 		
 		$this->load->view('user/userpanel_header_v2', $data);
-		$this->load->view('user/card_list_v2', $data);
+		$this->load->view('user/card_list_v3', $data);
 		$this->load->view('user/userpanel_footer_v2', $data);
 	}
 
