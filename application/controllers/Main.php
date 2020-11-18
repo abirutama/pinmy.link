@@ -44,7 +44,7 @@ class Main extends CI_Controller {
 		//print_r($test);
 		
 		//$queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['user_cover']))->row_array();
-		$queryCard = $this->db->order_by('card_order desc');
+		$queryCard = $this->db->order_by('card_order asc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 		$data['card'] = $queryCard;
 
