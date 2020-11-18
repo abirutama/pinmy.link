@@ -159,13 +159,11 @@
             </div>
         </section>
         <div id="modal-social" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head" style="background:#dbdbdb00; border: none">
-                <i class="far fa-times-circle has-text-white is-size-3" id="modal-close" aria-label="close"></i> 
-                </header>
+            <div id="modal-background" class="modal-background"></div>
+            <div class="modal-card" style="max-width:400px">
                 <section class="modal-card-body" style="background:#dbdbdb00">
                     <div class="buttons">
+                        <button id="modal-close" class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
                         <?php if($social['other_website']){ ?>
                         <a target="_blank" href="https://<?= scoup($social['other_website']) ?>">
                             <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="">
@@ -210,7 +208,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <?php if($appearance['appearance_cover'] != null){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; }  ?>
-    <?php if($campaign != null){ ?>
+    <?php if($campaign !== null){ ?>
     <style>
     .profile-thing {
         opacity: 0
@@ -238,9 +236,15 @@
 var html_tag = document.documentElement;
 var open_modal = document.querySelector('#modal-open');
 var modal_container = document.querySelector('#modal-social');
+var tap_anywhere_close = document.querySelector('#modal-background');
 var close_modal = document.querySelector('#modal-close');
 
 open_modal.onclick = function() {
+    modal_container.classList.toggle('is-active');
+    html_tag.classList.toggle('is-clipped');
+}
+
+tap_anywhere_close.onclick = function() {
     modal_container.classList.toggle('is-active');
     html_tag.classList.toggle('is-clipped');
 }
