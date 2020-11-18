@@ -88,7 +88,7 @@ var sortable = Sortable.create(el,{
     $.post( <?= "'".base_url('user/order/')."'"; ?>, { sort: ""+urutan }).done(function(){
       Toast.fire({
         icon: 'success',
-        title: 'Update Saved!'
+        title: 'Sorting Update Saved!'
       });
     });
   }
