@@ -1,6 +1,7 @@
 <?php 
     $pinitem = array_column($pinned, 'card_id');
 ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <section class="section" style="max-width: 800px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
@@ -54,11 +55,24 @@
 </div>
 
 <script>
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'bottom-start',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
 //Modal Save Profile
 var el = document.getElementById("links");
 var sortable = Sortable.create(el,{
   animation: 200,
   handle: "#sort-handle",
+  touchStartThreshold: 50,
   onEnd: function (/**Event*/ evt) {
     //var itemEl = evt.item; // dragged HTMLElement
     //evt.to; // target list
@@ -70,7 +84,13 @@ var sortable = Sortable.create(el,{
     //evt.clone; // the clone element
     //evt.pullMode; // when item is in another sortable: `"clone"` if cloning, `true` if moving
     var urutan=sortable.toArray();
-    alert(urutan);
+    //alert(urutan);
+    $.post( <?= "'".base_url('user/order/')."'"; ?>, { sort: ""+urutan }).done(function(){
+      Toast.fire({
+        icon: 'success',
+        title: 'Update Saved!'
+      });
+    });
   }
 });
 
