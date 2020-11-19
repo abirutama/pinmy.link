@@ -106,7 +106,9 @@
             </div>
         </div>
     </nav>
+    <!--
     <div class="notification is-info" style="margin:0">
         Put this to your social media's bio: <a target="_blank"
             href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
     </div>
+    -->

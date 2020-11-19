@@ -141,11 +141,11 @@ class User extends CI_Controller {
 				];
 
 				if($this->db->update('social', $data_social, array('user_id' => $this->session->userdata('ses_id')))){
-					$this->session->set_flashdata('message', '<div class="notification is-success">Profile Update Successfully!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-success">Website updated successfully!</div>');
 					$error = $this->db->error();
 					redirect('user/setting/website');
 				}else{
-					$this->session->set_flashdata('message', '<div class="notification is-danger">Profile Update Failed!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-danger">Website failed to update!</div>');
 					$error = $this->db->error();
 					redirect('user/setting/website');
 				}
@@ -195,12 +195,12 @@ class User extends CI_Controller {
 								$this->db->where('user_id', $this->session->userdata('ses_id'));
 								$this->db->update('appearance');
 								
-								$this->session->set_flashdata('message', '<div class="notification is-success">Avatar Updated Successfully!</div>');
+								$this->session->set_flashdata('message', '<div class="notification is-success">Avatar image updated successfully!</div>');
 								redirect('user/setting/appearance');
 							
 						}
 						else{
-							$this->session->set_flashdata('message', '<div class="notification is-danger">Failed to upload avatar image. Please read the rules.</div>');
+							$this->session->set_flashdata('message', '<div class="notification is-danger">Avatar image failed to update. Please read the rules!</div>');
 							redirect('user/setting/appearance');
 						}
 					}
@@ -236,7 +236,7 @@ class User extends CI_Controller {
 								$this->db->where('user_id', $this->session->userdata('ses_id'));
 								$this->db->update('appearance');
 								
-								$this->session->set_flashdata('message', '<div class="notification is-success">Cover Updated Successfully!</div>');
+								$this->session->set_flashdata('message', '<div class="notification is-success">Cover image updated successfully!</div>');
 								redirect('user/setting/appearance');
 
 						}else{
@@ -291,12 +291,12 @@ class User extends CI_Controller {
 				];
 
 				if($this->db->update('seo', $data_meta, array('user_id' => $this->session->userdata('ses_id')))){
-					$this->session->set_flashdata('message', '<div class="notification is-success">Settings Updated Successfully!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-success">MetaTag settings updated successfully!</div>');
 					$error = $this->db->error();
 					redirect('user/setting/seo');
 				}else{
 					$error = $this->db->error();
-					$this->session->set_flashdata('message', '<div class="notification is-danger">Settings Update Failed!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-danger">MetaTag settings failed to update!</div>');
 					redirect('user/setting/seo');
 				}
 			}

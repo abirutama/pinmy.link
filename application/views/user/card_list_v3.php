@@ -4,8 +4,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <section class="section" style="max-width: 800px; margin:auto">
-    <?= $this->session->flashdata('message'); ?>
-    <div class="" style="max-width: 800px; margin:auto">
         <?= $this->session->flashdata('message'); ?>
         <a href="<?= base_url('user/addcard') ?>" class="box has-text-centered"
             style="background:none;border:3px dashed #3273dc; margin-bottom:8px !important;margin-top:3px !important">
@@ -13,8 +11,8 @@
         </a>
         <div class="list-group" id="links">
             <?php           
-         foreach ($card as $key=>$cardItem){
-        ?>
+            foreach ($card as $key=>$cardItem){
+            ?>
             <div data-id="<?= scoup($cardItem['card_id']); ?>" class="media list-group-item box"
                 style="margin-bottom:3px !important;margin-top:3px !important">
                 <figure id="sort-handle" class="media-left" style="cursor:move">
@@ -30,12 +28,12 @@
                 <div class="media-right">
                     <a href="#get-qr" class="qr-info qr-generate" title="Get QR Code" data-url="<?= $cardItem['card_slug']; ?>">
                         <span class="icon">
-                            <i class="fas fa-qrcode"></i>
+                        <i class="fas fa-share is-size-5"></i>
                         </span>
                     </a>
                     <a href="<?= scoup(base_url('user/editcard/').$cardItem['card_id']); ?>" title="Edit" data-url="<?= $cardItem['card_slug']; ?>">
                         <span class="icon">
-                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-pencil-alt is-size-5"></i>
                         </span>
                     </a>
                 </div>
@@ -43,22 +41,22 @@
             <?php } ?>
         </div>
 </section>
-</div>
+
 
 
 <div id="qr-modal" class="modal">
     <div class="modal-background"></div>
-    <div class="modal-card" style="max-width:300px">
+    <div class="modal-card" style="max-width:360px">
         <header class="modal-card-head">
-            <p class="modal-card-title">Get QR Code</p>
+            <p class="modal-card-title"><i class="fas fa-share"></i> Share to Everyone!</p>
             <button class="qr-info delete" aria-label="close"></button>
         </header>
         <section id="qr-results" class="modal-card-body">
             <!-- Content ... -->
-            <img id="qr-result" width="100%" src="" alt="">
-            <div class="notification is-info">
-                <p class="is-size-6"><b>Note:</b> This is your QR Content Address. Audience will be redirected to your
-                    content after scan it. <a id="download-qr" href="" target="_blank">Download here</a></p>
+            <!--<img id="qr-result" width="100%" src="" alt="">-->
+            <div class="buttons">
+                <a id="download-qr" href="" target="_blank" class="button is-link is-outlined is-fullwidth">Download QR</a>
+                <button class="button is-link is-outlined is-fullwidth">Copy Permalink</button>
             </div>
         </section>
         <footer class="modal-card-foot">
@@ -105,7 +103,7 @@ $('.qr-info').click(function() {
 
 $('.qr-generate').click(function() {
     var url_data = '<?= base_url("user/qr_info/")?>' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url');
-    $("#qr-result").attr('src', url_data);
+    //$("#qr-result").attr('src', url_data);
     $("#download-qr").attr('href', url_data);
 
 });

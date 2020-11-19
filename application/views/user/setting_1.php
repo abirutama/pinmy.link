@@ -44,17 +44,17 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
         <div class="container">
             <img class="box" width="256px" src="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" alt=""style="margin:auto;">
             <div class="field has-addons" style="justify-content:center;margin-top:8px">
-  <div class="control">
-    <input id="foo" class="input" type="text" value="pinmy.link/@<?= scoup($user['user_name']); ?>" readonly>
-  </div>
-  <div class="control">
-    <a class="button is-info btncopy" data-clipboard-target="#foo">
-      Copy
-    </a>
-  </div>
-</div>
+                <div class="control">
+                    <input id="foo" class="input" type="text" value="pinmy.link/@<?= scoup($user['user_name']); ?>" readonly>
+                </div>
+                <div class="control">
+                    <a class="button is-success btncopy" data-clipboard-target="#foo">
+                    <i class="far fa-copy"></i>
+                    </a>
+                </div>
+            </div>
             <br>
-            <div class="notification is-info">
+            <div class="notification is-warning">
                 <p class="is-size-6"><b>Note:</b> This is your QR Page Address. Audience will be redirected to your content page after scan it. <a href="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" target="_blank">Download here</a></p>
             </div>
         </div>
