@@ -10,7 +10,20 @@
     </footer>
   </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-start',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+</script>
 <script>
   //File Name
   function readURL(input, id) {

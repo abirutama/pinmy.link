@@ -1,7 +1,7 @@
 <?php 
     $pinitem = array_column($pinned, 'card_id');
 ?>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <section class="section" style="max-width: 800px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
@@ -18,7 +18,7 @@
             <div data-id="<?= scoup($cardItem['card_id']); ?>" class="media list-group-item box"
                 style="margin-bottom:3px !important;margin-top:3px !important">
                 <figure id="sort-handle" class="media-left" style="cursor:move">
-                    <i class="fas fa-grip-lines has-text-grey-lighter"></i>
+                <i class="fas fa-arrows-alt has-text-grey-lighter is-size-5"></i>
                 </figure>
                 <div class="media-content">
                     <div class="content">
@@ -67,17 +67,6 @@
 </div>
 
 <script>
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'bottom-start',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-});
 
 //Modal Save Profile
 var el = document.getElementById("links");

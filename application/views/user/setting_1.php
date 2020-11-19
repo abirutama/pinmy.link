@@ -26,6 +26,7 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
 
 
 ?>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <?php
     $user_id = $this->session->userdata('ses_id');
 ?>
@@ -42,6 +43,16 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
 </div>
         <div class="container">
             <img class="box" width="256px" src="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" alt=""style="margin:auto;">
+            <div class="field has-addons" style="justify-content:center;margin-top:8px">
+  <div class="control">
+    <input id="foo" class="input" type="text" value="pinmy.link/@<?= scoup($user['user_name']); ?>" readonly>
+  </div>
+  <div class="control">
+    <a class="button is-info btncopy" data-clipboard-target="#foo">
+      Copy
+    </a>
+  </div>
+</div>
             <br>
             <div class="notification is-info">
                 <p class="is-size-6"><b>Note:</b> This is your QR Page Address. Audience will be redirected to your content page after scan it. <a href="<?= base_url('assets').'/qr/temp/'.basename($filename); ?>" target="_blank">Download here</a></p>
@@ -49,3 +60,17 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
         </div>
     </div>
 </section>
+<script>
+    var clipboard = new ClipboardJS('.btncopy');
+
+    clipboard.on('success', function(e) {
+        Toast.fire({
+                icon: 'success',
+                title: 'Copied Successfully!'
+            });
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
