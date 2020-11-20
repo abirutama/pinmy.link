@@ -60,33 +60,6 @@ class User extends CI_Controller {
 		$queryCard = $this->db->order_by('card_order', 'asc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
 		$data['card'] = $queryCard;
-
-		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
-		if($pinned){
-			$queryPinned = $this->db->select('card_id');
-			$temp_array = explode(',',$pinned['pin_item']);
-			if($temp_array[0]=="no_pin1"){
-				$temp_array[0]=null;
-			}
-			if($temp_array[1]=="no_pin2"){
-				$temp_array[1]=null;
-			}
-			if($temp_array[2]=="no_pin3"){
-				$temp_array[2]=null;
-			}
-			if($temp_array[3]=="no_pin4"){
-				$temp_array[3]=null;
-			}
-			$queryPinned = $this->db->like('card_id', $temp_array[0]);
-			if($temp_array>1){
-				foreach($temp_array as $key => $tempItem){
-					$next = $key+1;
-					$queryPinned = $this->db->or_like('card_id', $temp_array[$key]);
-				}
-			}
-			$queryPinned = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
-			$data['pinned'] = $queryPinned;
-		}
 		
 		$this->load->view('user/userpanel_header_v2', $data);
 		$this->load->view('user/card_list_v3', $data);

@@ -1,6 +1,3 @@
-<?php 
-    $pinitem = array_column($pinned, 'card_id');
-?>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
 <section class="section" style="max-width: 800px; margin:auto">
@@ -82,7 +79,6 @@ var sortable = Sortable.create(el, {
                 title: 'Sorting Update Saved!'
             });
         });
-        document.getElementById("ipreview").contentDocument.location.reload(true);
     }
 });
 </script>
