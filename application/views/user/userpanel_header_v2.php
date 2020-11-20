@@ -1,11 +1,15 @@
 <!doctype html>
 <html class="has-background-light">
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90789114-4"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
     gtag('js', new Date());
 
     gtag('config', 'UA-90789114-4');
@@ -35,16 +39,16 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.5.0.min.js"
-  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
     <style>
     .cupad {
         padding: 1em
     }
-    .round-8{
-        border-radius:8px
+
+    .round-8 {
+        border-radius: 8px
     }
     </style>
 </head>
@@ -66,10 +70,12 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a href="<?= base_url('user/'); ?>" class="navbar-item <?php if($page=='link'){ echo 'has-text-link'; } ?>">
+                <a href="<?= base_url('user/'); ?>"
+                    class="navbar-item <?php if($page=='link'){ echo 'has-text-link'; } ?>">
                     My Content
                 </a>
-                <a href="<?= base_url('user/setting/profile'); ?>" class="navbar-item <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
+                <a href="<?= base_url('user/setting/profile'); ?>"
+                    class="navbar-item <?php if($page=='setting'){ echo 'has-text-link'; } ?>">
                     Settings
                 </a>
                 <!--

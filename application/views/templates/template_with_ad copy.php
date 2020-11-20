@@ -1,5 +1,11 @@
 <?php
-    if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; } 
+    if($campaign==null){
+        $default_cover = base_url().'assets/img/cover/'.$appearance['appearance_cover'];
+    }else{
+        $default_cover = base_url('assets').'/img/sponsor/'.$campaign['campaign_image'];
+
+    }
+    
 ?>
 <!DOCTYPE html>
 <html class="has-background-light">
@@ -50,8 +56,9 @@
     ?>
     <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" style="margin-bottom:24px">
+            <!-- http://localhost/pinmy.link/assets/img/sponsor/nike-ad.jpg -->
             <div id="cover-image" class="has-text-centered"
-                style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('<?= $bg_image; ?>')">
+                style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('<?= $default_cover; ?>')">
                 <figure class="profile-thing image is-128x128" style="margin:auto;">
                     <?php if($social_button){ ?>
                     <div id="modal-open" class="button bs is-link"
@@ -66,6 +73,44 @@
                     @<?= $profile['user_name']; ?></h2>
             </div>
         </section>
+        <?php if(count($card) > 7){ if(count($pinned)>0){ ?>
+        <section class="" style="padding:0.5em 2em;margin-bottom:4px;border-radius:16px !important;">
+            <div class="container" style="">
+            </div>
+            <div class="columns is-vcentered pinned">
+                <?php 
+                foreach($pinned as $pinnedItem){ 
+                ?>
+                <div class="column is-full is-vcentered is-centered" style="padding:8px 20px 20px 12px">
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $pinnedItem['card_slug']; ?>"
+                        class="media box has-background-white"
+                        style="border-radius:16px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                <img class="is-rounded lazyload"
+                                    src="https://via.placeholder.com/64/f7b780/fffffff?text=<?= strtoupper(substr($pinnedItem['card_slug'],0,1)); ?>"
+                                    data-src="<?= $pinnedItem['card_thumbnail']; ?>" style="width: 64px; height:64px">
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <?php
+                                    if( strlen($pinnedItem['card_title']) > 45 ){
+                                        echo scoup(substr($pinnedItem['card_title'],0,45)).'...'; 
+                                    }else{
+                                        echo scoup($pinnedItem['card_title']);
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <?php }} ?>
+            </div>
+        </section>
+        <?php } ?>
         <section class=""
             style="max-width:640px; padding:0.5em 2em 0.5em 2em; margin:auto; border-radius:16px !important;">
             <div class="container" style="margin-bottom:0px">
@@ -75,7 +120,7 @@
                 if(count($card) > 0){
                     foreach($card as $key=>$cardItem){
                 ?>
-                <div class="column is-full is-vcentered is-centered" style="padding:6px 12px">
+                <div class="column is-half-tablet is-vcentered is-centered" style="padding:6px 12px">
                     <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>"
                         class="media box has-background-white"
                         style="border-radius:16px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
@@ -118,8 +163,7 @@
             <div class="modal-card" style="max-width:400px">
                 <section class="modal-card-body" style="background:#dbdbdb00">
                     <div class="buttons">
-                        <button id="modal-close"
-                            class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
+                        <button id="modal-close" class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
                         <?php if($social['other_website']){ ?>
                         <a target="_blank" href="https://<?= scoup($social['other_website']) ?>">
                             <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="">
@@ -163,6 +207,23 @@
     </figure>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <?php if($appearance['appearance_cover'] != null){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; }  ?>
+    <?php if($campaign !== null){ ?>
+    <style>
+    .profile-thing {
+        opacity: 0
+    }
+    </style>
+    <script>
+    setTimeout(function() {
+        $('#cover-image').fadeTo(200, 0);
+    }, 2000);
+    setTimeout(function() {
+        $('#cover-image').css('background-image', 'url(" <?= $bg_image ?> ")').fadeTo(200, 1);
+    }, 2200);
+    $('.profile-thing').delay(2300).fadeTo(200, 1);
+    </script>
+    <?php } ?>
 
     <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
@@ -192,6 +253,38 @@ close_modal.onclick = function() {
     modal_container.classList.toggle('is-active');
     html_tag.classList.toggle('is-clipped');
 }
+</script>
+<script>
+$(document).ready(function() {
+    $('.pinned').slick({
+        infinite: false,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        responsive: [{
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    infinite: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
+    });
+});
 </script>
 
 </html>

@@ -405,16 +405,22 @@ class User extends CI_Controller {
 
 	public function deletecard($card_id=null){
 		//setting search card query by card_id and session user_id
-		$this->db->select('card_id');
+		$this->db->select('card_id,card_order,user_id');
 		$data['card'] = $this->db->get_where('card', ['card_id' => $card_id, 'user_id' => $this->session->userdata('ses_id')])->row_array();
-
+		$current_order = $data['card']['card_order'];
 		//if card content not match in db or not belong to them, then redirect
 		if(!$data['card']){
 			redirect('user');
 			die();
 		}
-
+		//echo $data['card']['card_order'];
+		//die();
 		if($this->db->delete('card', array('card_id' => $card_id, 'user_id' => $this->session->userdata('ses_id')))){
+			$this->db->set('card_order', 'card_order+3');
+			$this->db->where('user_id', $this->session->userdata('ses_id'));
+			$this->db->where('card_order >', $current_order);
+			$this->db->update('card');
+			
 			$this->session->set_flashdata('message', '<div class="notification is-success" role="alert">Card Deleted Successfully!</div>');
 			redirect('user');
 		}else{

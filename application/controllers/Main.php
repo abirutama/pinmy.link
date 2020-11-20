@@ -15,18 +15,6 @@ class Main extends CI_Controller {
 
 	public function preview2($user_name)
 	{
-		$today = time();
-		$this->db->select('*');
-		$this->db->from('campaign');
-		$this->db->where('campaign_start <', $today);
-		$this->db->where('campaign_end >', $today);
-		$count_campaign = $this->db->count_all_results();
-		$rand_campaign = rand(0,$count_campaign-1);
-		if($this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()){
-			$data['campaign'] = $this->db->query('select * from campaign where '.$today.' BETWEEN campaign_start AND campaign_end')->result_array()[$rand_campaign];
-		}else{
-			$data['campaign'] = null;
-		}
 		
 		$strip = str_replace('@', '', $user_name);
 		$queryProfile = $this->db->get_where('user', array('user_name' => $strip))->row_array();
@@ -38,12 +26,6 @@ class Main extends CI_Controller {
 			die();
 		}
 
-		//$test = $this->db->like('card_id', 50);
-		//$test = $this->db->or_like('card_id', 49);
-		//$test = $this->db->get('card')->result_array();
-		//print_r($test);
-		
-		//$queryCover = $this->db->get_where('cover', array('cover_id' => $queryProfile['user_cover']))->row_array();
 		$queryCard = $this->db->order_by('card_order asc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 		$data['card'] = $queryCard;
@@ -56,33 +38,6 @@ class Main extends CI_Controller {
 
 		$queryAppearance = $this->db->get_where('appearance', array('user_id' => $queryProfile['user_id']))->row_array();
 		$data['appearance'] = $queryAppearance;
-
-		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$queryProfile['user_id']))->row_array();
-		if($pinned){
-			$queryPinned = $this->db->select('card_id, card_title, card_slug, card_thumbnail');
-			$temp_array = explode(',',$pinned['pin_item']);
-			if($temp_array[0]==null){
-				$temp_array[0]=-9;
-			}
-			if($temp_array[1]==null){
-				$temp_array[1]=-9;
-			}
-			if($temp_array[2]==null){
-				$temp_array[2]=-9;
-			}
-			if($temp_array[3]==null){
-				$temp_array[2]=-9;
-			}
-			//$queryPinned = $this->db->like('card_id', $temp_array[0]);
-			if($temp_array>1){
-				foreach($temp_array as $key => $tempItem){
-					$next = $key+1;
-					$queryPinned = $this->db->or_like('card_id', $temp_array[$key]);
-				}
-			}
-			$queryPinned = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
-			$data['pinned'] = $queryPinned;
-		}
 		
 		//$this->load->view('templates/template_2', $data);
 		$this->load->view('templates/template_with_ad', $data);
