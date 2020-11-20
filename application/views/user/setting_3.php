@@ -84,54 +84,5 @@
             </div>
         </div>
         </form>
-        <hr>
-        <!--
-            THIS FEATURE UNDER DEVELOPMENT
-            <div class="field">
-                <label class="label">Text Color</label>
-                <div class="field has-addons">
-                    <p class="control">
-                        <a class="button is-static" style="justify-content:left;">
-                            #
-                        </a>
-                    </p>
-                    <p class="control is-expanded">
-                        <input class="input" maxlength="160" name="text-color-input" type="text" placeholder="000000"
-                            value="">
-                    </p>
-                </div>
-                <label class="label">Accent Color</label>
-                <div class="field has-addons">
-                    <p class="control">
-                        <a class="button is-static" style="justify-content:left;">
-                            #
-                        </a>
-                    </p>
-                    <p class="control is-expanded">
-                        <input class="input" maxlength="160" name="accent-color-input" type="text" placeholder="f7b780"
-                            value="">
-                    </p>
-                </div>
-            </div>
-            <hr>
-            -->
     </div>
 </section>
-
-<script>
-//Modal Save Setting
-var html_tag = document.documentElement;
-var save_button = document.querySelector('#save-setting-button');
-var save_modal = document.querySelector('#save-setting-modal');
-var save_cancel = document.querySelector('.save-setting-cancel');
-
-save_button.onclick = function() {
-    save_modal.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-
-save_cancel.onclick = function() {
-    save_modal.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-</script>

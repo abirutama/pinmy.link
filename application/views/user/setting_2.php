@@ -128,7 +128,6 @@
                 <div class="buttons">
                     <div id="save-profile-button" class="button is-success">Save
                         Changes</div>
-                    <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
                 </div>
             </div>
             <div id="save-profile-modal" class="modal">

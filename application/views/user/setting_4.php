@@ -96,7 +96,6 @@
             <div class="field is-grouped">
                 <div class="buttons">
                     <a id="save-confirm-button" class="button is-success">Save Changes</button>
-                    <a href="<?= base_url('user') ?>" class="button is-outlined">Cancel</a>
                 </div>
             </div>
             <div id="save-confirm-modal" class="modal">
