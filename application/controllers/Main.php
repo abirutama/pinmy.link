@@ -27,6 +27,7 @@ class Main extends CI_Controller {
 		}
 
 		$queryCard = $this->db->order_by('card_order asc');
+		$queryCard = $this->db->order_by('date_created desc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
 		$data['card'] = $queryCard;
 

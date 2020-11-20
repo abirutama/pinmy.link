@@ -2,10 +2,22 @@
 
 <section class="section" style="max-width: 800px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
+    <?php if(count($card)>0){ ?>
     <a href="<?= base_url('user/addcard') ?>" class="box has-text-centered"
         style="background:none;border:3px dashed #3273dc; margin-bottom:8px !important;margin-top:3px !important">
         <span class="has-text-link"><i class="fas fa-plus"></i> <strong>New Content</strong></span>
     </a>
+    <?php }else{ ?>
+    <span class="box has-text-centered"
+        style="margin-bottom:8px !important;margin-top:3px !important; max-width:480px; margin:auto">
+        Oops you don't have any content yet. Let's create new one!
+
+        <a href="<?= base_url('user/addcard') ?>" class="box has-text-centered"
+        style="background:none;border:3px dashed #3273dc;margin-top:16px !important">
+        <span class="has-text-link"><i class="fas fa-plus"></i> <strong>New Content</strong></span>
+    </a>
+    </span>
+    <?php } ?>
     <div class="list-group" id="links">
         <?php           
             foreach ($card as $key=>$cardItem){

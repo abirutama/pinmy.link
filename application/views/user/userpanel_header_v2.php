@@ -112,9 +112,8 @@
             </div>
         </div>
     </nav>
-    <!--
-    <div class="notification is-info" style="margin:0">
-        Put this to your social media's bio: <a target="_blank"
+    <div class="notification is-white has-text-centered"
+        style="margin:0;border-radius:0px;border-top:1px solid #dedede;border-bottom:1px solid #dedede;">
+        <strong class="has-text-grey">My Address:</strong> <a class="has-text-link" target="_blank"
             href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
     </div>
-    -->

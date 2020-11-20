@@ -58,6 +58,7 @@ class User extends CI_Controller {
 		
 		$queryCard = $this->db->select('card_id, card_title, card_slug');
 		$queryCard = $this->db->order_by('card_order', 'asc');
+		$queryCard = $this->db->order_by('date_created', 'desc');
 		$queryCard = $this->db->get_where('card', array('user_id' => $this->session->userdata('ses_id')))->result_array();
 		$data['card'] = $queryCard;
 		
@@ -389,11 +390,6 @@ class User extends CI_Controller {
 		//echo $data['card']['card_order'];
 		//die();
 		if($this->db->delete('card', array('card_id' => $card_id, 'user_id' => $this->session->userdata('ses_id')))){
-			$this->db->set('card_order', 'card_order+3');
-			$this->db->where('user_id', $this->session->userdata('ses_id'));
-			$this->db->where('card_order >', $current_order);
-			$this->db->update('card');
-			
 			$this->session->set_flashdata('message', '<div class="notification is-success" role="alert">Card Deleted Successfully!</div>');
 			redirect('user');
 		}else{
