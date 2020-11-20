@@ -95,7 +95,7 @@
             <hr>
             <div class="field is-grouped">
                 <div class="buttons">
-                    <a id="save-confirm-button" class="button is-success">Save Changes</button>
+                    <div id="save-confirm-button" class="button is-success">Save Changes</div>
                 </div>
             </div>
             <div id="save-confirm-modal" class="modal">
