@@ -7,7 +7,6 @@
         public function send_mail_verification()
         {
                 $config = [
-                        'protocol' => 'smtp',
                         'smtp_host' => 'mail.pinmy.link',
                         'smtp_user' => 'no-reply@pinmy.link',
                         'smtp_pass' => '~~pinmylink~~',
