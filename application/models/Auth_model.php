@@ -19,10 +19,16 @@
                 $this->load->library('email', $config);
 
                 $this->email->from('no-reply@pinmy.link', 'PINMY.LINK');
-                $this->email->to('abirutama@gmail.com');
+                $this->email->to('hello@abirutama.com');
                 $this->email->subject('User Activation');
                 $this->email->message('Hello, please kindly verify your account by clicking url below:');
                 $this->email->send();
+                if ($this->email->send())
+                {
+                        echo 'error';
+                }else{
+                        echo 'kekirim';
+                }
         }
     }
 ?>
