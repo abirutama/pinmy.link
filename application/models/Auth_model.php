@@ -3,22 +3,23 @@
 
         public function send_mail_verification()
         {
-                $config = [
-                        'protocol' => 'smtp',
-                        'smtp_host' => 'mail.pinmy.link',
-                        'smtp_user' => 'no-reply@pinmy.link',
-                        'smtp_timeout' => 5,
-                        'smtp_pass' => '~~pinmylink~~',
-                        'smtp_port' => 465,
-                        'smtp_crypto' => 'ssl',
-                        'mailtype' => 'text',
-                        'charset' => 'utf-8',
-                        'newline' => "\r\n"
-                ];
-                $this->load->library('email', $config);
+                $this->load->library('email');
+
+                $config['protocol']    = 'smtp';
+$config['smtp_host']    = 'mail.pinmy.link';
+$config['smtp_port']    = '465';
+$config['smtp_timeout'] = '7';
+$config['smtp_user']    = 'no-reply@pinmy.link';
+$config['smtp_pass']    = '~~pinmylink~~';
+$config['charset']    = 'utf-8';
+$config['newline']    = "\r\n";
+$config['mailtype'] = 'text'; // or html
+$config['validation'] = TRUE; // bool whether to validate email or not      
+
+$this->email->initialize($config);
 
                 $this->email->from('no-reply@pinmy.link');
-                $this->email->to('hello@abirutama.com');
+                $this->email->to('abirutama@gmail.com');
                 $this->email->subject('User Activation');
                 $this->email->message('Hello, please kindly verify your account by clicking url below:');
 
