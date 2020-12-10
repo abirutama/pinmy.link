@@ -1,15 +1,13 @@
 <?php
     class Auth_model extends CI_Model {
-        public $title;
-        public $content;
-        public $date;
 
         public function send_mail_verification()
         {
                 $config = [
                         'protocol' => 'smtp',
-                        'smtp_host' => 'mail.pinmy.link',
+                        'smtp_host' => 'ssl://mail.pinmy.link',
                         'smtp_user' => 'no-reply@pinmy.link',
+                        'smtp_timeout' => 5,
                         'smtp_pass' => '~~pinmylink~~',
                         'smtp_port' => 465,
                         'mailtype' => 'html',
@@ -22,12 +20,12 @@
                 $this->email->to('hello@abirutama.com');
                 $this->email->subject('User Activation');
                 $this->email->message('Hello, please kindly verify your account by clicking url below:');
-                $this->email->send();
+
                 if ($this->email->send())
                 {
-                        echo 'error';
+                        echo $this->email->print_debugger();
                 }else{
-                        echo 'kekirim';
+                        echo $this->email->print_debugger();
                 }
         }
     }
