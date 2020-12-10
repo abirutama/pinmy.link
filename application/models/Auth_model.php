@@ -8,10 +8,10 @@
         {
                 $config = [
                         'protocol' => 'stmp',
-                        'smtp_host' => 'ssl://mail.pinmy.link',
+                        'smtp_host' => 'mail.pinmy.link',
                         'smtp_user' => 'no-reply@pinmy.link',
                         'smtp_pass' => '~~pinmylink~~',
-                        'smtp_port' => '465',
+                        'smtp_port' => 465,
                         'mailtype' => 'html',
                         'charset' => 'utf-8',
                         'newline' => "\r\n"
