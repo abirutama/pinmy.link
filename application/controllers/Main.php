@@ -44,7 +44,10 @@ class Main extends CI_Controller {
 		$this->load->view('templates/template_with_ad', $data);
 		
 	}
-
+	public function sendmail(){
+		$this->load->model('auth_model');
+		$this->auth_model->send_mail_verification();
+	}
 	public function goto($user_name=null, $card_id=null)
 	{
 		$data['queryProfile'] = $this->db->get_where('user', array('user_name' => $user_name))->row_array();
