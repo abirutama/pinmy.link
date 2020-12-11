@@ -27,7 +27,7 @@
         public function insert_row_token($user_email, $token){
             $data_token = [
 				'token_email' => $user_email,
-                'token_code' => $new_token,
+                'token_code' => $token,
                 'date_create' => time()
 			];
 			$this->db->insert('token_user', $data_token);
