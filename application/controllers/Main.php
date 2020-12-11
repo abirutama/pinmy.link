@@ -45,14 +45,7 @@ class Main extends CI_Controller {
 		
 	}
 	public function requestverify(){
-		$sender = "activation";
-		$symbol_send = "@";
-		$domain_send = "pinmy.link";
-		$sendergroup = $sender.$symbol_send.$domain_send;
-		$receiver = $this->input->post('email-rcv', true);
-		$token = "xyz";
-		$this->load->model('auth_model');
-		$this->auth_model->send_mail_verification($sendergroup, $receiver, $token);
+		
 	}
 	public function sendemail(){
 		echo '<form action="'.base_url('main/requestverify').'" method="post">';
@@ -60,9 +53,7 @@ class Main extends CI_Controller {
 		echo '<button type="submit">submit</button>';
 		echo '</form>';
 	}
-	public function createpass(){
-		echo password_hash('~~smtpemaillogin!@#~~', PASSWORD_DEFAULT);
-	}
+
 	public function goto($user_name=null, $card_id=null)
 	{
 		$data['queryProfile'] = $this->db->get_where('user', array('user_name' => $user_name))->row_array();

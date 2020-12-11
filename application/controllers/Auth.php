@@ -41,13 +41,22 @@ class Auth extends CI_Controller {
 						redirect('auth');
 					}
 				}else{
-					$this->session->set_flashdata('message', '<div class="notification is-warning">User has not been activated!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-warning">Account not verified!</div>');
 					redirect('auth');
 				}
 			}else{
 				$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
 				redirect('auth');
 			}
+		}
+	}
+
+	public function verify($email=null, $token=null){
+		if($email !== null && $token !== null){
+			$this->load->model('auth_model');
+			$this->auth_model->user_verify_token($email, $token);
+		}else{
+			echo 'invalid parameter';
 		}
 	}
 
@@ -101,9 +110,14 @@ class Auth extends CI_Controller {
 			$this->load->view('auth/footer_v2');
 		}else{
 			//die();
+			$this->load->model('user_model');
+
+			$post_username = htmlspecialchars($this->input->post('username-regis', true));
+			$post_email = htmlspecialchars($this->input->post('email-regis', true));
+
 			$data_user = [
-				'user_name' => htmlspecialchars($this->input->post('username-regis', true)),
-				'user_email' => htmlspecialchars($this->input->post('email-regis', true)),
+				'user_name' => $post_username,
+				'user_email' => $post_email,
 				'user_pass' => password_hash($this->input->post('pass-regis'), PASSWORD_DEFAULT),
 				'role_id' => 2,
 				'is_active' => 1,
@@ -117,11 +131,6 @@ class Auth extends CI_Controller {
 			];
 			$this->db->insert('appearance', $data_appearance);
 
-			$data_pinned = [
-				'user_id' => $new_user_id
-			];
-			$this->db->insert('card_pinned', $data_pinned);
-
 			$data_social = [
 				'user_id' => $new_user_id
 			];
@@ -133,6 +142,15 @@ class Auth extends CI_Controller {
 			];
 			$this->db->insert('seo', $data_seo);
 
+			$token = $this->user_model->insert_row_token($post_email, $post_username);
+
+			$sender = "activation";
+			$symbol_send = "@";
+			$domain_send = "pinmy.link";
+			$sendergroup = $sender.$symbol_send.$domain_send;
+			$receiver = $this->input->post('email-rcv', true);
+			$this->load->model('auth_model');
+			$this->auth_model->send_mail_verification($sendergroup, $receiver, $token);
 
 			$this->session->set_flashdata('message', '<div class="notification is-success">Registration is success, please sign in!</div>');
 			redirect('auth');
