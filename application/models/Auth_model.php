@@ -13,8 +13,7 @@
                 $config['smtp_pass']    = '~~webmail~~';
                 $config['charset']    = 'utf-8';
                 $config['newline']    = "\r\n";
-                $config['mailtype'] = 'html'; // or html
-                $config['validation'] = TRUE; // bool whether to validate email or not      
+                $config['mailtype'] = 'html'; // or html    
 
 $this->email->initialize($config);
 
@@ -29,8 +28,10 @@ $this->email->initialize($config);
                 if ($this->email->send())
                 {
                         //echo $this->email->print_debugger();
+                        echo 'success';
                 }else{
-                        echo $this->email->print_debugger();
+                        //echo $this->email->print_debugger();
+                        echo 'error';
                 }
         }
     }
