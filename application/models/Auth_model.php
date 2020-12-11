@@ -6,7 +6,6 @@
                 
                 $config = [
                         'protocol' => 'smtp',
-                        'smtp_crypto' => 'ssl',
                         'priority' => 2,
                         'smtp_host' => 'ssl://mail.rupakara.com',
                         'smtp_user' => 'activation@pinmy.link',
