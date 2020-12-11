@@ -13,15 +13,18 @@
                 $config['smtp_pass']    = '~~webmail~~';
                 $config['charset']    = 'utf-8';
                 $config['newline']    = "\r\n";
-                $config['mailtype'] = 'text'; // or html
+                $config['mailtype'] = 'html'; // or html
                 $config['validation'] = TRUE; // bool whether to validate email or not      
 
 $this->email->initialize($config);
 
-                $this->email->from('no-reply@pinmy.link');
+                $this->email->from('no-reply@pinmy.link', 'Pinmy.link');
                 $this->email->to('abirutama@gmail.com');
                 $this->email->subject('User Activation');
-                $this->email->message('Hello, please kindly verify your account by clicking url below:');
+                $this->email->message('
+                                Hello, please kindly verify your account by clicking url below: \r\n
+                                Make sure this link has domain "pinmy.link"
+                ');
 
                 if ($this->email->send())
                 {
