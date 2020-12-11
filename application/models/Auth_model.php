@@ -30,7 +30,7 @@
                         //echo $this->email->print_debugger();
                         echo 'success';
                 }else{
-                        $this->email->print_debugger();
+                        echo $this->email->print_debugger();
                         die;
                 }
         }
