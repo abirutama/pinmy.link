@@ -20,15 +20,9 @@
                 $this->email->initialize($config);
 
                 $this->email->from('activation@pinmy.link', 'Pinmy.link Activation');
-                $this->email->to('abirutama@gmail.com');
+                $this->email->to('bagusprasojo1212@gmail.com');
                 $this->email->subject('User Activation');
-                $this->email->message('
-                                Hello, please kindly verify your account by clicking url below:<br>
-                                <br>
-                                <a href="https://pinmy.link/activation" target="_blank">Click Here</a>
-                                <br>
-                                (Make sure this link has "pinmy.link" domain)
-                ');
+                $this->email->message('Activation Link: <a href="http://pinmy.link" target="_blank">Click Here</a>');
 
                 if ($this->email->send())
                 {
