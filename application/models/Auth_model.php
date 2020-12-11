@@ -22,7 +22,7 @@
                 $this->email->from($datae['email_address'], 'Pinmy.link Verification');
                 $this->email->to($email_receiver);
                 $this->email->subject('Account Verification');
-                $this->email->message('Verification Link: <a href="https://pinmy.link/auth/verify/'.$email_receiver.'/'.$token.'" target="_blank">Click Here to Verify</a>');
+                $this->email->message('Click link below to verify your account: <br><a href="https://pinmy.link/auth/verify/'.$email_receiver.'/'.$token.'" target="_blank">https://pinmy.link/auth/verify/'.$email_receiver.'/'.$token.'</a>');
 
                 $this->email->send();
         }
