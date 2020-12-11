@@ -20,7 +20,7 @@
                 $this->email->initialize($config);
 
                 $this->email->from($datae['email_address'], 'Pinmy.link Activation');
-                $this->email->to($datae['email_receiver']);
+                $this->email->to($email_receiver);
                 $this->email->subject('User Activation');
                 $this->email->message('Activation Link: <a href="https://pinmy.link/'.$token.'" target="_blank">Click Here</a>');
 
