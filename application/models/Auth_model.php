@@ -17,7 +17,7 @@
                         'newline' => "\r\n"
                 ];
 
-                $this->load->library('email');
+                $this->load->library('email',$config);
                 $this->email->initialize($config);
 
                 $this->email->from('no-reply@pinmy.link', 'Pinmy.link');
