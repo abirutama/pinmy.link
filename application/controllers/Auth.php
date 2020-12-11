@@ -41,7 +41,7 @@ class Auth extends CI_Controller {
 						redirect('auth');
 					}
 				}else{
-					$this->session->set_flashdata('message', '<div class="notification is-warning">Account not verified!</div>');
+					$this->session->set_flashdata('message', '<div class="notification is-warning">Account not verified! Find email with subject "Account Verification" in your mailbox to verify your account.</div>');
 					redirect('auth');
 				}
 			}else{
@@ -153,7 +153,7 @@ class Auth extends CI_Controller {
 			$this->load->model('auth_model');
 			$this->auth_model->send_mail_verification($sendergroup, $receiver, $token);
 
-			$this->session->set_flashdata('message', '<div class="notification is-success">Registration is success, find email subject "Account Verification" in your mailbox to verify your account.</div>');
+			$this->session->set_flashdata('message', '<div class="notification is-success">Registration is success, find email with subject "Account Verification" in your mailbox to verify your account.</div>');
 			redirect('auth');
 		}
 	}
