@@ -6,16 +6,18 @@
                 
                 $config = [
                         'protocol' => 'smtp',
+                        'smtp_crypto' => 'ssl',
+                        'priority' => 2,
                         'smtp_host' => 'ssl://mail.rupakara.com',
-                        'smtp_user' => 'no-reply@pinmy.link',
-                        'smtp_pass' => '~~webmail~~',
+                        'smtp_user' => 'activation@pinmy.link',
+                        'smtp_pass' => '~~activation~~',
                         'smtp_port' => 465,
                         'mailtype' => 'html',
                         'charset' => 'utf-8',
                         'newline' => "\r\n"
                 ];
 
-                $this->load->library('email',$config);
+                $this->load->library('email');
                 $this->email->initialize($config);
 
                 $this->email->from('no-reply@pinmy.link', 'Pinmy.link');
