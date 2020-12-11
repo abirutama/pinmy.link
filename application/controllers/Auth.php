@@ -120,7 +120,7 @@ class Auth extends CI_Controller {
 				'user_email' => $post_email,
 				'user_pass' => password_hash($this->input->post('pass-regis'), PASSWORD_DEFAULT),
 				'role_id' => 2,
-				'is_active' => 1,
+				'is_active' => 0,
 				'date_created' => time()
 			];
 			$this->db->insert('user', $data_user);
@@ -142,7 +142,8 @@ class Auth extends CI_Controller {
 			];
 			$this->db->insert('seo', $data_seo);
 
-			$token = $this->user_model->insert_row_token($post_email, $post_username);
+			$token = $this->user_model->generate_toke($post_email,$post_username);
+			$this->user_model->insert_row_token($post_email, $token);
 
 			$sender = "activation";
 			$symbol_send = "@";

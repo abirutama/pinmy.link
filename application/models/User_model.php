@@ -24,9 +24,7 @@
             }
         }
 
-        public function insert_row_token($user_email, $username){
-            $new_token = $this->generate_token($user_email, $username);
-            
+        public function insert_row_token($user_email, $token){
             $data_token = [
 				'token_email' => $user_email,
                 'token_code' => $new_token,
