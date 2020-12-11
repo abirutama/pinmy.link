@@ -33,8 +33,9 @@
                 if($get_verify_token){
                         echo $email = $get_verify_token['token_email'];
                         echo $token = $get_verify_token['token_code'];
-                        $this->user_model->set_user_active($email_get);
+                        
                         $this->user_model->delete_row_token($email_get, $token_get);
+                        $this->user_model->set_user_active($email_get);
                 }else{
                         echo 'token not found';
                 }
