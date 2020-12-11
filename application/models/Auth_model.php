@@ -19,7 +19,7 @@
                 $this->load->library('email',$config);
                 $this->email->initialize($config);
 
-                $this->email->from('no-reply@pinmy.link', 'Pinmy.link');
+                $this->email->from('activation@pinmy.link', 'Pinmy.link Activation');
                 $this->email->to('abirutama@gmail.com');
                 $this->email->subject('User Activation');
                 $this->email->message('
