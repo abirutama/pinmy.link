@@ -3,19 +3,19 @@
 
         public function send_mail_verification()
         {
-                $this->load->library('email');
+                
+                $config = [
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://mail.pinmy.link',
+                        'smtp_user' => 'no-reply@pinmy.link',
+                        'smtp_pass' => '~~webmail~~',
+                        'smtp_port' => '465',
+                        'mailtype' => 'html',
+                        'charset' => 'utf-8',
+                        'newline' => "\r\n"
+                ];
 
-                $config['protocol']    = 'smtp';
-                $config['smtp_host']    = 'ssl://mail.rupakara.com';
-                $config['smtp_port']    = '465';
-                $config['smtp_timeout'] = '3';
-                $config['smtp_user']    = 'no-reply@pinmy.link';
-                $config['smtp_pass']    = '~~webmail~~';
-                $config['charset']    = 'utf-8';
-                $config['newline']    = "\r\n";
-                $config['mailtype'] = 'html'; // or html    
-
-$this->email->initialize($config);
+                $this->load->library('email',$config);
 
                 $this->email->from('no-reply@pinmy.link', 'Pinmy.link');
                 $this->email->to('abirutama@gmail.com');
@@ -30,8 +30,8 @@ $this->email->initialize($config);
                         //echo $this->email->print_debugger();
                         echo 'success';
                 }else{
-                        //echo $this->email->print_debugger();
-                        echo 'error';
+                        $this->email->print_debugger();
+                        die;
                 }
         }
     }
