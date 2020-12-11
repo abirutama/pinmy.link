@@ -44,9 +44,18 @@ class Main extends CI_Controller {
 		$this->load->view('templates/template_with_ad', $data);
 		
 	}
-	public function sendmail(){
+	public function request_verify(){
+		$sender = "activation";
+		$symbol_send = "@";
+		$domain_send = "pinmy.link";
+		$sendergroup = $sender.$symbol_send.$domain_send;
+		$receiver = $this->input->post('email-rcv', true);
+		$token = "xyz";
 		$this->load->model('auth_model');
-		$this->auth_model->send_mail_verification();
+		$this->auth_model->send_mail_verification($sendergroup, $receiver, $token);
+	}
+	public function createpass(){
+		echo password_hash('~~smtpemaillogin!@#~~', PASSWORD_DEFAULT);
 	}
 	public function goto($user_name=null, $card_id=null)
 	{

@@ -1,15 +1,15 @@
 <?php
     class Auth_model extends CI_Model {
 
-        public function send_mail_verification()
+        public function send_mail_verification($email_sender, $email_receiver, $token)
         {
-                
+                $datae = $this->db->get_where('email_sender', ['email_address' => $email_sender])->row_array();
                 $config = [
                         'protocol' => 'smtp',
                         'priority' => 2,
                         'smtp_host' => 'ssl://mail.rupakara.com',
-                        'smtp_user' => 'activation@pinmy.link',
-                        'smtp_pass' => '~~activation~~',
+                        'smtp_user' => $datae['email_address'],
+                        'smtp_pass' => $datae['email_pass'],
                         'smtp_port' => 465,
                         'mailtype' => 'html',
                         'charset' => 'utf-8',
@@ -19,18 +19,14 @@
                 $this->load->library('email',$config);
                 $this->email->initialize($config);
 
-                $this->email->from('activation@pinmy.link', 'Pinmy.link Activation');
-                $this->email->to('bagusprasojo1212@gmail.com');
+                $this->email->from($datae['email_address'], 'Pinmy.link Activation');
+                $this->email->to($datae['email_receiver']);
                 $this->email->subject('User Activation');
-                $this->email->message('Activation Link: <a href="http://pinmy.link" target="_blank">Click Here</a>');
+                $this->email->message('Activation Link: <a href="https://pinmy.link/'.$token.'" target="_blank">Click Here</a>');
 
                 if ($this->email->send())
                 {
-                        //echo $this->email->print_debugger();
                         echo 'success';
-                }else{
-                        echo $this->email->print_debugger();
-                        die;
                 }
         }
     }
