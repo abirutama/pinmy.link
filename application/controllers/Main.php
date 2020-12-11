@@ -17,7 +17,7 @@ class Main extends CI_Controller {
 	{
 		
 		$strip = str_replace('@', '', $user_name);
-		$queryProfile = $this->db->get_where('user', array('user_name' => $strip))->row_array();
+		$queryProfile = $this->db->get_where('user', array('user_name' => $strip, 'is_active' => 1))->row_array();
 		$data['profile'] = $queryProfile;
 		//print_r($queryProfile);
 		//die();

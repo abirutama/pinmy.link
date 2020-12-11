@@ -24,10 +24,7 @@
                 $this->email->subject('Account Verification');
                 $this->email->message('Verification Link: <a href="https://pinmy.link/auth/verify/'.$email_receiver.'/'.$token.'" target="_blank">Click Here to Verify</a>');
 
-                if ($this->email->send())
-                {
-                        echo 'success';
-                }
+                $this->email->send();
         }
 
         public function user_verify_token($email_get, $token_get){
@@ -37,6 +34,7 @@
                         echo $email = $get_verify_token['token_email'];
                         echo $token = $get_verify_token['token_code'];
                         $this->user_model->set_user_active($email_get);
+                        $this->user_model->delete_row_token($email_get, $token_get);
                 }else{
                         echo 'token not found';
                 }

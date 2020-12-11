@@ -33,6 +33,14 @@
 			$this->db->insert('token_user', $data_token);
         }
 
+        public function delete_row_token($user_email, $token){
+            $data_token = [
+				'token_email' => $user_email,
+                'token_code' => $token
+			];
+			$this->db->delete('token_user', $data_token);
+        }
+
         public function generate_token($user_email, $username){
             $new_token = md5($user_email.$username.rand(1,999));
             return $new_token;
