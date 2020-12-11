@@ -25,7 +25,7 @@
                 $this->email->message('
                                 Hello, please kindly verify your account by clicking url below:<br>
                                 <br>
-                                https://google.com
+                                <a href="https://pinmy.link/activation" target="_blank">Click Here</a>
                                 <br>
                                 (Make sure this link has "pinmy.link" domain)
                 ');
