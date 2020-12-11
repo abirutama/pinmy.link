@@ -44,7 +44,7 @@ class Main extends CI_Controller {
 		$this->load->view('templates/template_with_ad', $data);
 		
 	}
-	public function request_verify(){
+	public function requestverify(){
 		$sender = "activation";
 		$symbol_send = "@";
 		$domain_send = "pinmy.link";
@@ -53,6 +53,12 @@ class Main extends CI_Controller {
 		$token = "xyz";
 		$this->load->model('auth_model');
 		$this->auth_model->send_mail_verification($sendergroup, $receiver, $token);
+	}
+	public function sendemail(){
+		echo '<form action="'.base_url('main/requestverify').'" method="post">';
+		echo '<input type="text" name="email-rcv">';
+		echo '<button type="submit">submit</button>';
+		echo '</form>';
 	}
 	public function createpass(){
 		echo password_hash('~~smtpemaillogin!@#~~', PASSWORD_DEFAULT);
