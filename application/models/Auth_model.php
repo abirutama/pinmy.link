@@ -16,6 +16,7 @@
                 ];
 
                 $this->load->library('email',$config);
+                $this->email->initialize($config);
 
                 $this->email->from('no-reply@pinmy.link', 'Pinmy.link');
                 $this->email->to('abirutama@gmail.com');
