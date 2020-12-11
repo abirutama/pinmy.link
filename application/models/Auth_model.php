@@ -6,7 +6,7 @@
                 
                 $config = [
                         'protocol' => 'smtp',
-                        'smtp_host' => 'ssl://mail.pinmy.link',
+                        'smtp_host' => 'ssl://mail.rupakara.com',
                         'smtp_user' => 'no-reply@pinmy.link',
                         'smtp_pass' => '~~webmail~~',
                         'smtp_port' => 465,
