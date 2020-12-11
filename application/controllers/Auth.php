@@ -148,7 +148,7 @@ class Auth extends CI_Controller {
 			$symbol_send = "@";
 			$domain_send = "pinmy.link";
 			$sendergroup = $sender.$symbol_send.$domain_send;
-			$receiver = $this->input->post('email-rcv', true);
+			$receiver = $post_email;
 			$this->load->model('auth_model');
 			$this->auth_model->send_mail_verification($sendergroup, $receiver, $token);
 
