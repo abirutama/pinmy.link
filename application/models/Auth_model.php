@@ -23,8 +23,11 @@
                 $this->email->to('abirutama@gmail.com');
                 $this->email->subject('User Activation');
                 $this->email->message('
-                                Hello, please kindly verify your account by clicking url below: \r\n
-                                Make sure this link has domain "pinmy.link"
+                                Hello, please kindly verify your account by clicking url below:<br>
+                                <br>
+                                https://google.com
+                                <br>
+                                (Make sure this link has "pinmy.link" domain)
                 ');
 
                 if ($this->email->send())
