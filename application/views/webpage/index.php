@@ -33,6 +33,19 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <!--<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90789114-4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-90789114-4');
+    </script>
+
 </head>
 
 <body>
@@ -161,8 +174,9 @@
     <footer class="footer">
         <div class="content has-text-centered">
             <p>
-                Copyright &copy;2020 <strong>Pinmy.link</strong>.<br> 
-                <span><a href="https://kb.pinmy.link/syarat-dan-ketentuan-layanan/">Syarat & Ketentuan Layanan</a></span> | <span><a href="#">Kebijakan Privasi</a></span>
+                Copyright &copy;2020 <strong>Pinmy.link</strong>.<br>
+                <span><a href="https://kb.pinmy.link/syarat-dan-ketentuan-layanan/">Syarat & Ketentuan
+                        Layanan</a></span> | <span><a href="#">Kebijakan Privasi</a></span>
             </p>
         </div>
     </footer>
