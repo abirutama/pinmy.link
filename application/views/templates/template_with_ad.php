@@ -36,6 +36,21 @@
         }
     }
     </style>
+    <?php if($seo['gtag_id']){ ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?= scoup($seo['gtag_id']); ?>"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', '<?= scoup($seo['gtag_id']); ?>');
+    </script>
+    <?php } ?>
+
 </head>
 
 <body>
