@@ -2,7 +2,7 @@
     if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; } 
 ?>
 <!DOCTYPE html>
-<html class="has-background-light">
+<html class="has-background-light" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -17,10 +17,7 @@
     <meta name="rating" content="adult">
     <?php } ?>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-    <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?= base_url('assets/slick/') ?>slick.css" />
-    <link rel="stylesheet" href="<?= base_url('assets/slick/') ?>slick-theme.css" />
+    
     <style>
     .bs {
         box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
@@ -91,14 +88,14 @@
                     foreach($card as $key=>$cardItem){
                 ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:6px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>"
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>" rel="noreferrer"
                         class="media box has-background-white"
                         style="border-radius:16px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
                             <p class="image is-64x64">
                                 <img class="is-rounded lazyload"
                                     src="https://via.placeholder.com/64/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
-                                    data-src="<?= $cardItem['card_thumbnail']; ?>" style="width: 64px; height:64px">
+                                    data-src="<?= $cardItem['card_thumbnail']; ?>" alt="<?= scoup(substr($cardItem['card_title'],0,20)) ?>" style="width: 64px; height:64px">
                             </p>
                         </figure>
                         <div class="media-content">
@@ -137,35 +134,35 @@
                             class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
                         <?php if($social['other_website']){ ?>
                         <a target="_blank" href="https://<?= scoup($social['other_website']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="Go to website button">
                         </a>
                         <?php } if($social['ecom_bukalapak']){ ?>
                         <a target="_blank" href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="Go to bukalapak button">
                         </a>
                         <?php } if($social['ecom_lazada']){ ?>
                         <a target="_blank" href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="Go to lazada button">
                         </a>
                         <?php } if($social['ecom_shopee']){ ?>
                         <a target="_blank" href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="Go to shopee button">
                         </a>
                         <?php } if($social['ecom_tokopedia']){ ?>
                         <a target="_blank" href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="Go to tokopedia button">
                         </a>
                         <?php } if($social['social_twitter']){ ?>
                         <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="Go to twitter button">
                         </a>
                         <?php } if($social['social_facebook']){ ?>
                         <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="Go to facebook button">
                         </a>
                         <?php } if($social['social_instagram']){ ?>
                         <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="Go to instagram button">
                         </a>
                         <?php } ?>
                     </div>
@@ -176,10 +173,10 @@
     <figure class="" style="text-align:center; padding:32px">
         <img width="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="">
     </figure>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-    <script src="<?= base_url('assets/slick/') ?>slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
     <script>
     lazyload();
