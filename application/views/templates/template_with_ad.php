@@ -70,7 +70,7 @@
                         style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i
                             class="fas fa-link is-size-5 blink_me"></i></div>
                     <?php } ?>
-                    <img class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
+                    <img alt="profile pitcure" class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
                         src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>"
                         data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
                 </figure>
@@ -95,7 +95,7 @@
                             <p class="image is-64x64">
                                 <img class="is-rounded lazyload"
                                     src="https://via.placeholder.com/64/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
-                                    data-src="<?= $cardItem['card_thumbnail']; ?>" alt="<?= scoup(substr($cardItem['card_title'],0,20)) ?>" style="width: 64px; height:64px">
+                                    data-src="<?= $cardItem['card_thumbnail']; ?>" alt="thumbnail image" style="width: 64px; height:64px">
                             </p>
                         </figure>
                         <div class="media-content">
@@ -134,35 +134,35 @@
                             class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
                         <?php if($social['other_website']){ ?>
                         <a target="_blank" href="https://<?= scoup($social['other_website']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="Go to website button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="Go to website button" rel="noreferrer">
                         </a>
                         <?php } if($social['ecom_bukalapak']){ ?>
                         <a target="_blank" href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="Go to bukalapak button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="Go to bukalapak button" rel="noreferrer">
                         </a>
                         <?php } if($social['ecom_lazada']){ ?>
                         <a target="_blank" href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="Go to lazada button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="Go to lazada button" rel="noreferrer">
                         </a>
                         <?php } if($social['ecom_shopee']){ ?>
                         <a target="_blank" href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="Go to shopee button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="Go to shopee button" rel="noreferrer">
                         </a>
                         <?php } if($social['ecom_tokopedia']){ ?>
                         <a target="_blank" href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="Go to tokopedia button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="Go to tokopedia button" rel="noreferrer">
                         </a>
                         <?php } if($social['social_twitter']){ ?>
                         <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="Go to twitter button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="Go to twitter button" rel="noreferrer">
                         </a>
                         <?php } if($social['social_facebook']){ ?>
                         <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="Go to facebook button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="Go to facebook button" rel="noreferrer">
                         </a>
                         <?php } if($social['social_instagram']){ ?>
                         <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="Go to instagram button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="Go to instagram button" rel="noreferrer">
                         </a>
                         <?php } ?>
                     </div>
