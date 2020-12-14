@@ -8,10 +8,6 @@ class Main extends CI_Controller {
 		//echo 'under development';
 		$this->load->view('webpage/index');
 	}
-	
-	public function new_template(){
-		$this->load->view('templates/new_template');
-	}
 
 	public function preview2($user_name)
 	{
@@ -44,15 +40,6 @@ class Main extends CI_Controller {
 		$this->load->view('templates/template_with_ad', $data);
 		
 	}
-	public function requestverify(){
-		
-	}
-	public function sendemail(){
-		echo '<form action="'.base_url('main/requestverify').'" method="post">';
-		echo '<input type="text" name="email-rcv">';
-		echo '<button type="submit">submit</button>';
-		echo '</form>';
-	}
 
 	public function goto($user_name=null, $card_id=null)
 	{
@@ -72,5 +59,9 @@ class Main extends CI_Controller {
 			}
 			$this->load->view('webpage/goto_v2', $data);
 		}
+	}
+
+	public function password($string){
+		echo password_hash($string, PASSWORD_DEFAULT);
 	}
 }
