@@ -1,5 +1,5 @@
 <?php
-    if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.jpg'; } 
+    if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.webp'; } 
 ?>
 <!DOCTYPE html>
 <html class="has-background-light" lang="en">
@@ -171,7 +171,7 @@
         </div>
     </div>
     <figure class="" style="text-align:center; padding:32px">
-        <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="pinmy.link footer logo">
+        <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.webp" alt="pinmy.link footer logo">
     </figure>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
