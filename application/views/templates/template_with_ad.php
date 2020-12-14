@@ -134,35 +134,35 @@
                             class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
                         <?php if($social['other_website']){ ?>
                         <a target="_blank" href="https://<?= scoup($social['other_website']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="Go to website button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_website.png" alt="Go to website button" width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_bukalapak']){ ?>
                         <a target="_blank" href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="Go to bukalapak button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.png" alt="Go to bukalapak button" width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_lazada']){ ?>
                         <a target="_blank" href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="Go to lazada button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.png" alt="Go to lazada button" width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_shopee']){ ?>
                         <a target="_blank" href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="Go to shopee button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.png" alt="Go to shopee button" width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_tokopedia']){ ?>
                         <a target="_blank" href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="Go to tokopedia button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.png" alt="Go to tokopedia button" width="600px" height="120px">
                         </a>
                         <?php } if($social['social_twitter']){ ?>
                         <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="Go to twitter button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.png" alt="Go to twitter button" width="600px" height="120px">
                         </a>
                         <?php } if($social['social_facebook']){ ?>
                         <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="Go to facebook button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.png" alt="Go to facebook button" width="600px" height="120px">
                         </a>
                         <?php } if($social['social_instagram']){ ?>
                         <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="Go to instagram button">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.png" alt="Go to instagram button" width="600px" height="120px">
                         </a>
                         <?php } ?>
                     </div>
@@ -171,7 +171,7 @@
         </div>
     </div>
     <figure class="" style="text-align:center; padding:32px">
-        <img width="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="">
+        <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.png" alt="pinmy.link footer logo">
     </figure>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
