@@ -53,7 +53,7 @@
             <figure class="image is-16by9" style="margin:auto;">
                 <?php
                         if($appearance['appearance_cover']==null){ 
-                            $cover_src = base_url('assets/img/layout/').'bg1.jpg';
+                            $cover_src = base_url('assets/img/layout/').'bg1.webp';
                         }else{
                             $cover_src = base_url('assets/img/cover/').$appearance['appearance_cover'];
                         }
