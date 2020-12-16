@@ -45,8 +45,7 @@ class User extends CI_Controller {
 		
 		$errorCorrectionLevel = 'L';
 		$matrixPointSize = 10;
-		$ga = '?utm_source=pinmy.link&utm_medium=qrcode&utm_campaign=qr_scan_content';
-		$url = base_url().$user.'/'.$url.''.$ga;
+		$url = base_url().$user.'/'.$url;
 		QRcode::png($url, false, $errorCorrectionLevel, $matrixPointSize, 4); 
 	}
 	

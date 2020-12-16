@@ -52,7 +52,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="https://pinmy.link">
-                <img src="<?= base_url('assets'); ?>/img/layout/footer.png"> <strong
+                <img src="<?= base_url('assets'); ?>/img/layout/footer.webp"> <strong
                     class="has-text-gray">Pinmy.link</strong>
             </a>
 

@@ -88,7 +88,7 @@
                     foreach($card as $key=>$cardItem){
                 ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:6px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>" rel="noreferrer"
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>?utm_source=pinmylink&utm_medium=content_button&utm_campaign=direct_from_page" rel="noreferrer"
                         class="media box has-background-white"
                         style="border-radius:16px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">

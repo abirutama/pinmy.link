@@ -6,7 +6,7 @@ if(stristr($_SERVER['DOCUMENT_ROOT'], 'xampp')===false){
 }
 
 $PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
-$user_url = 'https://pinmy.link/@'.$user['user_name'];
+$user_url = 'https://pinmy.link/@'.$user['user_name'].'?utm_source=pinmylink&utm_medium=qrcode&utm_campaign=qr_profile_share';
 //html PNG location prefix
 $PNG_WEB_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
 
