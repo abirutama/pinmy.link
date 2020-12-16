@@ -94,7 +94,7 @@
                         <figure class="media-left">
                             <p class="image is-64x64">
                                 <img class="is-rounded lazyload"
-                                    src="https://via.placeholder.com/64/f7b780/fffffff?text=<?= strtoupper(substr($cardItem['card_slug'],0,1)); ?>"
+                                    src="<?= base_url('assets/img/layout/') ?>lazy.webp"
                                     data-src="<?= $cardItem['card_thumbnail']; ?>" alt="Thumbnail Image" style="width: 64px; height:64px">
                             </p>
                         </figure>
