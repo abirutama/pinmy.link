@@ -125,6 +125,7 @@
                 ?>
             </div>
         </section>
+        <?php if($social_button){ ?>
         <div id="modal-social" class="modal">
             <div id="modal-background" class="modal-background"></div>
             <div class="modal-card" style="max-width:400px">
@@ -169,6 +170,7 @@
                 </section>
             </div>
         </div>
+        <?php } ?>
     </div>
     <figure class="" style="text-align:center; padding:32px">
         <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.webp" alt="pinmy.link footer logo">
@@ -182,6 +184,7 @@
     lazyload();
     </script>
 </body>
+<?php if($social_button){ ?>
 <script>
 //Modal Logout
 var html_tag = document.documentElement;
@@ -205,5 +208,6 @@ close_modal.onclick = function() {
     html_tag.classList.toggle('is-clipped');
 }
 </script>
+<?php } ?>
 
 </html>
