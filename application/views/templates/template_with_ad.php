@@ -1,4 +1,7 @@
 <?php
+    header('X-Frame-Options: DENY');
+    header('X-XSS-Protection: 1; mode=block');
+    header('X-Content-Type-Options: nosniff');
     if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.webp'; } 
 ?>
 <!DOCTYPE html>
@@ -100,7 +103,7 @@
                         </figure>
                         <div class="media-content">
                             <div class="content">
-                                <p>
+                                <h1 class="is-size-6" style="font-weight:400">
                                     <?php
                                     if( strlen($cardItem['card_title']) > 45 ){
                                         echo scoup(substr($cardItem['card_title'],0,45)).'...'; 
@@ -108,7 +111,7 @@
                                         echo scoup($cardItem['card_title']);
                                     }
                                     ?>
-                                </p>
+                                </h1>
                             </div>
                         </div>
                     </a>
