@@ -8,9 +8,13 @@ class Main extends CI_Controller {
 		//echo 'under development';
 		$this->load->view('webpage/index');
 	}
-
-	public function preview2($user_name)
-	{
+	public function redirect_user($user_name){
+		redirect(base_url('@').$user_name);
+	}
+	public function redirect_goto($user_name, $post){
+		redirect(base_url('@').$user_name.'/'.$post);
+	}
+	public function preview2($user_name){
 		
 		$strip = str_replace('@', '', $user_name);
 		$queryProfile = $this->db->get_where('user', array('user_name' => $strip, 'is_active' => 1))->row_array();

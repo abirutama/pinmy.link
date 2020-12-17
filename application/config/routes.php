@@ -51,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'main';
 $route['@(:any)'] = 'main/preview2/$1';
+$route['%40(:any)'] = 'main/redirect_user/$1';
 $route['@(:any)/(:any)'] = 'main/goto/$1/$2';
+$route['%40(:any)/(:any)'] = 'main/redirect_goto/$1/$2';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
