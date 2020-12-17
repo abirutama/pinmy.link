@@ -87,7 +87,7 @@
                             class="fas fa-link is-size-5 blink_me"></i></div>
                     <?php } ?>
                     <img alt="profile pitcure" class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
-                        src="https://via.placeholder.com/128/f7b780/fffffff/?text=<?= scoup(strtoupper(substr($profile['user_name'],0,1))); ?>"
+                        src="<?= base_url('assets/img/layout/') ?>lazy-p.webp"
                         data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
                 </figure>
                 <h1 class="profile-thing title is-size-5 has-text-white" style="margin-top:8px;">
