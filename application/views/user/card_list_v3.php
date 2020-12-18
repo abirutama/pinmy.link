@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
-<section class="section" style="max-width: 800px; margin:auto">
+<section class="section" style="max-width: 600px; margin:auto">
     <?= $this->session->flashdata('message'); ?>
     <?php if(count($card)>0){ ?>
     <a href="<?= base_url('user/addcard') ?>" class="box has-text-centered"
@@ -10,12 +10,16 @@
     <?php }else{ ?>
     <span class="box has-text-centered"
         style="margin-bottom:8px !important;margin-top:3px !important; max-width:480px; margin:auto">
-        Oops you don't have any content yet. Let's create new one!
-
-        <a href="<?= base_url('user/addcard') ?>" class="box has-text-centered"
-        style="background:none;border:3px dashed #3273dc;margin-top:16px !important">
-        <span class="has-text-link"><i class="fas fa-plus"></i> <strong>New Content</strong></span>
-    </a>
+        <figure class="image">
+            <img src="<?= base_url('assets/img'); ?>/layout/nocontent.webp">
+        </figure>
+        <div style="margin-top:-40px">
+            <h1 class="title is-size-5">Oops you don't have any content yet!</h1>
+            <a href="<?= base_url('user/addcard') ?>" class="p-5 box button is-link has-text-centered"
+                style="margin-top:16px !important;">
+                <span><strong>Create My First Content</strong></span>
+            </a>
+        </div>
     </span>
     <?php } ?>
     <div class="list-group" id="links">
@@ -35,8 +39,7 @@
                 </div>
             </div>
             <div class="media-right">
-                <a href="#get-qr" class="qr-info qr-generate" title="Share"
-                    data-url="<?= $cardItem['card_slug']; ?>">
+                <a href="#get-qr" class="qr-info qr-generate" title="Share" data-url="<?= $cardItem['card_slug']; ?>">
                     <span class="icon">
                         <i class="fas fa-share is-size-5"></i>
                     </span>
@@ -65,9 +68,10 @@
         </header>
         <section id="qr-results" class="modal-card-body">
             <div class="buttons">
-                <a id="download-qr" href=""  target="_blank" class="button is-link is-outlined is-fullwidth">Download
+                <a id="download-qr" href="" target="_blank" class="button is-link is-outlined is-fullwidth">Download
                     QR</a>
-                <button id="copy-url" class="btncopy button is-link is-outlined is-fullwidth" data-clipboard-text="">Copy URL</button>
+                <button id="copy-url" class="btncopy button is-link is-outlined is-fullwidth"
+                    data-clipboard-text="">Copy URL</button>
             </div>
         </section>
         <footer class="modal-card-foot">
@@ -81,7 +85,8 @@ var sortable = Sortable.create(el, {
     animation: 200,
     handle: "#sort-handle",
     touchStartThreshold: 50,
-    onEnd: function( /**Event*/ evt) {var urutan = sortable.toArray();
+    onEnd: function( /**Event*/ evt) {
+        var urutan = sortable.toArray();
         //alert(urutan);
         $.post(<?= "'".base_url('user/order/')."'"; ?>, {
             sort: "" + urutan
@@ -101,8 +106,9 @@ $('.qr-info').click(function() {
 });
 
 $('.qr-generate').click(function() {
-    var url_share = 'https://pinmy.link/' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url') + '?utm_source=pinmylink&utm_medium=url&utm_campaign=url_content_share';
-    var url_qr = '<?= base_url("user/qr_info/")?>' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url') + '?utm_source=pinmylink&utm_medium=qrcode&utm_campaign=qr_content_share';
+    var url_share = 'https://pinmy.link/' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url') +
+        '?utm_source=pinmylink&utm_medium=url&utm_campaign=url_content_share';
+    var url_qr = '<?= base_url("user/qr_info/")?>' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url');
     //$("#qr-result").attr('src', url_data);
     $("#download-qr").attr('href', url_qr);
     $("#copy-url").attr('data-clipboard-text', url_share);

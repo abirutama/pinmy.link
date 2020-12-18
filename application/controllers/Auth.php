@@ -8,6 +8,8 @@ class Auth extends CI_Controller {
 		$this->load->library('form_validation');
 		
 	}
+
+	//login page
 	public function index()
 	{
 		if($this->session->userdata('ses_email')){
@@ -21,33 +23,8 @@ class Auth extends CI_Controller {
 			$this->load->view('auth/login_v2');
 			$this->load->view('auth/footer_v2');
 		}else{
-			$email = $this->input->post('email-login');
-			$pass = $this->input->post('pass-login');
-
-			$user = $this->db->get_where('user', ['user_email' => $email])->row_array();
-
-			if($user){
-				if($user['is_active'] == 1){
-					if(password_verify($pass, $user['user_pass'])){
-						$data = [
-							'ses_id' => $user['user_id'],
-							'ses_email' => $user['user_email'],
-							'ses_role' => $user['role_id']
-						];
-						$this->session->set_userdata($data);
-						redirect('user');
-					}else{
-						$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
-						redirect('auth');
-					}
-				}else{
-					$this->session->set_flashdata('message', '<div class="notification is-warning">Account not verified! Find email with subject "Account Verification" in your mailbox to verify your account.</div>');
-					redirect('auth');
-				}
-			}else{
-				$this->session->set_flashdata('message', '<div class="notification is-danger">Email or password is invalid!</div>');
-				redirect('auth');
-			}
+			$this->load->model('auth_model');
+			$this->auth_model->login();
 		}
 	}
 
@@ -56,7 +33,8 @@ class Auth extends CI_Controller {
 			$this->load->model('auth_model');
 			$this->auth_model->user_verify_token($email, $token);
 		}else{
-			echo 'invalid parameter';
+			redirect('auth');
+			die();
 		}
 	}
 

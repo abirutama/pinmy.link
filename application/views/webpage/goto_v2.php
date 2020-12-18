@@ -21,20 +21,14 @@
   </head>
   <body>
   <section class="section" style="max-width:480px; margin:auto;">
-    <div class="container box">
-        
-      <p class="subtitle">
-        You'll be redirected...    
+    <div class="container">
+      <p class="subtitle has-text-centered">
+        You'll be redirected,<br>
+        Please wait... 
       </p>
-      <!--
-        <h1 class="title is-size-5">
-        <?= scoup($queryCard['card_title']); ?>
-        </h1>
-      <progress class="progress is-small is-primary" max="100">15%</progress>
-      -->
-      <figure class="image is-square">
-        <img src="<?= base_url('assets/img'); ?>/frontpage/new/undraw_skateboard_d6or.svg">
-        </figure>
+      <figure class="image">
+        <img src="<?= base_url('assets/img'); ?>/layout/redirect.webp">
+      </figure>
     </div>
   </section>
   </body>
