@@ -15,8 +15,7 @@
         </figure>
         <div style="margin-top:-40px">
             <h1 class="title is-size-5">Oops you don't have any content yet!</h1>
-            <a href="<?= base_url('user/addcard') ?>" class="p-5 box button is-link has-text-centered"
-                style="margin-top:16px !important;">
+            <a href="<?= base_url('user/addcard') ?>" class="button is-link has-text-centered py-5">
                 <span><strong>Create My First Content</strong></span>
             </a>
         </div>

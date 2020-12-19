@@ -19,21 +19,7 @@
     <?php if($seo['meta_rating']==1){ ?>
     <meta name="rating" content="adult">
     <?php } ?>
-    <style>
-    .bs {
-        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
-    }
-
-    .blink_me {
-        animation: blinker 1.5s linear infinite;
-    }
-
-    @keyframes blinker {
-        50% {
-            opacity: 0;
-        }
-    }
-    </style>
+    
     <?php if($seo['gtag_id']){ ?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?= scoup($seo['gtag_id']); ?>"></script>
@@ -49,27 +35,13 @@
     </script>
     <?php } ?>
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('assets'); ?>/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?= base_url('assets'); ?>/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url('assets'); ?>/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('assets'); ?>/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url('assets'); ?>/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('assets'); ?>/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('assets'); ?>/favicon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('assets'); ?>/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets'); ?>/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('assets'); ?>/favicon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('assets'); ?>/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets'); ?>/favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets'); ?>/favicon/favicon-16x16.png">
-    <link rel="manifest" href="<?= base_url('assets'); ?>/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?= base_url('assets'); ?>/favicon/ms-icon-144x144.png">
 </head>
 
 <body>
-    <?php 
-        //echo count($social);
-        //print_r($social);
+    <?php
         if($social['other_website'] || $social['ecom_bukalapak'] || $social['ecom_lazada'] || $social['ecom_shopee'] || $social['ecom_tokopedia'] || $social['social_facebook'] || $social['social_twitter'] || $social['social_instagram']){
             $social_button = true;
         }else{
@@ -83,8 +55,7 @@
                 <figure class="profile-thing image is-128x128" style="margin:auto;">
                     <?php if($social_button){ ?>
                     <div id="modal-open" class="button bs is-link"
-                        style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i
-                            class="fas fa-link is-size-5 blink_me"></i></div>
+                        style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i class="fas fa-link is-size-5 blink_me" style="width:20px;height:20px"></i></div>
                     <?php } ?>
                     <img alt="profile pitcure" class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
                         src="<?= base_url('assets/img/layout/') ?>lazy-p.webp"
@@ -191,17 +162,32 @@
     <figure class="" style="text-align:center; padding:32px">
         <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.webp" alt="pinmy.link footer logo">
     </figure>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/css'); ?>/bulma.min.css">
     <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
-    <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
+    <script src="<?= base_url('assets/js'); ?>/lazyload.js"></script>
     <script>
     lazyload();
     </script>
+    <?php if($social_button){ ?>
+    <style>
+    .bs {
+        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
+    }
+
+    .blink_me {
+        animation: blinker 1.5s linear infinite;
+    }
+
+    @keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+    </style>
+    <?php } ?>
 </body>
 <?php if($social_button){ ?>
 <script>
-//Modal Logout
 var html_tag = document.documentElement;
 var open_modal = document.querySelector('#modal-open');
 var modal_container = document.querySelector('#modal-social');

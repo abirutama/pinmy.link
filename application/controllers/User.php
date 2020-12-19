@@ -13,17 +13,9 @@ class User extends CI_Controller {
 	} 
 
 	public function order(){
-		//echo 'print awal: '.$arrays;
 		if(isset($_POST['sort'])){
 			$arrays = $_POST['sort'];
 			$pisah = explode(',',$arrays);
-			//echo '<br> print explode: ';
-			//print_r($pisah);
-			//echo '<br> print arraykeys: ';
-			//print_r(array_keys($pisah));
-			//echo '<br> print count array: ';
-			//print_r(count($pisah));
-			//echo '<br>';
 			foreach($pisah as $index_sort => $card_id){
 				$this->db->set('card_order', $index_sort, FALSE);
 				$this->db->where('card_id', $card_id);
@@ -31,6 +23,7 @@ class User extends CI_Controller {
 			}
 		}else{
 			echo 'FORBIDDEN!';
+			die();
 		}
 	}
 
@@ -398,79 +391,4 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function highlight(){
-		//set current page value
-		$data['page'] = 'link';
-		//getting user data by session
-		$this->db->select('user_name');
-		$data['user'] = $this->db->get_where('user', ['user_email' => $this->session->userdata('ses_email')])->row_array();
-		$this->db->select('card_id, card_title');
-		$this->db->order_by('card_title','ASC');
-		$data['card'] = $this->db->get_where('card', array('user_id'=>$this->session->userdata('ses_id')))->result_array();
-
-		$this->db->select('pin_item');
-		$pinned = $this->db->get_where('card_pinned', array('user_id'=>$this->session->userdata('ses_id')))->row_array();
-		$pinItem[0] = null;
-		$pinItem[1] = null;
-		$pinItem[2] = null;
-		$pinItem[3] = null;
-		if($pinned){
-			$temp_array = explode(',',$pinned['pin_item']);
-			foreach($temp_array as $key => $tempItem){
-				if($temp_array[$key] > 0){
-					$pinItem[$key] = $temp_array[$key];
-				}
-			}
-		}
-		$data['pinItem'] = $pinItem;
-
-		$this->form_validation->set_rules('pinned[0]', 'Link 1', 'trim|differs[pinned[1]]|differs[pinned[2]]|differs[pinned[3]]');
-		$this->form_validation->set_rules('pinned[1]', 'Link 2', 'trim|differs[pinned[0]]|differs[pinned[2]]|differs[pinned[3]]');
-		$this->form_validation->set_rules('pinned[2]', 'Link 3', 'trim|differs[pinned[0]]|differs[pinned[1]]|differs[pinned[3]]');
-		$this->form_validation->set_rules('pinned[3]', 'Link 4', 'trim|differs[pinned[0]]|differs[pinned[1]]|differs[pinned[2]]');
-
-		if($this->form_validation->run() == false){
-			$this->load->view('user/userpanel_header_v2', $data);
-			$this->load->view('user/edit_pinned', $data);
-			$this->load->view('user/userpanel_footer_v2', $data);
-		}else{
-			$form_pin = $this->input->post('pinned[]');
-			if($this->input->post('pinned[0]')=='no_pin1'){
-				$new_pin[0] = 'null';
-			}else{
-				$new_pin[0] = $this->input->post('pinned[0]');
-			}
-			if($this->input->post('pinned[1]')=='no_pin2'){
-				$new_pin[1] = 'null';
-			}else{
-				$new_pin[1] = $this->input->post('pinned[1]');
-			}
-			if($this->input->post('pinned[2]')=='no_pin3'){
-				$new_pin[2] = 'null';
-			}else{
-				$new_pin[2] = $this->input->post('pinned[2]');
-			}
-			if($this->input->post('pinned[3]')=='no_pin4'){
-				$new_pin[3] = 'null';
-			}else{
-				$new_pin[3] = $this->input->post('pinned[3]');
-			}
-			$temp_array = implode(',',$new_pin);
-			//print_r($temp_array);
-			//die();
-			$data_pinned = [
-				'pin_item' => $temp_array
-			];
-
-			if($this->db->update('card_pinned', $data_pinned, array('user_id' => $this->session->userdata('ses_id')))){
-				$this->session->set_flashdata('message', '<div class="notification is-success">Highlight Update Successfully!</div>');
-				$error = $this->db->error();
-				redirect('user');
-			}else{
-				$this->session->set_flashdata('message', '<div class="notification is-danger">Highlight Update Failed!</div>');
-				$error = $this->db->error();
-				redirect('user/highlight');
-			}
-		}
-	}
 }
