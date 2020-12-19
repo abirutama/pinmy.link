@@ -19,7 +19,12 @@
     <?php if($seo['meta_rating']==1){ ?>
     <meta name="rating" content="adult">
     <?php } ?>
-    
+
+    <meta property="og:title" content="<?= scoup($seo['meta_title']); ?>" />
+    <meta property="og:description" content="<?= scoup($seo['meta_description']); ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<?= base_url('/@').$profile['user_name']; ?>" />
+    <meta property="og:image" content="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; }else{base_url('assets/img/layout/').'lazy-p.webp';} ?>" />
     <?php if($seo['gtag_id']){ ?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?= scoup($seo['gtag_id']); ?>"></script>
@@ -55,9 +60,11 @@
                 <figure class="profile-thing image is-128x128" style="margin:auto;">
                     <?php if($social_button){ ?>
                     <div id="modal-open" class="button bs is-link"
-                        style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i class="fas fa-link is-size-5 blink_me" style="width:20px;height:20px"></i></div>
+                        style="border-radius:64px; padding:10px; position:absolute; right:0; bottom:0"><i
+                            class="fas fa-link is-size-5 blink_me" style="width:20px;height:20px"></i></div>
                     <?php } ?>
-                    <img alt="profile pitcure" class="bs is-rounded lazyload" style="border: 5px solid white; width:128px; height:128px"
+                    <img alt="profile pitcure" class="bs is-rounded lazyload"
+                        style="border: 5px solid white; width:128px; height:128px"
                         src="<?= base_url('assets/img/layout/') ?>lazy-p.webp"
                         data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>">
                 </figure>
@@ -75,14 +82,14 @@
                     foreach($card as $key=>$cardItem){
                 ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:6px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>?utm_source=pinmylink&utm_medium=content_button&utm_campaign=direct_from_page" rel="noreferrer"
-                        class="media box has-background-white"
+                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>?utm_source=pinmylink&utm_medium=content_button&utm_campaign=direct_from_page"
+                        rel="noreferrer" class="media box has-background-white"
                         style="border-radius:16px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">
                             <p class="image is-64x64">
-                                <img class="is-rounded lazyload"
-                                    src="<?= base_url('assets/img/layout/') ?>lazy.webp"
-                                    data-src="<?= $cardItem['card_thumbnail']; ?>" alt="Thumbnail Image" style="width: 64px; height:64px">
+                                <img class="is-rounded lazyload" src="<?= base_url('assets/img/layout/') ?>lazy.webp"
+                                    data-src="<?= $cardItem['card_thumbnail']; ?>" alt="Thumbnail Image"
+                                    style="width: 64px; height:64px">
                             </p>
                         </figure>
                         <div class="media-content">
@@ -122,35 +129,50 @@
                             class="button is-outlined is-dark is-inverted is-medium is-fullwidth">Tutup</button>
                         <?php if($social['other_website']){ ?>
                         <a target="_blank" href="https://<?= scoup($social['other_website']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_website.webp" alt="Go to website button" width="600px" height="120px">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_website.webp" alt="Go to website button"
+                                width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_bukalapak']){ ?>
-                        <a target="_blank" href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.webp" alt="Go to bukalapak button" width="600px" height="120px">
+                        <a target="_blank" href="https://bukalapak.com/u/<?= scoup($social['ecom_bukalapak']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_bukalapak.webp"
+                                alt="Go to bukalapak button" width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_lazada']){ ?>
-                        <a target="_blank" href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.webp" alt="Go to lazada button" width="600px" height="120px">
+                        <a target="_blank" href="https://lazada.co.id/shop/<?= scoup($social['ecom_lazada']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_lazada.webp" alt="Go to lazada button"
+                                width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_shopee']){ ?>
-                        <a target="_blank" href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.webp" alt="Go to shopee button" width="600px" height="120px">
+                        <a target="_blank" href="https://shopee.com/<?= scoup($social['ecom_shopee']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_shopee.webp" alt="Go to shopee button"
+                                width="600px" height="120px">
                         </a>
                         <?php } if($social['ecom_tokopedia']){ ?>
-                        <a target="_blank" href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.webp" alt="Go to tokopedia button" width="600px" height="120px">
+                        <a target="_blank" href="https://tokopedia.com/<?= scoup($social['ecom_tokopedia']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_tokopedia.webp"
+                                alt="Go to tokopedia button" width="600px" height="120px">
                         </a>
                         <?php } if($social['social_twitter']){ ?>
-                        <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.webp" alt="Go to twitter button" width="600px" height="120px">
+                        <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_twitter.webp" alt="Go to twitter button"
+                                width="600px" height="120px">
                         </a>
                         <?php } if($social['social_facebook']){ ?>
-                        <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.webp" alt="Go to facebook button" width="600px" height="120px">
+                        <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_facebook.webp"
+                                alt="Go to facebook button" width="600px" height="120px">
                         </a>
                         <?php } if($social['social_instagram']){ ?>
-                        <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>" rel="noreferrer">
-                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.webp" alt="Go to instagram button" width="600px" height="120px">
+                        <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"
+                            rel="noreferrer">
+                            <img src="<?= base_url('assets/img/button/') ?>btn_instagram.webp"
+                                alt="Go to instagram button" width="600px" height="120px">
                         </a>
                         <?php } ?>
                     </div>
@@ -160,7 +182,8 @@
         <?php } ?>
     </div>
     <figure class="" style="text-align:center; padding:32px">
-        <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.webp" alt="pinmy.link footer logo">
+        <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.webp"
+            alt="pinmy.link footer logo">
     </figure>
     <link rel="stylesheet" href="<?= base_url('assets/css'); ?>/bulma.min.css">
     <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
