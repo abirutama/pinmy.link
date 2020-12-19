@@ -2,7 +2,28 @@
     header('X-Frame-Options: DENY');
     header('X-XSS-Protection: 1; mode=block');
     header('X-Content-Type-Options: nosniff');
+
+    //Meta Value
     if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.webp'; } 
+    
+    if($seo['meta_title']){
+        $meta_title = $seo['meta_title'];
+    }else{
+        $meta_title = "@".$profile['user_name']."'s Page | Pinmy.link";
+    }
+
+    if($seo['meta_description']){
+        $meta_desc = $seo['meta_description'];
+    }else{
+        $meta_desc = "Welcome to my page";
+    }
+    
+    if($appearance['appearance_ava']){
+        $meta_image =  base_url('assets/img/avatar/').$appearance['appearance_ava']; 
+    }else{
+        $meta_image =  base_url('assets/img/layout/').'lazy-p.webp';
+    }
+
 ?>
 <!DOCTYPE html>
 <html class="has-background-light" lang="en">
@@ -10,9 +31,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= scoup($seo['meta_title']); ?></title>
-    <meta name="description" content="<?= scoup($seo['meta_description']); ?>">
+    <title><?= $meta_title; ?></title>
+    <meta name="title" content="<?= $meta_title; ?>">
+    <meta name="description" content="<?= $meta_desc; ?>">
+    <?php if($seo['meta_keyword']==1){ ?>
     <meta name="keyword" content="<?= scoup($seo['meta_keyword']); ?>">
+    <?php } ?>
     <?php if($seo['meta_robot']==0){ ?>
     <meta name="robots" content="noindex, nofollow">
     <?php } ?>
@@ -20,11 +44,20 @@
     <meta name="rating" content="adult">
     <?php } ?>
 
-    <meta property="og:title" content="<?= scoup($seo['meta_title']); ?>" />
-    <meta property="og:description" content="<?= scoup($seo['meta_description']); ?>" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="<?= $meta_title; ?>" />
+    <meta property="og:description" content="<?= $meta_desc; ?>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?= base_url('/@').$profile['user_name']; ?>" />
-    <meta property="og:image" content="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; }else{base_url('assets/img/layout/').'lazy-p.webp';} ?>" />
+    <meta property="og:image" content="<?= $meta_image; ?>" />
+
+    <!-- Twitter -->
+    <meta property="twitter:title" content="<?= $meta_title; ?>">
+    <meta property="twitter:description" content="<?= $meta_desc; ?>">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= base_url('/@').$profile['user_name']; ?>">
+    <meta property="twitter:image" content="<?= $meta_image; ?>">
+
     <?php if($seo['gtag_id']){ ?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=<?= scoup($seo['gtag_id']); ?>"></script>
@@ -39,10 +72,9 @@
     gtag('config', '<?= scoup($seo['gtag_id']); ?>');
     </script>
     <?php } ?>
+
     <link rel="apple-touch-icon" sizes="57x57" href="<?= base_url('assets'); ?>/favicon/apple-icon-57x57.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets'); ?>/favicon/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="<?= base_url('assets'); ?>/favicon/ms-icon-144x144.png">
 </head>
 
 <body>
@@ -53,7 +85,7 @@
             $social_button = false;
         }
     ?>
-    <div class="" style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
+    <div style="max-width:640px; padding:0px; margin:auto;border-radius:0px 0px 0px 48px !important">
         <section id="cover" style="margin-bottom:24px">
             <div id="cover-image" class="has-text-centered"
                 style="padding:36px 32px;border-radius:0px 0px 16px 16px !important; background-size:cover; background-position:left; background-image:url('<?= $bg_image; ?>')">
@@ -72,8 +104,7 @@
                     @<?= $profile['user_name']; ?></h1>
             </div>
         </section>
-        <section class=""
-            style="max-width:640px; padding:0.5em 2em 0.5em 2em; margin:auto; border-radius:16px !important;">
+        <section style="max-width:640px; padding:0.5em 2em 0.5em 2em; margin:auto; border-radius:16px !important;">
             <div class="container" style="margin-bottom:0px">
             </div>
             <div class="columns is-vcentered is-multiline">
@@ -181,57 +212,19 @@
         </div>
         <?php } ?>
     </div>
-    <figure class="" style="text-align:center; padding:32px">
+    <figure style="text-align:center; padding:32px">
         <img width="60px" height="60px" src="<?= base_url('assets/img/layout/') ?>footer.webp"
             alt="pinmy.link footer logo">
     </figure>
     <link rel="stylesheet" href="<?= base_url('assets/css'); ?>/bulma.min.css">
     <script src="https://kit.fontawesome.com/5dbbe055c9.js" crossorigin="anonymous"></script>
     <script src="<?= base_url('assets/js'); ?>/lazyload.js"></script>
+    <?php if($social_button){ ?>
+    <script src="<?= base_url('assets/js'); ?>/modal_social.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css'); ?>/blink_social_button.css">
+    <?php } ?>
     <script>
     lazyload();
     </script>
-    <?php if($social_button){ ?>
-    <style>
-    .bs {
-        box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .02)
-    }
-
-    .blink_me {
-        animation: blinker 1.5s linear infinite;
-    }
-
-    @keyframes blinker {
-        50% {
-            opacity: 0;
-        }
-    }
-    </style>
-    <?php } ?>
 </body>
-<?php if($social_button){ ?>
-<script>
-var html_tag = document.documentElement;
-var open_modal = document.querySelector('#modal-open');
-var modal_container = document.querySelector('#modal-social');
-var tap_anywhere_close = document.querySelector('#modal-background');
-var close_modal = document.querySelector('#modal-close');
-
-open_modal.onclick = function() {
-    modal_container.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-
-tap_anywhere_close.onclick = function() {
-    modal_container.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-
-close_modal.onclick = function() {
-    modal_container.classList.toggle('is-active');
-    html_tag.classList.toggle('is-clipped');
-}
-</script>
-<?php } ?>
-
 </html>
