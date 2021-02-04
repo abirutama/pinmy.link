@@ -19,8 +19,7 @@ class Main extends CI_Controller {
 		$strip = str_replace('@', '', $user_name);
 		$queryProfile = $this->db->get_where('user', array('user_name' => $strip, 'is_active' => 1))->row_array();
 		$data['profile'] = $queryProfile;
-		//print_r($queryProfile);
-		//die();
+
 		if(!$queryProfile){
 			redirect('main');
 			die();
@@ -40,23 +39,22 @@ class Main extends CI_Controller {
 		$queryAppearance = $this->db->get_where('appearance', array('user_id' => $queryProfile['user_id']))->row_array();
 		$data['appearance'] = $queryAppearance;
 		
-		//$this->load->view('templates/template_2', $data);
 		$this->load->view('templates/template_with_ad', $data);
 		
 	}
 
-	public function goto($user_name=null, $card_id=null)
+	public function goto($user_name_i=null, $card_id_i=null)
 	{
+		$user_name = $user_name_i;
+		$card_id = $card_id_i;
 		$data['queryProfile'] = $this->db->get_where('user', array('user_name' => $user_name))->row_array();
 		if(!$data['queryProfile']){
 			redirect('main');
-			//echo 'Content not found!';
 			die();
 		}else{
 			$data['queryCard'] = $this->db->get_where('card', array('user_id' => $data['queryProfile']['user_id'], 'card_slug' => $card_id))->row_array();
 			$data['querySeo'] = $this->db->get_where('seo', array('user_id' => $data['queryProfile']['user_id']))->row_array();
-			//var_dump($data['queryCard']);
-			//die();
+
 			if(!$data['queryCard']){
 				redirect('@'.$user_name);
 				die();

@@ -12,6 +12,7 @@ class User extends CI_Controller {
 		}
 	} 
 
+	//Function order untuk menyimpan urutan konten yang tampil
 	public function order(){
 		if(isset($_POST['sort'])){
 			$arrays = $_POST['sort'];
@@ -27,6 +28,7 @@ class User extends CI_Controller {
 		}
 	}
 
+	//Function untuk megenerate QR Code Dinamis
 	public function qr_info($user=null, $url=null)
 	{
 		if(stristr($_SERVER['DOCUMENT_ROOT'], 'xampp')===false){
@@ -233,12 +235,12 @@ class User extends CI_Controller {
 				$this->load->view('user/setting_4', $data);
 				$this->load->view('user/userpanel_footer_v2', $data);
 			}else{
-				$chosen_title = $this->input->post('meta-title');
-				$chosen_desc = $this->input->post('meta-description');
-				$chosen_keyword = $this->input->post('meta-keyword');
-				$chosen_robot = $this->input->post('meta-robot');
-				$chosen_rating = $this->input->post('meta-rating');
-				$chosen_gaid = $this->input->post('ga-tracking-id');
+				$chosen_title = htmlspecialchars($this->input->post('meta-title'), true);
+				$chosen_desc = htmlspecialchars($this->input->post('meta-description'), true);
+				$chosen_keyword = htmlspecialchars($this->input->post('meta-keyword'), true);
+				$chosen_robot = htmlspecialchars($this->input->post('meta-robot'), true);
+				$chosen_rating = htmlspecialchars($this->input->post('meta-rating'), true);
+				$chosen_gaid = htmlspecialchars($this->input->post('ga-tracking-id'), true);
 
 				if($chosen_robots < 0 || $chosen_robots > 1){
 					$chosen_robots = 1;
@@ -296,11 +298,11 @@ class User extends CI_Controller {
 
 			//Collecting POST Value to Array
 			$data_card = [
-				'card_title' => $this->input->post('link-title'),
+				'card_title' => htmlspecialchars($this->input->post('link-title'), true),
 				'card_slug' => $card_slug,
-				'card_url' => $this->input->post('link-destination'),
-				'card_thumbnail' => $this->input->post('link-thumbnail'),
-				'user_id' => $this->session->userdata('ses_id'),
+				'card_url' => htmlspecialchars($this->input->post('link-destination'), true),
+				'card_thumbnail' => htmlspecialchars($this->input->post('link-thumbnail'), true),
+				'user_id' => htmlspecialchars($this->session->userdata('ses_id'), true),
 				'date_created' => time()
 			];
 

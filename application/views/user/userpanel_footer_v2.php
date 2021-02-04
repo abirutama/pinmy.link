@@ -72,9 +72,6 @@ if ($navbarBurgers.length > 0) {
 
 });
 
-
-
-
 //Modal Logout
 var html_tag = document.documentElement;
 var logout_button = document.querySelector('#logout-button');
