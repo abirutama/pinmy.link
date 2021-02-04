@@ -50,7 +50,7 @@
 
                 $this->email->from($datae['email_address'], 'Pinmy.link Verification');
                 $this->email->to($email_receiver);
-                $this->email->subject('Account Verification');
+                $this->email->subject('Pinmy.link Account Verification');
                 $this->email->message('Hello, to start using your account, you must activate your account by <a href="https://pinmy.link/auth/verify/'.$email_receiver.'/'.$token.'" target="_blank">click here to activate your account.</a>');
 
                 $this->email->send();
