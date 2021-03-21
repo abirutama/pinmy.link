@@ -48,14 +48,14 @@
     <meta property="og:title" content="<?= $meta_title; ?>" />
     <meta property="og:description" content="<?= $meta_desc; ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="<?= base_url('/@').$profile['user_name']; ?>" />
+    <meta property="og:url" content="<?= base_url('u/').$profile['user_name']; ?>" />
     <meta property="og:image" content="<?= $meta_image; ?>" />
 
     <!-- Twitter -->
     <meta property="twitter:title" content="<?= $meta_title; ?>">
     <meta property="twitter:description" content="<?= $meta_desc; ?>">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="<?= base_url('/@').$profile['user_name']; ?>">
+    <meta property="twitter:url" content="<?= base_url('u/').$profile['user_name']; ?>">
     <meta property="twitter:image" content="<?= $meta_image; ?>">
 
     <?php if($seo['gtag_id']){ ?>
@@ -113,7 +113,7 @@
                     foreach($card as $key=>$cardItem){
                 ?>
                 <div class="column is-full is-vcentered is-centered" style="padding:6px 12px">
-                    <a href="<?= base_url('/@').$profile['user_name'].'/' . $cardItem['card_slug']; ?>?utm_source=pinmylink&utm_medium=content_button&utm_campaign=direct_from_page"
+                    <a href="<?= base_url('u/').$profile['user_name'].'/' . $cardItem['card_slug']; ?>?utm_source=pinmylink&utm_medium=content_button&utm_campaign=direct_from_page"
                         rel="noreferrer" class="media box has-background-white"
                         style="border-radius:16px; padding:8px; margin-bottom:0px; display:flex; align-items:center">
                         <figure class="media-left">

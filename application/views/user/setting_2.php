@@ -15,12 +15,12 @@
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static" style="justify-content:left;">
-                            http://
+                            https://
                         </a>
                     </p>
                     <p class="control is-expanded">
                         <input class="input" maxlength="64" name="other-website" type="text"
-                            placeholder="yourdomain.com ( without http:// or https:// )" value="<?= scoup($social['other_website']); ?>">
+                            placeholder="yourdomain.com ( without https:// )" value="<?= scoup($social['other_website']); ?>">
                     </p>
                 </div>
             </div>

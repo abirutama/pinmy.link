@@ -115,5 +115,5 @@
     <div class="notification is-white has-text-centered"
         style="margin:0;border-radius:0px;border-top:1px solid #dedede;border-bottom:1px solid #dedede;">
         <strong class="has-text-grey">My Address:</strong> <a class="has-text-link" target="_blank"
-            href="<?= scoup(base_url('/@'.$user['user_name'])); ?>">pinmy.link/@<?= scoup($user['user_name']); ?></a>
+            href="<?= scoup(base_url('u/'.$user['user_name'])); ?>">pinmy.link/u/<?= scoup($user['user_name']); ?></a>
     </div>

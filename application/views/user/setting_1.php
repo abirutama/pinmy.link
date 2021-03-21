@@ -6,7 +6,7 @@ if(stristr($_SERVER['DOCUMENT_ROOT'], 'xampp')===false){
 }
 
 $PNG_TEMP_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
-$user_url = 'https://pinmy.link/@'.$user['user_name'].'?utm_source=pinmylink&utm_medium=qrcode&utm_campaign=qr_profile_share';
+$user_url = 'https://pinmy.link/u/'.$user['user_name'].'?utm_source=pinmylink&utm_medium=qrcode&utm_campaign=qr_profile_share';
 //html PNG location prefix
 $PNG_WEB_DIR = $_SERVER['DOCUMENT_ROOT'].$if_local.'/assets/qr/temp/';
 
@@ -17,7 +17,7 @@ if (!file_exists($PNG_TEMP_DIR))
     mkdir($PNG_TEMP_DIR);
 
 $filename = $PNG_TEMP_DIR.$user['user_name'].'.png';
-$errorCorrectionLevel = 'H';
+$errorCorrectionLevel = 'L';
 $matrixPointSize = 10;
     //default data
     //echo 'You can provide data in GET parameter: <a href="?data=like_that">like that</a><hr/>';    
@@ -47,7 +47,7 @@ QRcode::png($user_url, $filename, $errorCorrectionLevel, $matrixPointSize, 2);
             <div class="field has-addons" style="justify-content:center;margin-top:8px">
                 <div class="control">
                     <input id="address" class="input is-fullwidth" type="text"
-                        value="pinmy.link/@<?= scoup($user['user_name']); ?>" readonly>
+                        value="pinmy.link/u/<?= scoup($user['user_name']); ?>" readonly>
                 </div>
                 <div class="control">
                     <a class="button is-success btncopy" data-clipboard-target="#address">

@@ -9,10 +9,10 @@ class Main extends CI_Controller {
 		$this->load->view('webpage/index');
 	}
 	public function redirect_user($user_name){
-		redirect(base_url('@').$user_name);
+		redirect(base_url('u/').$user_name);
 	}
 	public function redirect_goto($user_name, $post){
-		redirect(base_url('@').$user_name.'/'.$post);
+		redirect(base_url('u/').$user_name.'/'.$post);
 	}
 	public function preview2($user_name){
 		
@@ -56,7 +56,7 @@ class Main extends CI_Controller {
 			$data['querySeo'] = $this->db->get_where('seo', array('user_id' => $data['queryProfile']['user_id']))->row_array();
 
 			if(!$data['queryCard']){
-				redirect('@'.$user_name);
+				redirect('u/'.$user_name);
 				die();
 			}
 			$this->load->view('webpage/goto_v2', $data);
