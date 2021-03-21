@@ -105,9 +105,9 @@ $('.qr-info').click(function() {
 });
 
 $('.qr-generate').click(function() {
-    var url_share = 'https://pinmy.link/' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url') +
+    var url_share = 'https://pinmy.link/u/' + '<?= $user['user_name'] ?>' + '/' + $(this).data('url') +
         '?utm_source=pinmylink&utm_medium=url&utm_campaign=url_content_share';
-    var url_qr = '<?= base_url("user/qr_info/")?>' + '@<?= $user['user_name'] ?>' + '/' + $(this).data('url');
+    var url_qr = '<?= base_url("user/qr_info/")?>' + '<?= $user['user_name'] ?>' + '/' + $(this).data('url');
     //$("#qr-result").attr('src', url_data);
     $("#download-qr").attr('href', url_qr);
     $("#copy-url").attr('data-clipboard-text', url_share);
