@@ -44,7 +44,7 @@
                 <?= form_error('username-regis', '<p class="help is-danger">', '</p>'); ?>
                 </div>
                 <div class="field">
-                    <label class="label">Choose a Category</label>
+                    <label class="label">What is your content about?</label>
                     <div class="control">
                         <div class="select is-fullwidth">
                             <select name="category-regis">
