@@ -161,7 +161,7 @@
                 style="min-height:219px;background-image:url('<?= base_url('assets/img'); ?>/frontpage/new/people_ok.jpg');background-size:contain; background-repeat:no-repeat; background-position:right">
                 <h4 class="title is-4">3. Pasang di Bio-mu</h4>
                 <p style="margin-right:48px; background:#ffffff70; border-radius:8px">Sematkan link unik
-                    <strong>pinmy.link/milikmu</strong> di semua bio kanalmu, dan audiens akan mudah akses konten kamu.
+                    <strong>pinmy.link/u/namamu</strong> di semua bio kanalmu, dan audiens akan mudah akses konten kamu.
                 </p><br>
             </div>
         </div>
