@@ -34,7 +34,7 @@
                 <div class="field has-addons">
                     <p class="control">
                         <a class="button is-static">
-                            pinmy.link/@
+                            pinmy.link/u/
                         </a>
                     </p>
                     <p class="control is-expanded">
