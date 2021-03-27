@@ -117,15 +117,27 @@ if($appearance['appearance_ava']){
                             <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
-                                        class="d-block pt-2 font-12 color-theme opacity-60">PWA</span></a></div>
+                                        class="d-block pt-2 font-12 color-theme opacity-60">Story 1</span></a></div>
                             <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
-                                        class="d-block pt-2 font-12 color-theme opacity-60">PWA</span></a></div>
+                                        class="d-block pt-2 font-12 color-theme opacity-60">Story 2</span></a></div>
                             <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
-                                        class="d-block pt-2 font-12 color-theme opacity-60">PWA</span></a></div>
+                                        class="d-block pt-2 font-12 color-theme opacity-60">Story 3</span></a></div>
+                                        <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
+                                        src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
+                                        class="rounded-circle mx-auto mb-n4 border border-m"><br><span
+                                        class="d-block pt-2 font-12 color-theme opacity-60">Story 4</span></a></div>
+                                        <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
+                                        src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
+                                        class="rounded-circle mx-auto mb-n4 border border-m"><br><span
+                                        class="d-block pt-2 font-12 color-theme opacity-60">Story 5</span></a></div>
+                                        <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
+                                        src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
+                                        class="rounded-circle mx-auto mb-n4 border border-m"><br><span
+                                        class="d-block pt-2 font-12 color-theme opacity-60">Story 6</span></a></div>
                         </div>
                     </div>
                 </div>
@@ -166,10 +178,9 @@ if($appearance['appearance_ava']){
             <div class="card bg-6 rounded-0 mb-0" data-card-height="cover-full">
                 <div class="card-top">
                     <h1 class="color-white font-18 ms-3 mt-4">
-                        <img src="<?= base_url('assets/appkit/'); ?>images/pictures/6s.jpg" width="30"
+                        <img src="<?= $meta_image; ?>" width="30"
                             class="rounded-xl me-2 mt-n1">
-                        Jane Louder
-                        <span class="opacity-60 font-300 font-12 ps-3 pb-3">12w</span>
+                            <?= $profile['user_name']; ?>
                         <a href="#" class="close-menu float-end me-3 mt-0 color-white font-20"><i
                                 class="fa fa-times"></i></a>
                     </h1>

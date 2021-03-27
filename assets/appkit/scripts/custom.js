@@ -209,8 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 type:'slider',
                 autoplay:false,
                 padding: {
-                    left:'0px',
-                    right: '0px',
+                    left:'32px',
+                    right: '32px',
                 },
                 arrows:false,
                 perPage: 4,
