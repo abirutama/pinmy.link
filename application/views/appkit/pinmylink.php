@@ -1,3 +1,29 @@
+<?php
+header('X-Frame-Options: DENY');
+header('X-XSS-Protection: 1; mode=block');
+header('X-Content-Type-Options: nosniff');
+
+//Meta Value
+if($appearance['appearance_cover'] != null || $appearance['appearance_cover'] != ""){ $bg_image = base_url().'assets/img/cover/'.$appearance['appearance_cover'];}else{ $bg_image = base_url().'assets/img/layout/bg1.webp'; } 
+
+if($seo['meta_title']){
+    $meta_title = $seo['meta_title'];
+}else{
+    $meta_title = $profile['user_name']."'s Page | Pinmy.link";
+}
+
+if($seo['meta_description']){
+    $meta_desc = $seo['meta_description'];
+}else{
+    $meta_desc = "Welcome to my page";
+}
+
+if($appearance['appearance_ava']){
+    $meta_image =  base_url('assets/img/avatar/').$appearance['appearance_ava']; 
+}else{
+    $meta_image =  base_url('assets/img/layout/').'lazy-p.webp';
+}
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -7,7 +33,33 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-    <title>AppKit Mobile</title>
+    <title><?= $meta_title; ?></title>
+    <meta name="title" content="<?= $meta_title; ?>">
+    <meta name="description" content="<?= $meta_desc; ?>">
+    <?php if($seo['meta_keyword']==1){ ?>
+    <meta name="keyword" content="<?= scoup($seo['meta_keyword']); ?>">
+    <?php } ?>
+    <?php if($seo['meta_robot']==0){ ?>
+    <meta name="robots" content="noindex, nofollow">
+    <?php } ?>
+    <?php if($seo['meta_rating']==1){ ?>
+    <meta name="rating" content="adult">
+    <?php } ?>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="<?= $meta_title; ?>" />
+    <meta property="og:description" content="<?= $meta_desc; ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<?= base_url('u/').$profile['user_name']; ?>" />
+    <meta property="og:image" content="<?= $meta_image; ?>" />
+
+    <!-- Twitter -->
+    <meta property="twitter:title" content="<?= $meta_title; ?>">
+    <meta property="twitter:description" content="<?= $meta_desc; ?>">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?= base_url('u/').$profile['user_name']; ?>">
+    <meta property="twitter:image" content="<?= $meta_image; ?>">
+    
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>styles/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -15,9 +67,16 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>fonts/css/fontawesome-all.min.css">
     <link rel="manifest" href="<?= base_url('assets/appkit/'); ?>_manifest.json"
         data-pwa-version="set_in_manifest_and_pwa_js">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/appkit/'); ?>app/icons/icon-192x192.png">
-    <style>.crop-text{width:69%;overflow:hidden;height:50px;white-space:nowrap; 
-  text-overflow:ellipsis;}</style>
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/img/layout/').'lazy-p.webp';?>">
+    <style>
+    .crop-text {
+        width: 69%;
+        overflow: hidden;
+        height: 50px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    </style>
 </head>
 
 <body class="theme-light" style="max-width: 480px;margin:auto">
@@ -42,7 +101,8 @@
                     <!-- left side of profile -->
                     <div class="flex-grow-1">
                         <h2><?= $profile['user_name']; ?><i
-                                class="<?php if($social_button){ echo 'mt-2'; }else{ echo 'mt-4';} ?> fa fa-check-circle color-blue-dark font-1 ms-1"></i></h2>
+                                class="<?php if($social_button){ echo 'mt-2'; }else{ echo 'mt-4';} ?> fa fa-check-circle color-blue-dark font-1 ms-1"></i>
+                        </h2>
                         <?php if($social_button){ ?>
                         <a href="#" data-menu="menu-share"
                             class="mt-1 btn btn-xs font-600 btn-border border-highlight color-highlight">Other Links</a>
