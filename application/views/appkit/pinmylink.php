@@ -59,7 +59,7 @@ if($appearance['appearance_ava']){
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="<?= base_url('u/').$profile['user_name']; ?>">
     <meta property="twitter:image" content="<?= $meta_image; ?>">
-    
+
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>styles/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -67,7 +67,7 @@ if($appearance['appearance_ava']){
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>fonts/css/fontawesome-all.min.css">
     <link rel="manifest" href="<?= base_url('assets/appkit/'); ?>_manifest.json"
         data-pwa-version="set_in_manifest_and_pwa_js">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/img/layout/').'lazy-p.webp';?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/img/layout/').'footer.webp';?>">
     <style>
     .crop-text {
         width: 69%;
