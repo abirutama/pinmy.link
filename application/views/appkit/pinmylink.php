@@ -100,8 +100,9 @@ if($appearance['appearance_ava']){
                     </div>
                     <!-- left side of profile -->
                     <div class="flex-grow-1">
-                        <h2><?= $profile['user_name']; ?><i
-                                class="<?php if($social_button){ echo 'mt-2'; }else{ echo 'mt-4';} ?> fa fa-check-circle color-blue-dark font-1 ms-1"></i>
+                        <h2 class="<?php if($social_button){ echo 'mt-2'; }else{ echo 'mt-4';} ?>">
+                            <?= $profile['user_name']; ?><?php if($profile['is_premium']){ ?><i
+                                class=" fa fa-check-circle color-blue-dark font-1 ms-1"></i><?php } ?>
                         </h2>
                         <?php if($social_button){ ?>
                         <a href="#" data-menu="menu-share"
@@ -110,7 +111,6 @@ if($appearance['appearance_ava']){
                     </div>
                 </div>
 
-                <!--
                 <div class="splide cusstory-slider slider-no-dots mb-4" id="cusstory-slider">
                     <div class="splide__track">
                         <div class="splide__list">
@@ -129,13 +129,12 @@ if($appearance['appearance_ava']){
                         </div>
                     </div>
                 </div>
-                        -->
-
+                
+                <?php if(count($card) > 0){ ?>
                 <div class="bg-white">
                     <div class="content mb-0">
                         <div class="list-group list-custom-large">
                             <?php 
-                            if(count($card) > 0){
                                 foreach($card as $key=>$cardItem){
                             ?>
                             <a title="<?= $cardItem['card_title']; ?>"
@@ -147,11 +146,16 @@ if($appearance['appearance_ava']){
                             </a>
                             <?php
                                 }
-                            }
                             ?>
                         </div>
                     </div>
                 </div>
+                <?php }else{ ?>
+                <div class="ms-3 me-3 mb-5 alert alert-small rounded-s shadow-xl bg-gray-dark" role="alert">
+                    <span><i class="fa fa-info color-white"></i></span>
+                    <strong class="color-white">This user has no content yet.</strong>
+                </div>
+                <?php } ?>
             </div>
         </div>
         <!-- Page content ends here-->
@@ -186,7 +190,7 @@ if($appearance['appearance_ava']){
 
         <?php if($social_button){ ?>
         <!-- Share Menu-->
-        <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="425" data-menu-effect="menu-over"
+        <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-height="325" data-menu-effect="menu-over"
             style="max-width: 480px;margin:auto">
             <div class="menu-title">
                 <h1>Other Links</h1>
@@ -195,36 +199,34 @@ if($appearance['appearance_ava']){
             <div class="divider divider-margins mt-3 mb-0"></div>
             <div class="content mt-0">
                 <div class="list-group list-custom-small pe-2">
-                    <a href="auto_generated" class="external-link shareToFacebook">
+                    <?php if($social['social_facebook']){ ?>
+                    <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"
+                            rel="noreferrer" class="external-link shareToFacebook">
                         <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-l"></i>
                         <span>Facebook</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
-                    <a href="auto_generated" class="external-link shareToTwitter">
+                    <?php } if($social['social_twitter']){ ?>
+                    <a  target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"
+                            rel="noreferrer" class="external-link shareToTwitter">
                         <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-l"></i>
                         <span>Twitter</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
-                    <a href="auto_generated" class="external-link shareToLinkedIn">
-                        <i class="fab fa-linkedin-in font-12 bg-linkedin color-white shadow-l rounded-l"></i>
-                        <span>LinkedIn</span>
+                    <?php } if($social['social_instagram']){ ?>
+                    <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"
+                            rel="noreferrer" class="external-link shareToWhatsApp">
+                        <i class="fab fa-instagram font-12 bg-instagram color-white shadow-l rounded-l"></i>
+                        <span>Instagram</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
-                    <a href="auto_generated" class="external-link shareToWhatsApp">
-                        <i class="fab fa-whatsapp font-12 bg-whatsapp color-white shadow-l rounded-l"></i>
-                        <span>WhatsApp</span>
+                    <?php } if($social['other_website']){ ?>
+                    <a target="_blank" href="https://<?= scoup($social['other_website']) ?>" rel="noreferrer" class="external-link shareToMail">
+                        <i class="fa fa-globe font-12 bg-mail color-white shadow-l rounded-l"></i>
+                        <span>Website</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
-                    <a href="auto_generated" class="external-link shareToMail">
-                        <i class="fa fa-envelope font-12 bg-mail color-white shadow-l rounded-l"></i>
-                        <span>Email</span>
-                        <i class="fa fa-angle-right me-2"></i>
-                    </a>
-                    <a href="#" class="close-menu border-0">
-                        <i class="fa fa-times font-12 bg-red-dark color-white shadow-l rounded-l"></i>
-                        <span>Close</span>
-                        <i class="fa fa-angle-right me-2"></i>
-                    </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
