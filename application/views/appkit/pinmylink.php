@@ -100,7 +100,7 @@ if($appearance['appearance_ava']){
                     </div>
                     <!-- left side of profile -->
                     <div class="flex-grow-1">
-                        <h2 class="<?php if($social_button){ echo 'mt-2'; }else{ echo 'mt-4';} ?>">
+                        <h2 class="<?php if($social_button){ echo 'mt-0'; }else{ echo 'mt-4';} ?>">
                             <?= $profile['user_name']; ?><?php if($profile['is_premium']){ ?><i
                                 class=" fa fa-check-circle color-blue-dark font-1 ms-1"></i><?php } ?>
                         </h2>
