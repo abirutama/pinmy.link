@@ -33,6 +33,7 @@ if($appearance['appearance_ava']){
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+
     <title><?= $meta_title; ?></title>
     <meta name="title" content="<?= $meta_title; ?>">
     <meta name="description" content="<?= $meta_desc; ?>">
@@ -65,8 +66,8 @@ if($appearance['appearance_ava']){
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/appkit/'); ?>fonts/css/fontawesome-all.min.css">
-
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('assets/img/layout/').'footer.webp';?>">
+
     <style>
     .crop-text {
         width: 69%;
@@ -93,7 +94,7 @@ if($appearance['appearance_ava']){
                 <div class="d-flex content mt-0 mb-4">
                     <!-- right side of profile. increase image width to increase column size-->
                     <div>
-                        <img src="<?= base_url('assets/appkit/'); ?>images/empty.png"
+                        <img src="<?= $meta_image; ?>"
                             data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>"
                             width="70" class="rounded-circle me-3 shadow-s preload-img">
                     </div>
