@@ -63,6 +63,39 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function appkit($user_name=null){
+		$strip = str_replace('@', '', $user_name);
+		$queryProfile = $this->db->get_where('user', array('user_name' => $strip, 'is_active' => 1))->row_array();
+		$data['profile'] = $queryProfile;
+
+		if(!$queryProfile){
+			redirect('main');
+			die();
+		}
+
+		$queryCard = $this->db->order_by('card_order asc');
+		$queryCard = $this->db->order_by('date_created desc');
+		$queryCard = $this->db->get_where('card', array('user_id' => $queryProfile['user_id']))->result_array();
+		$data['card'] = $queryCard;
+
+		$querySocial = $this->db->get_where('social', array('user_id' => $queryProfile['user_id']))->row_array();
+		$data['social'] = $querySocial;
+		
+		$querySeo = $this->db->get_where('seo', array('user_id' => $queryProfile['user_id']))->row_array();
+		$data['seo'] = $querySeo;
+
+		$queryAppearance = $this->db->get_where('appearance', array('user_id' => $queryProfile['user_id']))->row_array();
+		$data['appearance'] = $queryAppearance;
+
+        if($querySocial['other_website'] || $querySocial['ecom_bukalapak'] || $querySocial['ecom_lazada'] || $querySocial['ecom_shopee'] || $querySocial['ecom_tokopedia'] || $querySocial['social_facebook'] || $querySocial['social_twitter'] || $querySocial['social_instagram']){
+            $data['social_button'] = true;
+        }else{
+            $data['social_button'] = false;
+        }
+
+		$this->load->view('appkit/pinmylink', $data);
+	}
+
 	public function password($string){
 		echo password_hash($string, PASSWORD_DEFAULT);
 	}

@@ -19,7 +19,7 @@
                 <label class="label">URL Destination <span class="has-text-danger">*</span></label></label>
                 <div class="field">
                     <p class="control is-expanded">
-                        <input class="input" name="link-destination" type="text"
+                        <input class="input" name="link-destination" type="url"
                             placeholder="http://your-destinantion.com" value="<?= set_value('link-destination'); ?>" required>
                     </p>
                 </div>
