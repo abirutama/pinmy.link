@@ -23,6 +23,12 @@ if($appearance['appearance_ava']){
 }else{
     $meta_image =  base_url('assets/img/layout/').'lazy-p.webp';
 }
+
+if($appearance['appearance_cover']){
+    $cover_image =  base_url('assets/img/cover/').$appearance['appearance_cover']; 
+}else{
+    $cover_image =  null;
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -76,6 +82,12 @@ if($appearance['appearance_ava']){
         white-space: nowrap;
         text-overflow: ellipsis;
     }
+
+    .fadebg {
+        -moz-box-shadow: inset 0px 0px 200px #eef2f1;
+        -webkit-box-shadow: inset 0px 0px 200px #eef2f1;
+        box-shadow: inset 0px 0px 200px #eef2f1;
+    }
     </style>
 </head>
 
@@ -90,27 +102,30 @@ if($appearance['appearance_ava']){
         <div class="page-content">
 
             <div class="mb-0">
-                <div class="divider mb-4"></div>
-                <div class="d-flex content mt-0 mb-4">
-                    <!-- right side of profile. increase image width to increase column size-->
-                    <div>
-                        <img src="<?= $meta_image; ?>"
-                            data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>"
-                            width="70" class="rounded-circle me-3 shadow-s preload-img">
-                    </div>
-                    <!-- left side of profile -->
-                    <div class="flex-grow-1">
-                        <h2 class="<?php if($social_button){ echo 'mt-0'; }else{ echo 'mt-4';} ?>">
-                            <?= $profile['user_name']; ?><?php if($profile['is_premium']){ ?><i
-                                class=" fa fa-check-circle color-blue-dark font-1 ms-1"></i><?php } ?>
-                        </h2>
-                        <?php if($social_button){ ?>
-                        <a href="#" data-menu="menu-share"
-                            class="mt-1 btn btn-xs font-600 btn-border border-highlight color-highlight">Other Links</a>
-                        <?php } ?>
+                <div class="fadebg" <?php if($cover_image !== null){ ?>style="background-image:url('<?= $cover_image; ?> ');background-size:cover;"<?php } ?>>
+                    <div class="d-flex content pt-4 pb-4 mt-0 mb-0">
+                        <!-- right side of profile. increase image width to increase column size-->
+                        <div>
+                            <img src="<?= $meta_image; ?>"
+                                data-src="<?php if($appearance['appearance_ava']){ echo base_url('assets/img/avatar/').$appearance['appearance_ava']; } ?>"
+                                width="70" class="rounded-circle me-3 shadow-s preload-img">
+                        </div>
+                        <!-- left side of profile -->
+                        <div class="flex-grow-1">
+                            <h2 class="<?php if($social_button){ echo 'mt-0'; }else{ echo 'mt-4';} ?>">
+                                <?= $profile['user_name']; ?><?php if($profile['is_premium']){ ?><i
+                                    class=" fa fa-check-circle color-blue-dark font-1 ms-1"></i><?php } ?>
+                            </h2>
+                            <?php if($social_button){ ?>
+                            <a href="#" data-menu="menu-share"
+                                class="mt-1 btn btn-xs font-600 btn-border border-highlight color-highlight">Other
+                                Links</a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
-
+                <div class="divider mb-4"></div>
+                <!--
                 <div class="splide cusstory-slider slider-no-dots mb-4" id="cusstory-slider">
                     <div class="splide__track">
                         <div class="splide__list">
@@ -126,25 +141,25 @@ if($appearance['appearance_ava']){
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
                                         class="d-block pt-2 font-12 color-theme opacity-60">Story 3</span></a></div>
-                                        <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
+                            <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
                                         class="d-block pt-2 font-12 color-theme opacity-60">Story 4</span></a></div>
-                                        <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
+                            <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
                                         class="d-block pt-2 font-12 color-theme opacity-60">Story 5</span></a></div>
-                                        <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
+                            <div class="splide__slide text-center"><a data-menu="menu-story" href="#"><img
                                         src="<?= base_url('assets/appkit/'); ?>images/pictures/1s.jpg" width="60"
                                         class="rounded-circle mx-auto mb-n4 border border-m"><br><span
                                         class="d-block pt-2 font-12 color-theme opacity-60">Story 6</span></a></div>
                         </div>
                     </div>
-                </div>
-                
+                </div>-->
+
                 <?php if(count($card) > 0){ ?>
                 <div class="bg-white">
-                    <div class="content mb-0">
+                    <div class="content mt-0 mb-0">
                         <div class="list-group list-custom-large">
                             <?php 
                                 foreach($card as $key=>$cardItem){
@@ -178,9 +193,8 @@ if($appearance['appearance_ava']){
             <div class="card bg-6 rounded-0 mb-0" data-card-height="cover-full">
                 <div class="card-top">
                     <h1 class="color-white font-18 ms-3 mt-4">
-                        <img src="<?= $meta_image; ?>" width="30"
-                            class="rounded-xl me-2 mt-n1">
-                            <?= $profile['user_name']; ?>
+                        <img src="<?= $meta_image; ?>" width="30" class="rounded-xl me-2 mt-n1">
+                        <?= $profile['user_name']; ?>
                         <a href="#" class="close-menu float-end me-3 mt-0 color-white font-20"><i
                                 class="fa fa-times"></i></a>
                     </h1>
@@ -212,27 +226,28 @@ if($appearance['appearance_ava']){
                 <div class="list-group list-custom-small pe-2">
                     <?php if($social['social_facebook']){ ?>
                     <a target="_blank" href="https://facebook.com/<?= scoup($social['social_facebook']) ?>"
-                            rel="noreferrer" class="external-link shareToFacebook">
+                        rel="noreferrer" class="external-link shareToFacebook">
                         <i class="fab fa-facebook-f font-12 bg-facebook color-white shadow-l rounded-l"></i>
                         <span>Facebook</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
                     <?php } if($social['social_twitter']){ ?>
-                    <a  target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"
-                            rel="noreferrer" class="external-link shareToTwitter">
+                    <a target="_blank" href="https://twitter.com/<?= scoup($social['social_twitter']) ?>"
+                        rel="noreferrer" class="external-link shareToTwitter">
                         <i class="fab fa-twitter font-12 bg-twitter color-white shadow-l rounded-l"></i>
                         <span>Twitter</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
                     <?php } if($social['social_instagram']){ ?>
                     <a target="_blank" href="https://instagram.com/<?= scoup($social['social_instagram']) ?>"
-                            rel="noreferrer" class="external-link shareToWhatsApp">
+                        rel="noreferrer" class="external-link shareToWhatsApp">
                         <i class="fab fa-instagram font-12 bg-instagram color-white shadow-l rounded-l"></i>
                         <span>Instagram</span>
                         <i class="fa fa-angle-right me-2"></i>
                     </a>
                     <?php } if($social['other_website']){ ?>
-                    <a target="_blank" href="https://<?= scoup($social['other_website']) ?>" rel="noreferrer" class="external-link shareToMail">
+                    <a target="_blank" href="https://<?= scoup($social['other_website']) ?>" rel="noreferrer"
+                        class="external-link shareToMail">
                         <i class="fa fa-globe font-12 bg-mail color-white shadow-l rounded-l"></i>
                         <span>Website</span>
                         <i class="fa fa-angle-right me-2"></i>
